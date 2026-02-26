@@ -1,0 +1,37 @@
+Package: metafrontieR
+Title: Stochastic Metafrontier Analysis Routines
+Version: 1.0.0
+Authors@R: c(
+    person("Sulman Olieko", "Owili", email = "oliekosulman@gmail.com", role = c("aut", "cre"))
+  )
+Description: An R package for implementing various metafrontier analyses for productivity/performance benchmarking, assessing efficiencies and technology gaps for firms operating under different technologies. It contains routines for implementing (i) the deterministic envelope proposed by \href{https://doi.org/10.1007/s00181-007-0119-4}{O'Donnell et al. (2008)} via linear and quadratic programming, as well as (ii) the stochastic metafrontier proposed by \href{https://doi.org/10.1007/s11123-014-0402-2}{Huang et al. (2014)}. The package also has functionalities for implementing latent class stochastic metafrontier analysis and sample selection correction stochastic metafrontier models. The package depends on \texttt{sfaR} by \href{https://github.com/hdakpo/sfaR}{Dakpo et al. (2023)}.
+License: GPL (>= 3)
+URL: https://github.com/SulmanOlieko/metafrontieR
+BugReports: https://github.com/SulmanOlieko/metafrontieR/issues
+Depends: 
+    R (>= 3.5.0),
+    sfaR
+Imports: 
+    cubature,
+    fastGHQuad,
+    Formula,
+    marqLevAlg,
+    maxLik,
+    methods,
+    mnorm,
+    nleqslv,
+    plm,
+    qrng,
+    randtoolbox,
+    sandwich,
+    stats,
+    texreg,
+    trustOptim,
+    ucminf
+Suggests: 
+    lmtest
+Encoding: UTF-8
+Language: en-US
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
