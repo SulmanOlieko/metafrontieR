@@ -1,6 +1,6 @@
 # metafrontieR
 
-> **Stochastic Metafrontier Analysis Routines**
+> **Metafrontier Analysis Routines**
 
 An R package for implementing various metafrontier analyses for productivity/performance benchmarking, assessing efficiencies, and measuring technology gaps for firms operating under different technologies.
 
@@ -16,14 +16,11 @@ The package also has functionalities for implementing **latent class stochastic 
 
 ## Installation
 
-You can install the development version of `metafrontieR` from GitHub along with its main dependency `sfaR`:
+You can install the development version of `metafrontieR` from GitHub. It automatically installs `sfaR` as its main dependency:
 
 ```r
 # Install devtools if not already installed
 if (!require("devtools")) install.packages("devtools")
-
-# Install sfaR (Dependency)
-devtools::install_github("hdakpo/sfaR")
 
 # Install metafrontieR
 devtools::install_github("SulmanOlieko/metafrontieR")
