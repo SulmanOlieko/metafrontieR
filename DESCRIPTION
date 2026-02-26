@@ -1,5 +1,5 @@
 Package: metafrontieR
-Title: Stochastic Metafrontier Analysis Routines
+Title: Metafrontier Analysis Routines
 Version: 1.0.0
 Authors@R: c(
     person("Sulman Olieko", "Owili", email = "oliekosulman@gmail.com", role = c("aut", "cre"))
