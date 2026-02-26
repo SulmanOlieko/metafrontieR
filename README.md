@@ -137,7 +137,7 @@ meta_lcm_lp <- sfametafrontier(
   data = ricephil,
   S = 1,
   groupType = "sfalcmcross",
-  lcmClasses = 2,     # Number of latent production classes within each group
+  lcmClasses = 2,     # Number of latent production classes to be estimated
   whichStart = 2,     # Random half-normal starting values
   initAlg = "nm",
   metaMethod = "lp"
