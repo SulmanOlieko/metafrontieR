@@ -1,4 +1,5 @@
-# metafrontieR
+# metafrontieR: An R package for metafrontier analysis. 
+<img src="man/figures/logo.png" align="right" height="139" alt="metafrontieR logo" />
 
 [![CodeFactor](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR/badge)](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR)
 [![R-CMD-check](https://github.com/SulmanOlieko/metafrontieR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SulmanOlieko/metafrontieR/actions/workflows/R-CMD-check.yaml)
