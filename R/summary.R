@@ -226,11 +226,13 @@ summary.sfametafrontier <- function(object, ...) {
   lam <- su / sv
 
   vals <- c(
-    sigma_u = su,
-    sigma_v = sv,
-    sigma = sig,
-    gamma = gam,
-    lambda = lam
+    `Sigma-squared(u)` = su2,
+    `Sigma(u)` = su,
+    `Sigma-squared(v)` = sv2,
+    `Sigma(v)` = sv,
+    `Sigma = Sqrt[(s^2(u)+s^2(v))]` = sig,
+    `Gamma = sigma(u)^2/sigma^2` = gam,
+    `Lambda = sigma(u)/sigma(v)` = lam
   )
 
   # Try delta-method SEs if invHessian is available
@@ -250,19 +252,23 @@ summary.sfametafrontier <- function(object, ...) {
     if (pos_lsu2 <= np && pos_lsv2 <= np) {
       grad <- function(nm) {
         g <- numeric(np)
-        if (nm == "sigma_u") {
+        if (nm == "Sigma(u)") {
           g[pos_lsu2] <- su / 2 # d(su)/d(log su2) = su/2
-        } else if (nm == "sigma_v") {
+        } else if (nm == "Sigma(v)") {
           g[pos_lsv2] <- sv / 2
-        } else if (nm == "sigma") {
+        } else if (nm == "Sigma = Sqrt[(s^2(u)+s^2(v))]") {
           g[pos_lsu2] <- su2 / (2 * sig) # d(sig)/d(log su2) = su2/(2*sig)
           g[pos_lsv2] <- sv2 / (2 * sig)
-        } else if (nm == "gamma") {
+        } else if (nm == "Sigma-squared(u)") {
+          g[pos_lsu2] <- su2
+        } else if (nm == "Sigma-squared(v)") {
+          g[pos_lsv2] <- sv2
+        } else if (nm == "Gamma = sigma(u)^2/sigma^2") {
           # gamma = su2/(su2+sv2)
           # d(gamma)/d(log su2) = su2 * sv2/(su2+sv2)^2 = gamma*(1-gamma)
           g[pos_lsu2] <- gam * (1 - gam)
           g[pos_lsv2] <- -gam * (1 - gam)
-        } else if (nm == "lambda") {
+        } else if (nm == "Lambda = sigma(u)/sigma(v)") {
           # lambda = su/sv => d/d(log su2) = lambda/2; d/d(log sv2) = -lambda/2
           g[pos_lsu2] <- lam / 2
           g[pos_lsv2] <- -lam / 2
@@ -324,18 +330,89 @@ print.summary.sfametafrontier <- function(
   digits = max(3, getOption("digits") - 2),
   ...
 ) {
-  sep <- paste0(rep("-", 60), collapse = "")
-  sep2 <- paste0(rep("=", 60), collapse = "")
+  lengthSum <- 60
+  sep <- paste0(rep("-", lengthSum), collapse = "")
+  sep2 <- paste0(rep("=", lengthSum), collapse = "")
+
+  # Helper to print the tests
+  .print_tests <- function(m) {
+    if (is.null(m$df) || is.null(m$olsLoglik) || is.null(m$chisq) || is.null(m$CoelliM3Test)) {
+      return()
+    }
+    cat("-----[ Tests vs. No Inefficiency ]-----\n")
+    cat("Likelihood Ratio Test of Inefficiency\n")
+    cat(
+      "Deg. freedom for inefficiency model",
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("Deg. freedom for inefficiency model") - nchar(formatC(m$df, digits = digits, format = "d"))),
+        collapse = ""
+      ),
+      formatC(m$df, digits = digits, format = "d"),
+      "\n"
+    )
+    cat(
+      "Log Likelihood for OLS Log(H0) = ",
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("Log Likelihood for OLS Log(H0) = ") - nchar(formatC(m$olsLoglik, digits = digits, format = "f"))),
+        collapse = ""
+      ),
+      formatC(m$olsLoglik, digits = digits, format = "f"), "\n"
+    )
+    cat("LR statistic: \n")
+    cat(
+      "Chisq = 2*[LogL(H0)-LogL(H1)]  = ",
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("Chisq = 2*[LogL(H0)-LogL(H1)]  = ") - nchar(formatC(m$chisq, digits = digits, format = "f"))),
+        collapse = ""
+      ),
+      formatC(m$chisq, digits = digits, format = "f"), "\n"
+    )
+    cat(
+      "Kodde-Palm C*:       95%:", formatC(.qchibarsq(0.95, df = m$df), digits = digits, format = "f"),
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("Kodde-Palm C*:       95%:") - nchar(formatC(.qchibarsq(0.95, df = m$df), digits = digits, format = "f")) - nchar(formatC(.qchibarsq(0.99, df = m$df), digits = digits, format = "f")) - nchar("99%") - 3),
+        collapse = ""
+      ),
+      "99%:", formatC(.qchibarsq(0.99, df = m$df), digits = digits, format = "f"), "\n"
+    )
+    cat("Coelli (1995) skewness test on OLS residuals\n")
+    cat(
+      "M3T: z                         = ",
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("M3T: z                         = ") - nchar(formatC(m$CoelliM3Test[1], digits = digits, format = "f"))),
+        collapse = ""
+      ),
+      formatC(m$CoelliM3Test[1], digits = digits, format = "f"), "\n"
+    )
+    cat(
+      "M3T: p.value                   = ",
+      paste0(
+        rep(" ", lengthSum - 2 - nchar("M3T: p.value                   = ") - nchar(formatC(m$CoelliM3Test[2], digits = digits, format = "f"))),
+        collapse = ""
+      ),
+      formatC(m$CoelliM3Test[2], digits = digits, format = "f"), "\n"
+    )
+  }
 
   # ---- Header ----
   cat(sep2, "\n")
   cat("Stochastic Metafrontier Analysis\n")
-  cat("Metafrontier method:", mfauxdist(x$metaMethod), "\n")
+  cat("Metafrontier method:", mfauxdist(x$metaMethod, x$sfaApproach), "\n")
   cat(x$typeSfa, "\n")
   if (!is.null(x$sfaApproach) && x$metaMethod == "sfa") {
     cat("SFA approach       :", x$sfaApproach, "\n")
   }
+  grp_appr <- switch(x$groupType,
+    sfacross = "Stochastic Frontier Analysis",
+    sfaselectioncross = "Sample Selection Stochastic Frontier Analysis",
+    sfalcmcross = "Latent Class Stochastic Frontier Analysis",
+    x$groupType
+  )
+  cat("Group approach     :", grp_appr, "\n")
   cat("Group estimator    :", x$groupType, "\n")
+  if (!is.null(x$groupModels[[1]]$optType)) {
+    cat("Group optim solver :", x$groupModels[[1]]$optType[[1]], "\n")
+  }
   if (isTRUE(x$lcmNoGroup)) {
     cat("  (Pooled LCM - latent classes used as groups)\n")
   }
@@ -444,6 +521,10 @@ print.summary.sfametafrontier <- function(
         signif.legend = TRUE,
         na.print = "NA"
       )
+    }
+    .print_tests(lcm_sm)
+    if (!is.null(lcm_m$optStatus)) {
+      cat("Log likelihood status:", lcm_m$optStatus, "\n")
     }
     cat("\n")
   } else {
@@ -616,6 +697,10 @@ print.summary.sfametafrontier <- function(
           )
         }
       }
+      .print_tests(sm)
+      if (!is.null(m$optStatus)) {
+        cat("Log likelihood status:", m$optStatus, "\n")
+      }
       cat("\n")
     }
   } # end if/else lcmNoGroup
@@ -623,6 +708,9 @@ print.summary.sfametafrontier <- function(
   # ---- Metafrontier coefficients ----
   cat(sep, "\n")
   cat("Metafrontier Coefficients (", x$metaMethod, "):\n", sep = "")
+  if (!is.null(x$metaSfaObj) && !is.null(x$metaSfaObj$optType)) {
+    cat("Meta-optim solver  :", x$metaSfaObj$optType[[1]], "\n")
+  }
   if (!is.null(x$metaRes)) {
     printCoefmat(
       x$metaRes,
@@ -646,6 +734,11 @@ print.summary.sfametafrontier <- function(
           signif.legend = FALSE,
           na.print = "-"
         )
+      }
+      meta_sm <- suppressWarnings(tryCatch(summary(x$metaSfaObj), error = function(e) NULL))
+      if (!is.null(meta_sm)) .print_tests(meta_sm)
+      if (!is.null(x$metaSfaObj$optStatus)) {
+        cat("Log likelihood status:", x$metaSfaObj$optStatus, "\n")
       }
     }
   } else {
@@ -721,7 +814,22 @@ print.summary.sfametafrontier <- function(
     round(x$HQIC, digits),
     "\n"
   )
+  if (!is.null(x$tests)) {
+    cat(sep, "\n")
+    cat("Tests vs. No Inefficiency:\n")
+    printCoefmat(
+      x$tests,
+      P.values = TRUE,
+      has.Pvalue = TRUE,
+      digits = digits,
+      signif.legend = TRUE,
+      na.print = "NA"
+    )
+  }
   cat(sep, "\n")
+  if (!is.null(x$optStatus)) {
+    cat("Log likelihood status:", x$optStatus, "\n")
+  }
   cat(x$mlDate, "\n")
   invisible(x)
 }

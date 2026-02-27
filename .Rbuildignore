@@ -2,3 +2,9 @@
 ^\.Rproj\.user$
 ^\.github$
 ^LICENSE\.md$
+^\.DS_Store$
+^\.git$
+^metafrontieR-manual\.pdf$
+^\.\.Rcheck$
+^\.\.pdf$
+^.*\.Rcheck$

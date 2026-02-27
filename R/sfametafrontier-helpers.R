@@ -8,12 +8,53 @@
 #------------------------------------------------------------------------------#
 # Metafrontier estimation helpers                                              #
 #------------------------------------------------------------------------------#
+.pchibarsq <- function(p, df = 1, mix = 0.5, lower.tail = TRUE, log.p = FALSE) {
+  df <- rep(df, length.out = length(p))
+  mix <- rep(mix, length.out = length(p))
+  c1 <- ifelse(df == 1, if (lower.tail) {
+    1
+  } else {
+    0
+  }, pchisq(p, df - 1, lower.tail = lower.tail))
+  c2 <- pchisq(p, df, lower.tail = lower.tail)
+  r <- mix * c1 + (1 - mix) * c2
+  if (log.p) {
+    log(r)
+  } else {
+    r
+  }
+}
+
+#' @importFrom stats pchisq qchisq uniroot
+#' @noRd
+.qchibarsq <- function(q, df = 1, mix = 0.5) {
+  n <- max(length(q), length(df), length(mix))
+  df <- rep(df, length.out = n)
+  mix <- rep(mix, length.out = n)
+  q <- rep(q, length.out = n)
+  tmpf2 <- function(q, df, mix) {
+    if (df > 1) {
+      tmpf <- function(x) {
+        .pchibarsq(x, df, mix) - q
+      }
+      uniroot(tmpf, lower = qchisq(q, df - 1), upper = qchisq(
+        q,
+        df
+      ))$root
+    } else {
+      newq <- (q - mix) / (1 - mix)
+      ifelse(newq < 0, 0, qchisq(newq, df = 1))
+    }
+  }
+  mapply(tmpf2, q, df, mix)
+}
+
 
 # Pretty-print name for the metafrontier method -----------
 #' @param metaMethod character string for metafrontier method
 #' @param sfaApproach character string for SFA approach ("ordonnell" or "huang")
 #' @noRd
-mfauxdist <- function(metaMethod, sfaApproach = "ordonnell") {
+mfauxdist <- function(metaMethod, sfaApproach = "huang") {
   base <- switch(metaMethod,
     lp = "Linear Programming (LP) Metafrontier",
     qp = "Quadratic Programming (QP) Metafrontier",
@@ -174,7 +215,7 @@ extract_lcm_fitted <- function(lcmObj) {
 #' @param teMeta_sfa optional N-vector - BC efficiency from the second-stage SFA
 #' @noRd
 compute_mtr <- function(yhat_group, yhat_meta, teGroup, S,
-                        metaMethod = "lp", sfaApproach = "ordonnell",
+                        metaMethod = "lp", sfaApproach = "huang",
                         teMeta_sfa = NULL) {
   if (metaMethod %in% c("lp", "qp")) {
     # LP/QP: gap = S*(yhat_meta - yhat_group) >= 0 by construction of the envelope

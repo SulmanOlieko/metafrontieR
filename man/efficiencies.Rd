@@ -21,13 +21,58 @@ for the observations that were used in the estimation.}
 \item{...}{Currently ignored.}
 }
 \value{
-A data frame that contains individual (in-)efficiency estimates.
-These are ordered in the same way as the corresponding observations in the
-dataset used for the estimation.
+A data frame containing individual (in-)efficiency estimates, ordered corresponding to the original data used for estimation. The specific columns vary depending on the model and \code{sfaApproach}, but generally include:
+\item{u_group}{Group-specific inefficiency estimates.}
+\item{TE_group_JLMS}{Group-specific technical efficiency estimates using Jondrow et al. (1982).}
+\item{TE_group_BC}{Group-specific technical efficiency estimates using Battese and Coelli (1988).}
+\item{u_meta}{Metafrontier inefficiency estimates.}
+\item{TE_meta_JLMS}{Metafrontier technical efficiency estimates using JLMS.}
+\item{TE_meta_BC}{Metafrontier technical efficiency estimates using BC.}
+\item{MTR_JLMS}{Metatechnology ratio based on JLMS estimates.}
+\item{MTR_BC}{Metatechnology ratio based on BC estimates.}
 }
 \description{
 \code{\link{efficiencies}} returns (in-)efficiency estimates of models
 estimated with \code{\link{sfametafrontier}}.
+}
+\details{
+The metatechnology ratio (MTR) and metafrontier efficiencies are computed as follows:
+\itemize{
+\item \strong{Group Efficiency:} \eqn{TE_{it}^g = \exp(-u_{it})}, evaluated natively
+by the group-specific frontier (e.g. using Jondrow et al., 1982 or Battese and Coelli, 1988).
+\item \strong{Metatechnology Ratio (MTR):} Evaluates the distance between the
+group-specific frontier and the global metafrontier.
+\itemize{
+\item For deterministic envelopes (\code{"lp"}, \code{"qp"}):
+\deqn{MTR_{it} = \exp\left( - \max\left\{S \times (\ln \hat{y}_{it}^* - \ln \hat{y}_{it}^g), 0\right\} \right)}
+where \eqn{S=1} for production/profit and \eqn{S=-1} for cost.
+\item For Huang et al. (2014) stochastic approach:
+\deqn{MTR_{it} = \exp(-U_{it})}
+directly estimated as the technical efficiency from the second-stage SFA regression
+where the dependent variable is the group-fitted values \eqn{\ln \hat{y}_{it}^g}.
+\item For O'Donnell et al. (2008) stochastic approach:
+\eqn{MTR_{it} = TE_{it}^* / TE_{it}^g}, potentially vulnerable to bounding issues if \eqn{TE_{it}^* > TE_{it}^g}.
+}
+\item \strong{Metafrontier Efficiency:} \eqn{TE_{it}^* = TE_{it}^g \times MTR_{it}}.
+}
+}
+\references{
+Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
+production function for estimation of technical efficiencies and technology
+gaps for firms operating under different technologies.
+\emph{Journal of Productivity Analysis}, \bold{21}(1), 91--103.
+\url{https://doi.org/10.1023/B:PROD.0000012454.06094.29}
+
+Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
+estimating the metafrontier production function based on a stochastic
+frontier framework. \emph{Journal of Productivity Analysis},
+\bold{42}(3), 241--254.
+\url{https://doi.org/10.1007/s11123-014-0402-2}
+
+O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
+frameworks for the study of firm-level efficiencies and technology ratios.
+\emph{Empirical Economics}, \bold{34}(2), 231--255.
+\url{https://doi.org/10.1007/s00181-007-0119-4}
 }
 \seealso{
 \code{\link{sfametafrontier}}, for the stochastic metafrontier analysis model

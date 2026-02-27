@@ -20,7 +20,7 @@ sfametafrontier(
   scaling = FALSE,
   groupType = "sfacross",
   metaMethod = "lp",
-  sfaApproach = "ordonnell",
+  sfaApproach = "huang",
   selectionF = NULL,
   lcmClasses = 2L,
   whichStart = 2L,
@@ -97,13 +97,13 @@ of group frontier values evaluated at all observations).
 }}
 
 \item{sfaApproach}{Character string. Only relevant when \code{metaMethod =
-  "sfa"}. \code{"ordonnell"} (default): uses the envelope of group betas
-evaluated at all observations (O'Donnell et al., 2008). \code{"huang"}:
+  "sfa"}. \code{"huang"} (default):
 uses each observation's own group fitted value as the meta-stage dependent
-variable (Huang et al., 2014).}
+variable (Huang et al., 2014). \code{"ordonnell"}: uses the deterministic envelope of group betas
+evaluated at all observations (O'Donnell et al., 2008).}
 
 \item{selectionF}{A one-sided formula (e.g. \code{~ z1 + z2}) or a named
-list of formulas (one per group) specifying the selection equation. Only
+list of formulas (one per group) specifying the sample selection equation. Only
 used when \code{groupType = "sfaselectioncross"}.}
 
 \item{lcmClasses}{Integer (2--5). Number of latent classes for
@@ -164,36 +164,80 @@ Default \code{Inf}.}
 \item{x}{An object of class \code{'sfametafrontier'} (for printing).}
 }
 \value{
-A list of class \code{'sfametafrontier'} with the standard components
-(see the base \code{sfametafrontier} documentation) plus:
-\item{groupType}{The group model type used.}
-\item{sfaApproach}{The SFA approach used (when \code{metaMethod = "sfa"}).}
+\code{\link{sfametafrontier}} returns a list of class \code{'sfametafrontier'} containing the following elements:
+\item{groupModels}{A list containing the fitted frontier models for each group (class \code{'sfacross'}, \code{'sfaselectioncross'}, or \code{'sfalcmcross'}).}
+\item{metaSfaObj}{The fitted metafrontier model object. If \code{metaMethod = "sfa"}, this is an object of class \code{'sfacross'} representing the second-stage stochastic frontier. If \code{metaMethod = "lp"} or \code{"qp"}, this contains optimization statistics and coefficients from the deterministic envelope.}
+\item{metaRes}{A matrix or data frame of the estimated metafrontier coefficients, standard errors, z-values, and p-values.}
+\item{efficiencies}{A list containing efficiency estimates, including group-specific technical efficiencies (\code{TE_group}), metafrontier technical efficiencies (\code{TE_meta}), and the metatechnology ratios (\code{MTR}).}
+\item{formula}{The formula used for the frontier.}
+\item{metaMethod}{The metafrontier estimation method used (\code{"lp"}, \code{"qp"}, or \code{"sfa"}).}
+\item{sfaApproach}{The SFA approach used in the second stage (\code{"huang"} or \code{"ordonnell"}).}
+\item{groupType}{The type of group-level models estimated (\code{"sfacross"}, \code{"sfaselectioncross"}, or \code{"sfalcmcross"}).}
+\item{groups}{A character vector containing the names of the unique groups identified in the data.}
 }
 \description{
 \code{\link{sfametafrontier}} estimates a stochastic metafrontier model
-following Battese, Rao and O'Donnell (2004) and O'Donnell, Rao and
-Battese (2008). It can also use the two-stage approach of Huang, Huang and
-Liu (2014). Three types of group-level frontier models are supported:
-standard SFA (\code{\link[sfaR]{sfacross}}), sample selection SFA
-(\code{\link[sfaR]{sfaselectioncross}}), and latent class SFA
-(\code{\link[sfaR]{sfalcmcross}}).
+following the theoretical frameworks of Battese, Rao, and O'Donnell (2004) and O'Donnell, Rao, and
+Battese (2008). It additionally implements the two-stage stochastic approach of Huang, Huang, and
+Liu (2014). Three types of group-level frontier models from the \code{sfaR} package are supported:
+standard stochastic frontier analysis (\code{\link[sfaR]{sfacross}}), sample selection SFA
+(\code{\link[sfaR]{sfaselectioncross}}), and latent class SFA (\code{\link[sfaR]{sfalcmcross}}).
 }
 \details{
-The workflow:
+The stochastic metafrontier analysis workflow comprises two sequential stages.
+Suppose we have \eqn{N} observations divided into \eqn{G} technology groups.
+The underlying group frontier for firm \eqn{i} in group \eqn{g} at time \eqn{t} is specified as:
+\deqn{y_{it} = f(x_{it}, \beta_{(g)}) e^{v_{it} - u_{it}}}
+where \eqn{f(\cdot)} is the deterministic frontier (e.g., translog or Cobb-Douglas),
+\eqn{x_{it}} represents the input vector (or output vector for cost models),
+\eqn{\beta_{(g)}} is the technology parameter vector for group \eqn{g},
+\eqn{v_{it}} is the statistical noise, and \eqn{u_{it} \ge 0} represents technical inefficiency.
+
 \enumerate{
-\item Estimate group-specific frontiers using the estimator specified by
-\code{groupType}.
-\item Estimate a common metafrontier using \code{metaMethod}.
-\item Compute the metatechnology ratio (MTR) = TE_meta / TE_group for
-each observation.
+\item \strong{Group-specific estimations:} The data is split into \eqn{G} groups
+based on the \code{group} variable (unless \code{groupType="sfalcmcross"}
+with \code{group} omitted, in which case a single pooled latent class model
+is estimated to map observations to underlying groups automatically). For each explicitly or
+implicitly defined group, a frontier model is estimated natively by maximizing
+the log-likelihood function.
+\item \strong{Metafrontier estimation:} The global metafrontier \eqn{f(x_{it}, \beta^*)}
+envelopes all group frontiers \eqn{f(x_{it}, \beta_{(g)})}. The methodologies are:
+\itemize{
+\item \strong{Linear Programming (LP):} Fits a deterministic envelope over the fitted
+group frontier values by minimizing the absolute sum of deviations (Battese et al., 2004).
+The objective is to find a single parameter vector \eqn{\beta^*} such that the
+metafrontier predictions are completely uniformly larger than the group-specific predictions:
+\deqn{\min_{\beta^*} \sum_{i} \sum_{t} \left| \ln f(x_{it}, \beta^*) - \ln \hat{f}(x_{it}, \hat{\beta}_{(g)}) \right|}
+subject to \eqn{\ln f(x_{it}, \beta^*) \ge \ln \hat{f}(x_{it}, \hat{\beta}_{(g)})}.
+\item \strong{Quadratic Programming (QP):} Similar to LP, but minimizes the sum of squared deviations
+between the metafrontier and the underlying group frontiers.
+\item \strong{Stochastic Metafrontier (Huang et al., 2014):} Formulates the relationship between the
+metafrontier and the group frontier stochastically. Because the true group frontiers
+are unobservable, Huang et al. replace them with their estimates:
+\deqn{\ln \hat{f}(x_{it}, \hat{\beta}_{(g)}) = \ln f(x_{it}, \beta^*) + V_{it} - U_{it}}
+where \eqn{V_{it}} absorbs the statistical noise mapping from the first-stage estimation
+(representing the estimation error of the group frontier),
+and \eqn{U_{it} \ge 0} captures the technology gap between the group frontier and the
+global metafrontier. This method relies directly on estimating a second-stage stochastic frontier
+using the group-specific fitted values \eqn{\ln \hat{y}_{it}} as the dependent variable.
+\item \strong{Stochastic Metafrontier (O'Donnell et al., 2008):} Derives a stochastic metafrontier by fundamentally
+fitting an SFA over the pre-computed, deterministically enveloped values across all observations.
+Specifically, the dependent variable in this secondary stage relies on the theoretical
+values extracted via mathematical programming.
+}
+\item \strong{Efficiencies and Metatechnology Ratios (MTR):}
+\itemize{
+\item Group-specific Technical Efficiency (TE_group): \eqn{TE_{it}^g = \exp(-u_{it})}.
+\item Metafrontier Technical Efficiency (TE_meta): \eqn{TE_{it}^* = \exp(-u_{it} - U_{it})}.
+\item Metatechnology Ratio (MTR): The ratio mapping the distance from the group frontier
+to the potential metafrontier: \eqn{MTR_{it} = \frac{TE_{it}^*}{TE_{it}^g} = \exp(-U_{it})}.
+}
 }
 
 When \code{groupType = "sfaselectioncross"}, only the selected observations
-(\code{selectDum == 1}) participate in the metafrontier; the MTR is
-\code{NA} for non-selected observations.
-
-When \code{groupType = "sfalcmcross"}, the best-posterior-class fitted value
-is used as each observation's group frontier value.
+(\code{selectDum == 1}) participate in the metafrontier; the MTR evaluates as
+\code{NA} for non-selected observations. When \code{groupType = "sfalcmcross"},
+the best-posterior-class fitted value \eqn{y_{it}^{c^*}} is routed to the metafrontier algorithm.
 }
 \examples{
 \dontrun{
@@ -233,15 +277,18 @@ Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
 production function for estimation of technical efficiencies and technology
 gaps for firms operating under different technologies.
 \emph{Journal of Productivity Analysis}, \bold{21}(1), 91--103.
+\url{https://doi.org/10.1023/B:PROD.0000012454.06094.29}
 
 Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
 estimating the metafrontier production function based on a stochastic
 frontier framework. \emph{Journal of Productivity Analysis},
 \bold{42}(3), 241--254.
+\url{https://doi.org/10.1007/s11123-014-0402-2}
 
 O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
 frameworks for the study of firm-level efficiencies and technology ratios.
 \emph{Empirical Economics}, \bold{34}(2), 231--255.
+\url{https://doi.org/10.1007/s00181-007-0119-4}
 }
 \seealso{
 \code{\link[sfaR]{sfacross}}, \code{\link[sfaR]{sfaselectioncross}},
