@@ -81,6 +81,116 @@ summary(meta_lp)
 ```
 This is the output we obtain:
 
+<details>
+  <summary>Toggle to see the output</summary>
+
+  ============================================================ 
+Stochastic Metafrontier Analysis
+Metafrontier method: Linear Programming (LP) Metafrontier 
+Stochastic Production/Profit Frontier, e = v - u 
+Group estimator    : sfacross 
+Groups ( 3 ): small, medium, large 
+Total observations : 344 
+Distribution       : hnormal 
+============================================================ 
+
+------------------------------------------------------------ 
+Group: small (N = 125)  Log-likelihood: -50.98578
+------------------------------------------------------------ 
+               Coefficient Std. Error z value  Pr(>|z|)    
+(Intercept)      -1.587445   0.512745 -3.0960  0.001962 ** 
+log(AREA)         0.240139   0.118343  2.0292  0.042441 *  
+log(LABOR)        0.434645   0.122915  3.5361  0.000406 ***
+log(NPK)          0.305164   0.057015  5.3523 8.682e-08 ***
+Zu_(Intercept)   -1.450932   0.298670 -4.8580 1.186e-06 ***
+Zv_(Intercept)   -2.934055   0.354013 -8.2880 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+  Variance & Efficiency Statistics (delta-method SEs):
+           Estimate Std. Error z value  Pr(>|z|)    
+sigma_u    0.484099   0.072293  6.6963 2.137e-11 ***
+sigma_v    0.230610   0.040819  5.6495 1.609e-08 ***
+sigma      0.536221   0.054820  9.7814 < 2.2e-16 ***
+gamma      0.815044   0.090288  9.0271 < 2.2e-16 ***
+lambda     2.099212   0.628650  3.3392 0.0008401 ***
+E[u]       0.386255          —       —         —    
+E[exp(-u)] 0.706426          —       —         —    
+
+------------------------------------------------------------ 
+Group: medium (N = 104)  Log-likelihood: -15.28164
+------------------------------------------------------------ 
+               Coefficient Std. Error z value  Pr(>|z|)    
+(Intercept)      -0.081817   0.506685 -0.1615 0.8717187    
+log(AREA)         0.474101   0.139839  3.3903 0.0006981 ***
+log(LABOR)        0.179351   0.102014  1.7581 0.0787310 .  
+log(NPK)          0.202545   0.081302  2.4913 0.0127289 *  
+Zu_(Intercept)   -1.513671   0.235495 -6.4276 1.296e-10 ***
+Zv_(Intercept)   -4.548464   0.764291 -5.9512 2.661e-09 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+  Variance & Efficiency Statistics (delta-method SEs):
+           Estimate Std. Error z value  Pr(>|z|)    
+sigma_u    0.469149   0.055241  8.4928 < 2.2e-16 ***
+sigma_v    0.102876   0.039314  2.6168  0.008876 ** 
+sigma      0.480296   0.048721  9.8580 < 2.2e-16 ***
+gamma      0.954121   0.041080 23.2259 < 2.2e-16 ***
+lambda     4.560336   2.139857  2.1311  0.033078 *  
+E[u]       0.374326          —       —         —    
+E[exp(-u)] 0.713297          —       —         —    
+
+------------------------------------------------------------ 
+Group: large (N = 115)  Log-likelihood: -8.02197
+------------------------------------------------------------ 
+               Coefficient Std. Error  z value  Pr(>|z|)    
+(Intercept)      -1.311937   0.418592  -3.1342 0.0017234 ** 
+log(AREA)         0.382776   0.142975   2.6772 0.0074236 ** 
+log(LABOR)        0.421047   0.109924   3.8303 0.0001280 ***
+log(NPK)          0.231427   0.060646   3.8160 0.0001356 ***
+Zu_(Intercept)   -1.786729   0.201765  -8.8555 < 2.2e-16 ***
+Zv_(Intercept)   -4.269633   0.405838 -10.5205 < 2.2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+  Variance & Efficiency Statistics (delta-method SEs):
+           Estimate Std. Error z value  Pr(>|z|)    
+sigma_u    0.409276   0.041289  9.9125 < 2.2e-16 ***
+sigma_v    0.118266   0.023998  4.9281 8.304e-07 ***
+sigma      0.426021   0.036947 11.5306 < 2.2e-16 ***
+gamma      0.922935   0.037885 24.3615 < 2.2e-16 ***
+lambda     3.460635   0.921642  3.7549 0.0001734 ***
+E[u]       0.326555          —       —         —    
+E[exp(-u)] 0.741946          —       —         —    
+
+------------------------------------------------------------ 
+Metafrontier Coefficients (lp):
+  (LP: deterministic envelope — no estimated parameters)
+
+------------------------------------------------------------ 
+Efficiency Statistics (group means):
+------------------------------------------------------------ 
+       N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
+small    125     125     0.71065    0.64126  0.89981
+medium   104     104     0.71253    0.68204  0.95597
+large    115     115     0.74772    0.72186  0.96521
+
+Overall: TE_group=0.7236  TE_meta=0.6817  MTR=0.9403
+------------------------------------------------------------ 
+Total Log-likelihood: -74.28939 
+AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
+------------------------------------------------------------ 
+Model was estimated on : Feb Fri 27, 2026 at 10:24
+</details>
+
+
+
+
+
+
+
+
+
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Linear Programming (LP) Metafrontier 
