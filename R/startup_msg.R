@@ -1,13 +1,14 @@
 metafrontieRStartupMessage <- function() {
   art_lines <- c(
-"                       888              .d888                          888    d8b          8888888b. ",
-"                       888             d88P\"                           888    Y8P          888   Y88b",
-"                       888             888                             888                 888    888",
-"88888b.d88b.   .d88b.  888888  8888b.  888888 888d888 .d88b.  88888b.  888888 888  .d88b.  888   d88P",
-"888 \"888 \"88b d8P  Y8b 888        \"88b 888    888P\"  d88\"\"88b 888 \"88b 888    888 d8P  Y8b 8888888P\" ",
-"888  888  888 88888888 888    .d888888 888    888    888  888 888  888 888    888 88888888 888 T88b  ",
-"888  888  888 Y8b.     Y88b.  888  888 888    888    Y88..88P 888  888 Y88b.  888 Y8b.     888  T88b ",
-"888  888  888  \"Y8888   \"Y888 \"Y888888 888    888     \"Y88P\"  888  888  \"Y888 888  \"Y8888  888   T88b"
+
+"                                .              .o88o.                                    .    o8o            ooooooooo.  ",
+"                              .o8              888 `\"                                  .o8    `\"'            `888   `Y88.",
+"ooo. .oo.  .oo.    .ooooo.  .o888oo  .oooo.   o888oo  oooo d8b  .ooooo.  ooo. .oo.   .o888oo oooo   .ooooo.   888   .d88'",
+"`888P\"Y88bP\"Y88b  d88' `88b   888   `P  )88b   888    `888\"\"8P d88' `88b `888P\"Y88b    888   `888  d88' `88b  888ooo88P' ",
+" 888   888   888  888ooo888   888    .oP\"888   888     888     888   888  888   888    888    888  888ooo888  888`88b.   ",
+" 888   888   888  888    .o   888 . d8(  888   888     888     888   888  888   888    888 .  888  888    .o  888  `88b. ",
+"o888o o888o o888o `Y8bod8P'   \"888\" `Y888\"\"8o o888o   d888b    `Y8bod8P' o888o o888o   \"888\" o888o `Y8bod8P' o888o  o888o"
+  
   )
   base_msg <- paste0(
     "\n\n* Please cite the 'metafrontieR' package as:\n",
@@ -25,7 +26,7 @@ metafrontieRStartupMessage <- function() {
     trimmed_art <- substr(art_lines, 1, console_width - 5)
     
     # 2. Add the ASCII ellipsis strictly to the last row
-    ellipsis <- "   88 88 88"
+    ellipsis <- "      88 88 88"
     e_len <- nchar(ellipsis)
     cut_point <- max(0, console_width - e_len)
     
