@@ -1,0 +1,23 @@
+year <- 2026
+vers <- "R package version 1.0.0"
+
+citHeader("To cite the 'metafrontieR' package in publications please use:")
+
+bibentry(
+   bibtype = "Manual",
+   title = "{metafrontieR}: Metafrontier Analysis in R.",
+   author = c(person("Sulman Olieko", "Owili")),
+   year = year,
+   note = vers,
+   url = "https://github.com/SulmanOlieko/metafrontieR",
+   textVersion = paste(
+      "Owili SO. (",
+      year,
+      "). metafrontieR: Metafrontier Analysis in R. ",
+      vers,
+      ".",
+      sep = ""
+   )
+)
+
+citFooter(paste("See also", sQuote("citation()"), "for citing R.", sep = " "))

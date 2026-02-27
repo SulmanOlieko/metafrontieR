@@ -1,0 +1,119 @@
+
+R version 4.5.2 (2025-10-31) -- "[Not] Part in a Rumble"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin20
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "metafrontieR"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('metafrontieR')
+Loading required package: sfaR
+           ****           *******  
+          /**/           /**////** 
+  ****** ******  ******  /**   /** 
+ **//// ///**/  //////** /*******  
+//*****   /**    ******* /**///**  
+ /////**  /**   **////** /**  //** 
+ ******   /**  //********/**   //**
+//////    //    //////// //     //    version 1.0.1
+
+* Please cite the 'sfaR' package as:
+  Dakpo KH., Desjeux Y., Henningsen A., and Latruffe L. (2024). sfaR: Stochastic Frontier Analysis Using R. R package version 1.0.1.
+
+See also: citation("sfaR")
+
+* For any questions, suggestions, or comments on the 'sfaR' package, you can contact directly the authors or visit:  https://github.com/hdakpo/sfaR/issues
+               __        ___                 _   _      ____  
+ _ __ ___  ___| |_ __ _ / _ \_ __ ___  _ __ | |_(_) ___|  _ \ 
+| '_ ` _ \/ _ \ __/ _` | |_)| '__/ _ \| '_ \| __| |/ _ \ |_) |
+| | | | | |  __/ || (_| |  _| | | (_) | | | | |_| |  __/  _ < 
+|_| |_| |_|\___|\__\__,_|_| |_|  \___/|_| |_|\__|_|\___|_| \_\
+                                                 version 1.0.0
+
+* Please cite the 'metafrontieR' package as:
+Owili S. (2026). metafrontieR: Metafrontier Analysis in R. R package version 1.0.0.
+
+See also: citation("metafrontieR")
+
+* For any questions, suggestions, or comments on the 'metafrontieR' package, you can contact the authors directly or visit:
+  https://github.com/SulmanOlieko/metafrontieR/issues
+
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("sfametafrontier")
+> ### * sfametafrontier
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: sfametafrontier
+> ### Title: Stochastic metafrontier estimation
+> ### Aliases: sfametafrontier print.sfametafrontier
+> ### Keywords: metafrontier models optimize
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D ## Standard SFA metafrontier (LP) with ricephil data
+> ##D data("ricephil")
+> ##D ricephil$group <- cut(ricephil$AREA,
+> ##D   breaks = c(0, 1, 2, Inf),
+> ##D   labels = c("small", "medium", "large")
+> ##D )
+> ##D 
+> ##D meta_lp <- sfametafrontier(
+> ##D   formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
+> ##D   data = ricephil, group = "group", S = 1, udist = "hnormal",
+> ##D   metaMethod = "lp"
+> ##D )
+> ##D summary(meta_lp)
+> ##D 
+> ##D ## Huang (2014) two-stage SFA metafrontier
+> ##D meta_huang <- sfametafrontier(
+> ##D   formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
+> ##D   data = ricephil, group = "group", S = 1, udist = "hnormal",
+> ##D   metaMethod = "sfa", sfaApproach = "huang"
+> ##D )
+> ##D summary(meta_huang)
+> ##D 
+> ##D ## Latent class group models
+> ##D meta_lcm <- sfametafrontier(
+> ##D   formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
+> ##D   data = ricephil, group = "group", S = 1,
+> ##D   groupType = "sfalcmcross", lcmClasses = 2, metaMethod = "lp"
+> ##D )
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.85 0.196 3.898 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

@@ -1,0 +1,324 @@
+Hmm ... looks like a package
+Converting parsed Rd's to LaTeX .
+Creating pdf output from LaTeX ...
+
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./Rd2.tex
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/eucal.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def)
+No file Rd2.aux.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd)
+No file Rd2.toc.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [1{/Users/macbookpro/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 81--83
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[2{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 122--124
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (44.22658pt too wide) in paragraph at lines 131--133
+[][][]\T1/zi4/m/n/10 fitted[][][] []\T1/ptm/m/n/10 re-turns the fit-ted fron-tier val-ues from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 161--163
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (13.45667pt too wide) in paragraph at lines 172--174
+[][][]\T1/zi4/m/n/10 ic[][][] []\T1/ptm/m/n/10 re-turns in-for-ma-tion cri-te-rion from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[3]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 217--219
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[4]
+Overfull \hbox (9.80795pt too wide) in paragraph at lines 251--258
+[]\T1/zi4/m/n/10 individual = FALSE[]\T1/ptm/m/n/10 , or a list of el-e-ments, con-tain-ing the log-likelihood of each ob-ser-va-tion ([]\T1/zi4/m/n/10 logLik[]\T1/ptm/m/n/10 ),
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 261--263
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[5]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 299--301
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 338--340
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[6] [7]
+Overfull \hbox (35.20903pt too wide) in paragraph at lines 463--466
+\T1/ptm/m/n/10 spec-i-fy-ing the se-lec-tion equa-tion. Only used when []\T1/zi4/m/n/10 groupType = "sfaselectioncross"[]\T1/ptm/m/n/10 . 
+[8] [9]
+Overfull \hbox (14.94945pt too wide) in paragraph at lines 636--638
+[]\T1/ptm/m/n/10 An ob-ject of class []\TS1/zi4/m/n/10 '\T1/zi4/m/n/10 sfametafrontier\TS1/zi4/m/n/10 ' []\T1/ptm/m/n/10 re-turned by the func-tion [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[10] [11]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 714--716
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+No file Rd2.ind.
+[12] (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.sfalcmcross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfaselectioncross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfacross} has been referenced but does not exist, replaced by a fixed one
+
+</Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (12 pages, 129721 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2025] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (78 entries accepted, 0 rejected).
+Sorting entries....done (532 comparisons).
+Generating output file Rd2.ind....done (96 lines written, 8 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./Rd2.tex
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/eucal.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.toc) [1{/Users/macbookpro/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}] (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 81--83
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[2{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 122--124
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (44.22658pt too wide) in paragraph at lines 131--133
+[][][]\T1/zi4/m/n/10 fitted[][][] []\T1/ptm/m/n/10 re-turns the fit-ted fron-tier val-ues from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 161--163
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (13.45667pt too wide) in paragraph at lines 172--174
+[][][]\T1/zi4/m/n/10 ic[][][] []\T1/ptm/m/n/10 re-turns in-for-ma-tion cri-te-rion from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[3]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 217--219
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[4]
+Overfull \hbox (9.80795pt too wide) in paragraph at lines 251--258
+[]\T1/zi4/m/n/10 individual = FALSE[]\T1/ptm/m/n/10 , or a list of el-e-ments, con-tain-ing the log-likelihood of each ob-ser-va-tion ([]\T1/zi4/m/n/10 logLik[]\T1/ptm/m/n/10 ),
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 261--263
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[5]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 299--301
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 338--340
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[6] [7]
+Overfull \hbox (35.20903pt too wide) in paragraph at lines 463--466
+\T1/ptm/m/n/10 spec-i-fy-ing the se-lec-tion equa-tion. Only used when []\T1/zi4/m/n/10 groupType = "sfaselectioncross"[]\T1/ptm/m/n/10 . 
+[8] [9]
+Overfull \hbox (14.94945pt too wide) in paragraph at lines 636--638
+[]\T1/ptm/m/n/10 An ob-ject of class []\TS1/zi4/m/n/10 '\T1/zi4/m/n/10 sfametafrontier\TS1/zi4/m/n/10 ' []\T1/ptm/m/n/10 re-turned by the func-tion [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[10] [11]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 714--716
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+(/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.ind [12]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 67.
+
+[13]) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.sfalcmcross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfaselectioncross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfacross} has been referenced but does not exist, replaced by a fixed one
+
+</Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (13 pages, 135572 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2025] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (78 entries accepted, 0 rejected).
+Sorting entries....done (532 comparisons).
+Generating output file Rd2.ind....done (96 lines written, 8 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./Rd2.tex
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/eucal.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.toc [1{/Users/macbookpro/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 81--83
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[2{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 122--124
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (44.22658pt too wide) in paragraph at lines 131--133
+[][][]\T1/zi4/m/n/10 fitted[][][] []\T1/ptm/m/n/10 re-turns the fit-ted fron-tier val-ues from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[3]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 161--163
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (13.45667pt too wide) in paragraph at lines 172--174
+[][][]\T1/zi4/m/n/10 ic[][][] []\T1/ptm/m/n/10 re-turns in-for-ma-tion cri-te-rion from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 217--219
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[4]
+Overfull \hbox (9.80795pt too wide) in paragraph at lines 251--258
+[]\T1/zi4/m/n/10 individual = FALSE[]\T1/ptm/m/n/10 , or a list of el-e-ments, con-tain-ing the log-likelihood of each ob-ser-va-tion ([]\T1/zi4/m/n/10 logLik[]\T1/ptm/m/n/10 ),
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 261--263
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[5]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 299--301
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 338--340
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[6] [7]
+Overfull \hbox (35.20903pt too wide) in paragraph at lines 463--466
+\T1/ptm/m/n/10 spec-i-fy-ing the se-lec-tion equa-tion. Only used when []\T1/zi4/m/n/10 groupType = "sfaselectioncross"[]\T1/ptm/m/n/10 . 
+[8] [9]
+Overfull \hbox (14.94945pt too wide) in paragraph at lines 636--638
+[]\T1/ptm/m/n/10 An ob-ject of class []\TS1/zi4/m/n/10 '\T1/zi4/m/n/10 sfametafrontier\TS1/zi4/m/n/10 ' []\T1/ptm/m/n/10 re-turned by the func-tion [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[10] [11]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 714--716
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+(/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.ind [12]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 67.
+
+[13]) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.sfalcmcross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfaselectioncross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfacross} has been referenced but does not exist, replaced by a fixed one
+
+</Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (13 pages, 135813 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.17 [TeX Live 2025] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (78 entries accepted, 0 rejected).
+Sorting entries....done (534 comparisons).
+Generating output file Rd2.ind....done (96 lines written, 8 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (TeX Live 2025) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2025-11-01>
+L3 programming layer <2026-01-19>
+(./Rd2.tex
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2025/01/22 v1.4n Standard LaTeX document class
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/bk10.clo)) (/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/bm.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/alltt.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
+For additional information on amsmath, use the `?' option.
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsbsy.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amsfonts.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/amssymb.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/eucal.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/times.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/zi4.sty `inconsolata-zi4' v1.12, 2019/05/17 Text macros for Inconsolata (msharpe) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/keyval.tex))))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/color.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color.cfg) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics-def/pdftex.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/graphics/mathcolor.ltx)) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdfescape/pdfescape.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hpdftex.def (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/base/makeidx.sty)
+Writing index file Rd2.idx
+(/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/t1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.out) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/psnfss/ts1ptm.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/t1zi4.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.toc [1{/Users/macbookpro/Library/TinyTeX/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/base/8r.enc}{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}]) (/Users/macbookpro/Library/TinyTeX/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 81--83
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[2{/Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 122--124
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (44.22658pt too wide) in paragraph at lines 131--133
+[][][]\T1/zi4/m/n/10 fitted[][][] []\T1/ptm/m/n/10 re-turns the fit-ted fron-tier val-ues from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[3]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 161--163
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (13.45667pt too wide) in paragraph at lines 172--174
+[][][]\T1/zi4/m/n/10 ic[][][] []\T1/ptm/m/n/10 re-turns in-for-ma-tion cri-te-rion from stochas-tic metafron-tier mod-els es-ti-mated with [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 217--219
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[4]
+Overfull \hbox (9.80795pt too wide) in paragraph at lines 251--258
+[]\T1/zi4/m/n/10 individual = FALSE[]\T1/ptm/m/n/10 , or a list of el-e-ments, con-tain-ing the log-likelihood of each ob-ser-va-tion ([]\T1/zi4/m/n/10 logLik[]\T1/ptm/m/n/10 ),
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 261--263
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[5]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 299--301
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 338--340
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+[6] [7]
+Overfull \hbox (35.20903pt too wide) in paragraph at lines 463--466
+\T1/ptm/m/n/10 spec-i-fy-ing the se-lec-tion equa-tion. Only used when []\T1/zi4/m/n/10 groupType = "sfaselectioncross"[]\T1/ptm/m/n/10 . 
+[8] [9]
+Overfull \hbox (14.94945pt too wide) in paragraph at lines 636--638
+[]\T1/ptm/m/n/10 An ob-ject of class []\TS1/zi4/m/n/10 '\T1/zi4/m/n/10 sfametafrontier\TS1/zi4/m/n/10 ' []\T1/ptm/m/n/10 re-turned by the func-tion [][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 . 
+[10] [11]
+Overfull \hbox (9.6967pt too wide) in paragraph at lines 714--716
+[][][]\T1/zi4/m/n/10 sfametafrontier[][][][]\T1/ptm/m/n/10 , for the stochas-tic metafron-tier anal-y-sis model fit-ting func-tion us-ing cross-sectional
+(/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.ind [12]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 67.
+
+[13]) (/private/var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T/Rtmppg3KDL/Rd2pdf317f43a1450f/Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)
+pdfTeX warning (dest): name{Rfn.sfalcmcross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfaselectioncross} has been referenced but does not exist, replaced by a fixed one
+
+
+pdfTeX warning (dest): name{Rfn.sfacross} has been referenced but does not exist, replaced by a fixed one
+
+</Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></Users/macbookpro/Library/TinyTeX/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (13 pages, 135820 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘metafrontieR-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/9n/3z6s443x6qbclmb32_05hn_r0000gp/T//Rtmppg3KDL/Rd2pdf317f43a1450f'
