@@ -1,22 +1,22 @@
 metafrontieRStartupMessage <- function() {
   art_lines <- c(
-"                                            /##                                                                 ##### /## " 
-"                                          #/ ###                                              #              ######  / ## " 
-"                           #             ##   ###                                     #      ###            /#   /  /  ## " 
-"                          ##             ##                                          ##       #            /    /  /   ## " 
-"                          ##             ##                                          ##                        /  /    /  " 
-"### /### /###     /##   ######## /###    ###### ###  /###     /###   ###  /###     ######## ###       /##     ## ##   /   " 
-" ##/ ###/ /##  / / ### ######## / ###  / #####   ###/ #### / / ###  / ###/ #### / ########   ###     / ###    ## ##  /    " 
-"  ##  ###/ ###/ /   ###   ##   /   ###/  ##       ##   ###/ /   ###/   ##   ###/     ##       ##    /   ###   ## ###/     " 
-"  ##   ##   ## ##    ###  ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ##    ###  ## ##  ###  " 
-"  ##   ##   ## ########   ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ########   ## ##    ## " 
-"  ##   ##   ## #######    ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   #######    #  ##    ## " 
-"  ##   ##   ## ##         ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ##            /     ## " 
-"  ##   ##   ## ####    /  ##  ##    /#   ##       ##       ##    ##    ##    ##      ##       ##   ####    / /##/      ###"
-"  ###  ###  ### ######/   ##   ####/ ##  ##       ###       ######     ###   ###     ##       ### / ######/ /  ####    ## "
-"   ###  ###  ### #####     ##   ###   ##  ##       ###       ####       ###   ###     ##       ##/   ##### /    ##     #  "
-"                                                                                                           #              "
-"                                                                                                            ##            "
+    "                                               /##                                                                ##### /## ",
+    "                                             #/ ###                                              #              ######  / ## ",
+    "                           #             ##   ###                                      #      ###             /#   /  /  ## ",
+    "                          ##             ##                                            ##       #            /    /  /   ## ",
+    "                          ##             ##                                            ##                        /  /    /  ",
+    "### /### /###     /##   ######## /###    ###### ###  /###     /###   ###  /###     ######## ###       /##     ## ##   /   ",
+    " ##/ ###/ /##  / / ### ######## / ###  / #####   ###/ #### / / ###  / ###/ #### / ########   ###     / ###    ## ##  /    ",
+    "  ##  ###/ ###/ /   ###   ##   /   ###/  ##       ##   ###/ /   ###/   ##   ###/     ##       ##    /   ###   ## ###/     ",
+    "  ##   ##   ## ##    ###  ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ##    ###  ## ##  ###  ",
+    "  ##   ##   ## ########   ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ########   ## ##    ## ",
+    "  ##   ##   ## #######    ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   #######    #  ##    ## ",
+    "  ##   ##   ## ##         ##  ##    ##   ##       ##       ##    ##    ##    ##      ##       ##   ##             /     ## ",
+    "  ##   ##   ## ####    /  ##  ##    /#   ##       ##       ##    ##    ##    ##      ##       ##   ####    / /##/      ###",
+    "  ###  ###  ### ######/   ##   ####/ ##  ##       ###      ######     ###  ###     ##       ### / ######/ /  ####    ## ",
+    "   ###  ###  ### #####     ##   ###   ##  ##       ###      ####       ###  ###     ##       ##/   ##### /    ##     #  ",
+    "                                                                                                       #              ",
+    "                                                                                                        ##            "
   )
   
   base_msg <- paste0(
@@ -28,15 +28,15 @@ metafrontieRStartupMessage <- function() {
   )
   
   console_width <- getOption("width")
-  art_width <- max(nchar(art_lines, type = "width"))
+  art_width <- max(nchar(art_lines))
   
   if (console_width < art_width) {
     # 1. Truncate all lines to fit the console width
     trimmed_art <- substr(art_lines, 1, console_width - 5)
     
-    # 2. Add the ellipsis strictly to the last row, calculating exact length
+    # 2. Add the ASCII ellipsis strictly to the last row
     ellipsis <- " ## ## ##"
-    e_len <- nchar(ellipsis, type = "width")
+    e_len <- nchar(ellipsis)
     cut_point <- max(0, console_width - e_len)
     
     last_line_index <- length(trimmed_art)
@@ -64,20 +64,15 @@ metafrontieRStartupMessage <- function() {
 }
 
 .onAttach <- function(lib, pkg) {
-  # 1. Check if the terminal supports UTF-8
-  is_utf8 <- isTRUE(l10n_info()$`UTF-8`)
-  
-  # 2. Check if we are currently running inside R CMD check
+  # We still skip printing during the CRAN check to keep the test logs clean
   in_chk <- Sys.getenv("_R_CHECK_PACKAGE_NAME_") != ""
   
-  # 3. Only show the art if UTF-8 is supported AND we are not in a check
-  if (is_utf8 && !in_chk) {
+  if (!in_chk) {
     msg <- metafrontieRStartupMessage()
   } else {
-    # Fallback plain-text message for CRAN checks and basic terminals
     msg <- paste0(
       "\n* Please cite the 'metafrontieR' package as:\n",
-      "Owili S. (2026). metafrontieR: Metafrontier Analysis in R. R package version 1.0.0.\n\n",
+      "Owili SO. (2026). metafrontieR: Metafrontier Analysis in R. R package version 1.0.0.\n\n",
       "See also: citation(\"metafrontieR\")\n\n",
       "* For any questions, suggestions, or comments on the 'metafrontieR' package, you can contact the authors directly or visit:\n",
       "  https://github.com/SulmanOlieko/metafrontieR/issues\n"
