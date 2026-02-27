@@ -10,13 +10,13 @@ It contains routines for implementing:
 
 The package also has functionalities for implementing **latent class stochastic metafrontier analysis** and **sample selection correction stochastic metafrontier models**.
 
-> **Note:** The package heavily depends on the `sfaR` package by [Dakpo et al. (2023)](https://github.com/hdakpo/sfaR).
+> **Note:** The package depends on the `sfaR` package by [Dakpo et al. (2023)](https://github.com/hdakpo/sfaR).
 
 ---
 
 ## Installation
 
-You can install the development version of `metafrontieR` from GitHub. It automatically installs `sfaR` as its main dependency:
+You can install the development version of `metafrontieR` from GitHub. The package automatically calls `sfaR` as its main dependency. `sfaR` contains the necessary routines for stochastic frontier analysis via maximum likelihood and maximum simulated likelihood for various specifications of the frontier and error distributions.
 
 ```r
 # Install devtools if not already installed
@@ -30,11 +30,11 @@ devtools::install_github("SulmanOlieko/metafrontieR")
 
 ## Usage Examples
 
-The following examples demonstrate how to use `metafrontieR` with the `ricephil` dataset from the `sfaR` package.
+The following examples demonstrate how to use `metafrontieR`.
 
 ### 1. Data Preparation
 
-First, load the required data and establish technology groups based on farm area quartiles.
+First, lets use the `ricephil` dataset from the `sfaR` package, and then load the required data and create technology groups based on farm area quartiles.
 
 ```r
 library(metafrontieR)
@@ -53,10 +53,11 @@ ricephil$group <- cut(
 # Check group sizes
 table(ricephil$group)
 ```
+We have artificially created these three groups. In practice, there should be some logical justification for these groups. However, to empirically justify the use of a metafrontier, one you must determine whether or not the groups differ systemmatically. The usual way of performing that in stochastic frontier analysis is through a generalised likelihood ratio test. However, this can only be done after estimating the metafrontier.
 
 ### 2. Standard Metafrontier Approaches
 
-#### Linear Programming (LP) Metafrontier
+#### Linear Programming (LP) Metafrontier (Non-parametric metafrontier)
 Estimating the deterministic LP envelope based on Battese, Rao & O'Donnell (2004). This method finds the max group beta across all observations.
 
 ```r
