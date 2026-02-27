@@ -65,7 +65,7 @@ We have artificially created these three groups. In practice, there should be at
 ### 2. Standard Metafrontier Approaches
 
 #### Linear Programming (LP) Metafrontier (Non-parametric metafrontier)
-Let's begin by estimating the deterministic LP envelope based on Battese, Rao & O'Donnell (2004). This method finds the max group beta across all observations.
+Let's begin by estimating the deterministic LP envelope based on Battese, Rao & O'Donnell (2004). This method finds the max group beta across all observations. For simplicity, we use a Cobb-Douglas throughout all parametric steps that require specification of a functional form.
 
 ```r
 meta_lp <- sfametafrontier(
@@ -192,8 +192,8 @@ eff_lp <- efficiencies(meta_lp)
 head(eff_lp)
 ```
 <details>
-  <summary>
-
+  <summary>Toggle to see the output</summary>
+  
 ```plaintext
   u_g teGroup_JLMS teGroup_BC teMeta_BC       mtr
 1 0.2697165    0.7635959  0.7673345 0.6773549 0.8827375
@@ -203,9 +203,7 @@ head(eff_lp)
 5 0.2119629    0.8089947  0.8133556 0.7925093 0.9743700
 6 0.1987499    0.8197549  0.8275685 0.7261201 0.8774139
 ```
-  </summary>
 </details>
-
 
 
 #### Quadratic Programming (QP) Metafrontier
@@ -225,6 +223,10 @@ summary(meta_qp)
 ```
 We obtain the following output:
 
+<details>
+  <summary>Toggle to see the output</summary>
+
+```plaintext
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Quadratic Programming (QP) Metafrontier 
@@ -328,12 +330,18 @@ Total Log-likelihood: -74.28939
 AIC: 192.5788   BIC: 277.0729   HQIC: 226.2318 
 ------------------------------------------------------------ 
 Model was estimated on : Feb Fri 27, 2026 at 10:34 
+```
+</details>
 
 We can harvest the efficiencies as:
 ```r
 eff_qp <- efficiencies(meta_lp)
 head(eff_qp)
 ```
+<details>
+  <summary>Toggle to see the output</summary>
+  
+```plaintext
         u_g teGroup_JLMS teGroup_BC teMeta_BC       mtr
 1 0.2697165    0.7635959  0.7673345 0.6773549 0.8827375
 2 0.3515642    0.7035867  0.7080897 0.6896274 0.9739266
@@ -341,7 +349,8 @@ head(eff_qp)
 4 0.1710417    0.8427864  0.8461331 0.8461331 1.0000000
 5 0.2119629    0.8089947  0.8133556 0.7925093 0.9743700
 6 0.1987499    0.8197549  0.8275685 0.7261201 0.8774139
-
+```
+</details>
 > **Note:** It is clearly evident that LP and QP produce quite comparable and consistent results.
 
 #### O'Donnell (2008) Two-Stage SFA Metafrontier
