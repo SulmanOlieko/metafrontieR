@@ -1,5 +1,11 @@
 # metafrontieR
 
+[![CodeFactor](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR/badge)](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR)
+[![R-CMD-check](https://github.com/SulmanOlieko/metafrontieR/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SulmanOlieko/metafrontieR/actions/workflows/R-CMD-check.yaml)
+[![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/metafrontieR)
+[![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/metafrontieR)
+[![](https://img.shields.io/github/languages/code-size/SulmanOlieko/metafrontieR.svg)](https://github.com/SulmanOlieko/metafrontieR)
+
 > **Metafrontier Analysis Routines**
 
 An R package for implementing various metafrontier analyses for productivity/performance benchmarking, assessing efficiencies, and measuring technology gaps for firms operating under different technologies.
