@@ -351,6 +351,7 @@ head(eff_qp)
 6 0.1987499    0.8197549  0.8275685 0.7261201 0.8774139
 ```
 </details>
+
 > **Note:** It is clearly evident that LP and QP produce quite comparable and consistent results.
 
 #### O'Donnell (2008) Two-Stage SFA Metafrontier
@@ -369,11 +370,15 @@ meta_sfa_ord <- sfametafrontier(
 
 summary(meta_sfa_ord)
 ```
+The following output is produced.
 
+<details>
+    <summary>Toggle to see the output</summary>
 
+```plaintext
 
-
-
+```
+</details>
 
 #### Huang (2014) Two-Stage SFA Metafrontier
 Second-stage SFA on own-group fitted values. The dependent variable is `X*beta_{g(i)}` for each observation's own group.
@@ -391,6 +396,17 @@ meta_huang <- sfametafrontier(
 
 summary(meta_huang)
 ```
+The following output is produced.
+
+<details>
+    <summary>Toggle to see the output</summary>
+
+```plaintext
+
+```
+</details>
+
+
 
 ---
 
@@ -413,6 +429,18 @@ meta_lcm_lp <- sfametafrontier(
 
 summary(meta_lcm_lp)
 ```
+The following output is produced.
+
+<details>
+    <summary>Toggle to see the output</summary>
+
+```plaintext
+
+```
+</details>
+
+
+
 
 #### LCM Group Frontiers + Huang (2014) Metafrontier
 ```r
@@ -429,6 +457,16 @@ meta_lcm_huang <- sfametafrontier(
 
 summary(meta_lcm_huang)
 ```
+The following output is produced.
+
+<details>
+    <summary>Toggle to see the output</summary>
+
+```plaintext
+
+```
+</details>
+
 
 ---
 
@@ -470,6 +508,17 @@ fitted(meta_sel_ordonnell)     # Meta-frontier fitted values
 residuals(meta_sel_ordonnell)  # Meta-stage residuals
 efficiencies(meta_sel_ordonnell) # TE_group, TE_meta, MTR for all observations
 ```
+The following output is produced.
+
+<details>
+    <summary>Toggle to see the output</summary>
+
+```plaintext
+
+```
+</details>
+
+
 
 ---
 
