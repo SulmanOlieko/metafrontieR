@@ -94,12 +94,6 @@ summary(meta_lp)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfacross) ...
-  Group: small 
-  Group: medium 
-  Group: large 
-Group frontiers estimated.
-Estimating metafrontier using method: Linear Programming (LP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Linear Programming (LP) Metafrontier 
@@ -237,7 +231,7 @@ Overall: TE_group=0.7236  TE_meta=0.6817  MTR=0.9403
 Total Log-likelihood: -74.28939 
 AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:47 
+Model was estimated on : Feb Sat 28, 2026 at 12:16 
 ```
 </details>
 
@@ -261,12 +255,6 @@ summary(meta_qp)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfacross) ...
-  Group: small 
-  Group: medium 
-  Group: large 
-Group frontiers estimated.
-Estimating metafrontier using method: Quadratic Programming (QP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Quadratic Programming (QP) Metafrontier 
@@ -410,7 +398,7 @@ Overall: TE_group=0.7236  TE_meta=0.6777  MTR=0.9357
 Total Log-likelihood: -74.28939 
 AIC: 192.5788   BIC: 277.0729   HQIC: 226.2318 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:47 
+Model was estimated on : Feb Sat 28, 2026 at 12:16 
 ```
 </details>
 
@@ -443,11 +431,6 @@ summary(meta_sfa_ord)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfacross) ...
-  Group: 0 
-  Group: 1 
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
@@ -597,7 +580,7 @@ Overall: TE_group=0.7733  TE_meta=0.9790  MTR=1.3319
 Total Log-likelihood: 2096.56 
 AIC: -4121.121   BIC: -3952.882   HQIC: -4056.457 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:47 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -626,11 +609,6 @@ summary(meta_huang)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfacross) ...
-  Group: 0 
-  Group: 1 
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [Huang et al. (2014), two-stage] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [Huang et al. (2014), two-stage] 
@@ -780,7 +758,7 @@ Overall: TE_group=0.7733  TE_meta=0.7730  MTR=0.9996
 Total Log-likelihood: 1294.102 
 AIC: -2516.204   BIC: -2347.965   HQIC: -2451.54 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:47 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -799,25 +777,19 @@ meta_lcm_lp <- sfametafrontier(
     log(wl/wf) + log(wk/wf) + I(1/2 * (log(wl/wf))^2) + I(1/2 * (log(wk/wf))^2) +
     I(log(wl/wf) * log(wk/wf)) + I(log(y) * log(wl/wf)) + I(log(y) * log(wk/wf)),
   data        = utility,
-  S          = -1,
-  groupType  = "sfalcmcross",
-  lcmClasses = 2,
-  whichStart = 2,
-  initAlg    = "nm",
-  metaMethod = "lp"
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  whichStart  = 2,
+  initAlg     = "nm",
+  metaMethod  = "lp"
 )
 summary(meta_lcm_lp)
-
 ```
 <details>
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Fitting pooled sfalcmcross (2 classes) on all data ...
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-Pooled LCM estimated.
-Estimating metafrontier using method: Linear Programming (LP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Linear Programming (LP) Metafrontier 
@@ -907,7 +879,7 @@ Class 2       61.7            0.604
 Total Log-likelihood: 101.3281 
 AIC: -152.6563   BIC: -35.82386   HQIC: -107.7506 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -920,30 +892,19 @@ meta_lcm_qp <- sfametafrontier(
     log(wl/wf) + log(wk/wf) + I(1/2 * (log(wl/wf))^2) + I(1/2 * (log(wk/wf))^2) +
     I(log(wl/wf) * log(wk/wf)) + I(log(y) * log(wl/wf)) + I(log(y) * log(wk/wf)),
   data        = utility,
-  group       = "regu",
-  S          = -1,
-  groupType  = "sfalcmcross",
-  lcmClasses = 2,
-  whichStart = 2,
-  initAlg    = "nm",
-  metaMethod = "qp"
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  whichStart  = 2,
+  initAlg     = "nm",
+  metaMethod  = "qp"
 )
 summary(meta_lcm_qp)
-
 ```
 <details>
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfalcmcross) ...
-  Group: 0 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-  Group: 1 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-Group frontiers estimated.
-Estimating metafrontier using method: Quadratic Programming (QP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Quadratic Programming (QP) Metafrontier 
@@ -951,160 +912,101 @@ Stochastic Cost Frontier, e = v + u
 Group approach     : Latent Class Stochastic Frontier Analysis 
 Group estimator    : sfalcmcross 
 Group optim solver : BFGS maximization 
-Groups ( 2 ): 0, 1 
+  (Pooled LCM - latent classes used as groups)
+Groups ( 2 ): Class_1, Class_2 
 Total observations : 791 
 Distribution       : hnormal 
 ============================================================ 
 
 ------------------------------------------------------------ 
-Group: 0 (N = 297)  Log-likelihood: 149.40486
+Pooled LCM (2 classes) on all data (N = 791)  Log-likelihood: 101.32815
 ------------------------------------------------------------ 
 
   -- Latent Class 1 --
   Frontier:
-                           Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -2.2518e+01  1.4559e-06 -15466842.2 < 2.2e-16 ***
-log(y)                      2.7534e+00  6.9251e-06    397594.0 < 2.2e-16 ***
-I(1/2 * (log(y))^2)        -7.9245e-03  4.8745e-06     -1625.7 < 2.2e-16 ***
-log(wl/wf)                 -2.0884e+00  1.7045e-05   -122526.4 < 2.2e-16 ***
-log(wk/wf)                 -4.8555e+00  1.0539e-05   -460723.7 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -8.7001e-01  4.7843e-05    -18184.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     2.7207e+00  5.5639e-05     48899.3 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -6.4067e-02  4.0952e-05     -1564.4 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      2.4997e-01  1.3337e-05     18742.9 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      7.9159e-01  1.4693e-05     53873.6 < 2.2e-16 ***
+                           Coefficient  Std. Error  z value  Pr(>|z|)    
+(Intercept)                 2.0372e+01  3.6085e-07 56456646 < 2.2e-16 ***
+log(y)                     -1.6227e+00  1.4373e-06 -1128996 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         9.8412e-02  1.0163e-06    96833 < 2.2e-16 ***
+log(wl/wf)                  5.2738e-01  7.2197e-06    73047 < 2.2e-16 ***
+log(wk/wf)                  2.4214e+00  4.5346e-06   533978 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -6.5635e-01  2.1916e-05   -29948 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.1625e+00  2.0697e-05    56167 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  1.0952e+00  1.2333e-05    88801 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.7348e-01  4.7381e-06    57719 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -9.9557e-02  3.1705e-06   -31401 < 2.2e-16 ***
   Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.8003e+00  6.2408e-10 -6089437545 < 2.2e-16 ***
-  Var(v):
                Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.8421e+01  1.2338e-13 -3.114e+14 < 2.2e-16 ***
-  Sigma_u=0.1495  Sigma_v=0.0000  Sigma=0.1495  Gamma=1.0000  Lambda=32945269.8375
-
-  -- Latent Class 2 --
-  Frontier:
-                           Coefficient  Std. Error    z value  Pr(>|z|)    
-(Intercept)                 1.3192e+01  3.7983e-07 34730892.6 < 2.2e-16 ***
-log(y)                     -7.7126e-02  6.1068e-06   -12629.5 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.4420e-02  4.9214e-05      293.0 < 2.2e-16 ***
-log(wl/wf)                 -8.2850e-01  9.1701e-07  -903472.1 < 2.2e-16 ***
-log(wk/wf)                  5.0859e+00  1.0495e-06  4845955.0 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -6.4887e-02  1.1194e-06   -57967.0 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     8.7917e-01  1.4553e-06   604098.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  4.7549e-01  2.5292e-06   187998.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      1.3367e-01  1.4763e-05     9053.8 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.9756e-01  1.6871e-05   -11710.6 < 2.2e-16 ***
-  Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.3749e+01  1.5647e-10 -8.7872e+10 < 2.2e-16 ***
+Zu_(Intercept) -2.1602e+00  2.3759e-14 -9.092e+13 < 2.2e-16 ***
   Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -4.5269e+00  4.5846e-09 -987418161 < 2.2e-16 ***
-  Sigma_u=0.0010  Sigma_v=0.1040  Sigma=0.1040  Gamma=0.0001  Lambda=0.0099
-
-  -- Class Membership (logit) --
-                Coefficient  Std. Error    z value  Pr(>|z|)    
-Cl1_(Intercept) -8.7581e-01  3.3261e-09 -263314181 < 2.2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-Log likelihood status: successful convergence  
-
------------------------------------------------------------- 
-Group: 1 (N = 494)  Log-likelihood: 85.33642
------------------------------------------------------------- 
-
-  -- Latent Class 1 --
-  Frontier:
-                           Coefficient  Std. Error   z value  Pr(>|z|)    
-(Intercept)                 1.2215e+01  2.6961e-06 4530729.5 < 2.2e-16 ***
-log(y)                     -2.3567e-01  4.7192e-06  -49937.3 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.1777e-01  2.4086e-06   48893.5 < 2.2e-16 ***
-log(wl/wf)                 -4.9078e+00  1.5101e-05 -324986.7 < 2.2e-16 ***
-log(wk/wf)                  1.0650e-01  2.5303e-06   42088.5 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)     1.3822e+00  8.1745e-05   16908.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     1.5056e+00  1.0123e-05  148735.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -2.1076e-01  5.5303e-05   -3811.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      6.8397e-02  9.5779e-06    7141.1 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      3.0884e-01  1.0234e-05   30178.5 < 2.2e-16 ***
-  Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.0722e+00  5.9615e-13 -5.1535e+12 < 2.2e-16 ***
-  Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.5200e+01  2.6808e-12 -1.313e+13 < 2.2e-16 ***
-  Sigma_u=0.2152  Sigma_v=0.0000  Sigma=0.2152  Gamma=1.0000  Lambda=9471252.7715
+Zv_(Intercept) -4.0858e+01  4.4841e-14 -9.1116e+14 < 2.2e-16 ***
+  Sigma_u=0.3396  Sigma_v=0.0000  Sigma=0.3396  Gamma=1.0000  Lambda=252951557.4060
 
   -- Latent Class 2 --
   Frontier:
                            Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -3.1535e+00  2.1054e-06 -1497821.68 < 2.2e-16 ***
-log(y)                     -8.0990e-01  7.4781e-06  -108302.24 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         7.7061e-02  5.6939e-06    13533.81 < 2.2e-16 ***
-log(wl/wf)                  5.4854e+00  1.6071e-05   341330.07 < 2.2e-16 ***
-log(wk/wf)                 -6.4631e+00  1.9385e-05  -333409.06 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -5.6940e-01  5.7789e-05    -9853.01 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)    -2.2954e+00  3.9877e-05   -57562.00 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  1.5812e+00  6.5499e-05    24140.47 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      9.6870e-03  1.6406e-05      590.44 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.6669e-01  1.8369e-05    -9074.74 < 2.2e-16 ***
+(Intercept)                 2.5036e+00  9.7926e-13  2.5566e+12 < 2.2e-16 ***
+log(y)                      3.6180e-01  1.5692e-11  2.3057e+10 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         2.4432e-02  1.2604e-10  1.9383e+08 < 2.2e-16 ***
+log(wl/wf)                  7.7960e-01  2.0394e-12  3.8228e+11 < 2.2e-16 ***
+log(wk/wf)                  1.1749e+00  2.7966e-12  4.2013e+11 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)     3.8058e-03  2.1381e-12  1.7800e+09 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.6375e-01  3.9907e-12  4.1033e+10 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  4.7765e-01  5.8288e-12  8.1947e+10 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.6844e-02  3.2521e-11  8.2542e+08 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -6.9407e-02  4.4913e-11 -1.5454e+09 < 2.2e-16 ***
   Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.6542e+00  2.7285e-12 -6.0626e+11 < 2.2e-16 ***
+Zu_(Intercept) -4.4416e+00  2.6532e-14 -1.6741e+14 < 2.2e-16 ***
   Var(v):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zv_(Intercept) -3.4890e+01  1.2918e-12 -2.7009e+13 < 2.2e-16 ***
-  Sigma_u=0.4373  Sigma_v=0.0000  Sigma=0.4373  Gamma=1.0000  Lambda=16481838.3096
+Zv_(Intercept) -4.6164e+00  2.6643e-14 -1.7327e+14 < 2.2e-16 ***
+  Sigma_u=0.1085  Sigma_v=0.0994  Sigma=0.1472  Gamma=0.5436  Lambda=1.0913
 
   -- Class Membership (logit) --
                 Coefficient  Std. Error     z value  Pr(>|z|)    
-Cl1_(Intercept) -6.1040e-01  2.9508e-12 -2.0686e+11 < 2.2e-16 ***
+Cl1_(Intercept) -4.2121e-01  6.0669e-14 -6.9427e+12 < 2.2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 Log likelihood status: successful convergence  
 
 ------------------------------------------------------------ 
 Metafrontier Coefficients (qp):
-                             Estimate Std. Error z value  Pr(>|z|)    
-(Intercept)                 3.7823969  2.1235044  1.7812 0.0748789 .  
-log(y)                      0.0072292  0.1374312  0.0526 0.9580488    
-I(1/2 * (log(y))^2)         0.1246955  0.0071046 17.5514 < 2.2e-16 ***
-log(wl/wf)                 -0.0990856  0.5420170 -0.1828 0.8549479    
-log(wk/wf)                 -0.4478838  0.7816126 -0.5730 0.5666276    
-I(1/2 * (log(wl/wf))^2)    -0.1603993  0.1017548 -1.5763 0.1149495    
-I(1/2 * (log(wk/wf))^2)     2.2109912  0.1897914 11.6496 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  0.1468887  0.1157629  1.2689 0.2044856    
-I(log(y) * log(wl/wf))      0.0605934  0.0172048  3.5219 0.0004285 ***
-I(log(y) * log(wk/wf))      0.4170934  0.0249923 16.6889 < 2.2e-16 ***
+                             Estimate Std. Error  z value  Pr(>|z|)    
+(Intercept)                21.8693132  0.5283648  41.3906 < 2.2e-16 ***
+log(y)                     -1.4146087  0.0341953 -41.3686 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         0.1078725  0.0017677  61.0227 < 2.2e-16 ***
+log(wl/wf)                 -0.8044534  0.1348633  -5.9650 2.447e-09 ***
+log(wk/wf)                  3.5025110  0.1944788  18.0097 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -0.1028056  0.0253184  -4.0605 4.896e-05 ***
+I(1/2 * (log(wk/wf))^2)     1.4492152  0.0472234  30.6885 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  0.6553995  0.0288038  22.7539 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      0.1917004  0.0042808  44.7809 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -0.0470162  0.0062185  -7.5607 4.010e-14 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 ------------------------------------------------------------ 
 Efficiency Statistics (group means):
 ------------------------------------------------------------ 
-  N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
-0   297     297     0.97005    0.95404  0.98197
-1   494     494     0.78841    0.77802  0.98658
+        N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
+Class_1   303     303     0.77828    0.77364  0.99420
+Class_2   488     488     0.92338    0.91975  0.99605
 
-Overall: TE_group=0.8792  TE_meta=0.8660  MTR=0.9843
+Overall: TE_group=0.8508  TE_meta=0.8467  MTR=0.9951
 
 ------------------------------------------------------------ 
-Posterior Class Membership (by group):
+Posterior Class Membership (pooled LCM):
 ------------------------------------------------------------ 
-  Group: 0 
         % assigned Mean post. prob.
-Class 1       27.3            0.294
-Class 2       72.7            0.706
-
-  Group: 1 
-        % assigned Mean post. prob.
-Class 1       29.1            0.352
-Class 2       70.9            0.648
-
+Class 1       38.3            0.396
+Class 2       61.7            0.604
 ------------------------------------------------------------ 
-Total Log-likelihood: 234.7413 
-AIC: -349.4826   BIC: -69.08468   HQIC: -241.7089 
+Total Log-likelihood: 101.3281 
+AIC: -132.6563   BIC: 30.90912   HQIC: -69.78831 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -1117,7 +1019,6 @@ meta_lcm_huang <- sfametafrontier(
     log(wl/wf) + log(wk/wf) + I(1/2 * (log(wl/wf))^2) + I(1/2 * (log(wk/wf))^2) +
     I(log(wl/wf) * log(wk/wf)) + I(log(y) * log(wl/wf)) + I(log(y) * log(wk/wf)),
   data        = utility,
-  group       = "regu",
   S           = -1,
   groupType   = "sfalcmcross",
   lcmClasses  = 2,
@@ -1127,21 +1028,11 @@ meta_lcm_huang <- sfametafrontier(
   sfaApproach = "huang"
 )
 summary(meta_lcm_huang)
-
 ```
 <details>
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfalcmcross) ...
-  Group: 0 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-  Group: 1 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [Huang et al. (2014), two-stage] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [Huang et al. (2014), two-stage] 
@@ -1150,113 +1041,61 @@ SFA approach       : huang
 Group approach     : Latent Class Stochastic Frontier Analysis 
 Group estimator    : sfalcmcross 
 Group optim solver : BFGS maximization 
-Groups ( 2 ): 0, 1 
+  (Pooled LCM - latent classes used as groups)
+Groups ( 2 ): Class_1, Class_2 
 Total observations : 791 
 Distribution       : hnormal 
 ============================================================ 
 
 ------------------------------------------------------------ 
-Group: 0 (N = 297)  Log-likelihood: 149.40486
+Pooled LCM (2 classes) on all data (N = 791)  Log-likelihood: 101.32815
 ------------------------------------------------------------ 
 
   -- Latent Class 1 --
   Frontier:
-                           Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -2.2518e+01  1.4559e-06 -15466842.2 < 2.2e-16 ***
-log(y)                      2.7534e+00  6.9251e-06    397594.0 < 2.2e-16 ***
-I(1/2 * (log(y))^2)        -7.9245e-03  4.8745e-06     -1625.7 < 2.2e-16 ***
-log(wl/wf)                 -2.0884e+00  1.7045e-05   -122526.4 < 2.2e-16 ***
-log(wk/wf)                 -4.8555e+00  1.0539e-05   -460723.7 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -8.7001e-01  4.7843e-05    -18184.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     2.7207e+00  5.5639e-05     48899.3 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -6.4067e-02  4.0952e-05     -1564.4 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      2.4997e-01  1.3337e-05     18742.9 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      7.9159e-01  1.4693e-05     53873.6 < 2.2e-16 ***
+                           Coefficient  Std. Error  z value  Pr(>|z|)    
+(Intercept)                 2.0372e+01  3.6085e-07 56456646 < 2.2e-16 ***
+log(y)                     -1.6227e+00  1.4373e-06 -1128996 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         9.8412e-02  1.0163e-06    96833 < 2.2e-16 ***
+log(wl/wf)                  5.2738e-01  7.2197e-06    73047 < 2.2e-16 ***
+log(wk/wf)                  2.4214e+00  4.5346e-06   533978 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -6.5635e-01  2.1916e-05   -29948 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.1625e+00  2.0697e-05    56167 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  1.0952e+00  1.2333e-05    88801 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.7348e-01  4.7381e-06    57719 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -9.9557e-02  3.1705e-06   -31401 < 2.2e-16 ***
   Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.8003e+00  6.2408e-10 -6089437545 < 2.2e-16 ***
-  Var(v):
                Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.8421e+01  1.2338e-13 -3.114e+14 < 2.2e-16 ***
-  Sigma_u=0.1495  Sigma_v=0.0000  Sigma=0.1495  Gamma=1.0000  Lambda=32945269.8375
-
-  -- Latent Class 2 --
-  Frontier:
-                           Coefficient  Std. Error    z value  Pr(>|z|)    
-(Intercept)                 1.3192e+01  3.7983e-07 34730892.6 < 2.2e-16 ***
-log(y)                     -7.7126e-02  6.1068e-06   -12629.5 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.4420e-02  4.9214e-05      293.0 < 2.2e-16 ***
-log(wl/wf)                 -8.2850e-01  9.1701e-07  -903472.1 < 2.2e-16 ***
-log(wk/wf)                  5.0859e+00  1.0495e-06  4845955.0 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -6.4887e-02  1.1194e-06   -57967.0 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     8.7917e-01  1.4553e-06   604098.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  4.7549e-01  2.5292e-06   187998.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      1.3367e-01  1.4763e-05     9053.8 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.9756e-01  1.6871e-05   -11710.6 < 2.2e-16 ***
-  Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.3749e+01  1.5647e-10 -8.7872e+10 < 2.2e-16 ***
+Zu_(Intercept) -2.1602e+00  2.3759e-14 -9.092e+13 < 2.2e-16 ***
   Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -4.5269e+00  4.5846e-09 -987418161 < 2.2e-16 ***
-  Sigma_u=0.0010  Sigma_v=0.1040  Sigma=0.1040  Gamma=0.0001  Lambda=0.0099
-
-  -- Class Membership (logit) --
-                Coefficient  Std. Error    z value  Pr(>|z|)    
-Cl1_(Intercept) -8.7581e-01  3.3261e-09 -263314181 < 2.2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-Log likelihood status: successful convergence  
-
------------------------------------------------------------- 
-Group: 1 (N = 494)  Log-likelihood: 85.33642
------------------------------------------------------------- 
-
-  -- Latent Class 1 --
-  Frontier:
-                           Coefficient  Std. Error   z value  Pr(>|z|)    
-(Intercept)                 1.2215e+01  2.6961e-06 4530729.5 < 2.2e-16 ***
-log(y)                     -2.3567e-01  4.7192e-06  -49937.3 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.1777e-01  2.4086e-06   48893.5 < 2.2e-16 ***
-log(wl/wf)                 -4.9078e+00  1.5101e-05 -324986.7 < 2.2e-16 ***
-log(wk/wf)                  1.0650e-01  2.5303e-06   42088.5 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)     1.3822e+00  8.1745e-05   16908.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     1.5056e+00  1.0123e-05  148735.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -2.1076e-01  5.5303e-05   -3811.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      6.8397e-02  9.5779e-06    7141.1 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      3.0884e-01  1.0234e-05   30178.5 < 2.2e-16 ***
-  Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.0722e+00  5.9615e-13 -5.1535e+12 < 2.2e-16 ***
-  Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.5200e+01  2.6808e-12 -1.313e+13 < 2.2e-16 ***
-  Sigma_u=0.2152  Sigma_v=0.0000  Sigma=0.2152  Gamma=1.0000  Lambda=9471252.7715
+Zv_(Intercept) -4.0858e+01  4.4841e-14 -9.1116e+14 < 2.2e-16 ***
+  Sigma_u=0.3396  Sigma_v=0.0000  Sigma=0.3396  Gamma=1.0000  Lambda=252951557.4060
 
   -- Latent Class 2 --
   Frontier:
                            Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -3.1535e+00  2.1054e-06 -1497821.68 < 2.2e-16 ***
-log(y)                     -8.0990e-01  7.4781e-06  -108302.24 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         7.7061e-02  5.6939e-06    13533.81 < 2.2e-16 ***
-log(wl/wf)                  5.4854e+00  1.6071e-05   341330.07 < 2.2e-16 ***
-log(wk/wf)                 -6.4631e+00  1.9385e-05  -333409.06 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -5.6940e-01  5.7789e-05    -9853.01 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)    -2.2954e+00  3.9877e-05   -57562.00 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  1.5812e+00  6.5499e-05    24140.47 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      9.6870e-03  1.6406e-05      590.44 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.6669e-01  1.8369e-05    -9074.74 < 2.2e-16 ***
+(Intercept)                 2.5036e+00  9.7926e-13  2.5566e+12 < 2.2e-16 ***
+log(y)                      3.6180e-01  1.5692e-11  2.3057e+10 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         2.4432e-02  1.2604e-10  1.9383e+08 < 2.2e-16 ***
+log(wl/wf)                  7.7960e-01  2.0394e-12  3.8228e+11 < 2.2e-16 ***
+log(wk/wf)                  1.1749e+00  2.7966e-12  4.2013e+11 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)     3.8058e-03  2.1381e-12  1.7800e+09 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.6375e-01  3.9907e-12  4.1033e+10 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  4.7765e-01  5.8288e-12  8.1947e+10 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.6844e-02  3.2521e-11  8.2542e+08 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -6.9407e-02  4.4913e-11 -1.5454e+09 < 2.2e-16 ***
   Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.6542e+00  2.7285e-12 -6.0626e+11 < 2.2e-16 ***
+Zu_(Intercept) -4.4416e+00  2.6532e-14 -1.6741e+14 < 2.2e-16 ***
   Var(v):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zv_(Intercept) -3.4890e+01  1.2918e-12 -2.7009e+13 < 2.2e-16 ***
-  Sigma_u=0.4373  Sigma_v=0.0000  Sigma=0.4373  Gamma=1.0000  Lambda=16481838.3096
+Zv_(Intercept) -4.6164e+00  2.6643e-14 -1.7327e+14 < 2.2e-16 ***
+  Sigma_u=0.1085  Sigma_v=0.0994  Sigma=0.1472  Gamma=0.5436  Lambda=1.0913
 
   -- Class Membership (logit) --
                 Coefficient  Std. Error     z value  Pr(>|z|)    
-Cl1_(Intercept) -6.1040e-01  2.9508e-12 -2.0686e+11 < 2.2e-16 ***
+Cl1_(Intercept) -4.2121e-01  6.0669e-14 -6.9427e+12 < 2.2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 Log likelihood status: successful convergence  
@@ -1264,70 +1103,63 @@ Log likelihood status: successful convergence
 ------------------------------------------------------------ 
 Metafrontier Coefficients (sfa):
 Meta-optim solver  : BFGS maximization 
-                             Estimate Std. Error z value  Pr(>|z|)    
-(Intercept)                -6.1764885  2.3205836 -2.6616  0.007777 ** 
-log(y)                      0.6080121  0.1270954  4.7839 1.719e-06 ***
-I(1/2 * (log(y))^2)         0.0197668  0.0068371  2.8911  0.003839 ** 
-log(wl/wf)                  1.3189208  0.5683009  2.3208  0.020297 *  
-log(wk/wf)                 -3.4415797  0.8746303 -3.9349 8.323e-05 ***
-I(1/2 * (log(wl/wf))^2)     0.0621413  0.1036792  0.5994  0.548932    
-I(1/2 * (log(wk/wf))^2)    -0.6785629  0.2075937 -3.2687  0.001080 ** 
-I(log(wl/wf) * log(wk/wf))  0.8093523  0.1178339  6.8686 6.484e-12 ***
-I(log(y) * log(wl/wf))      0.0417559  0.0157311  2.6543  0.007946 ** 
-I(log(y) * log(wk/wf))      0.0235102  0.0216146  1.0877  0.276728    
+                              Estimate  Std. Error  z value  Pr(>|z|)    
+(Intercept)                 9.9044e-01  3.4527e-06 286864.5 < 2.2e-16 ***
+log(y)                      1.3705e-01  4.9599e-06  27632.0 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         8.8688e-03  1.3197e-06   6720.1 < 2.2e-16 ***
+log(wl/wf)                  2.0283e+00  1.0538e-05 192468.9 < 2.2e-16 ***
+log(wk/wf)                 -2.4311e-02  3.0197e-06  -8050.9 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -4.9562e-01  1.7825e-05 -27805.0 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)    -3.0495e-01  3.2359e-05  -9424.0 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  9.6412e-01  3.3913e-05  28429.4 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      1.1548e-01  5.3111e-06  21743.0 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -1.5593e-01  5.2468e-06 -29718.5 < 2.2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
   Meta-frontier Variance & Efficiency Statistics:
-                               Estimate Std. Error z value  Pr(>|z|)    
-Sigma-squared(u)              0.0338673  0.0024250 13.9659 < 2.2e-16 ***
-Sigma(u)                      0.1840308  0.0065886 27.9318 < 2.2e-16 ***
-Sigma-squared(v)              0.0018474  0.0003412  5.4145 6.146e-08 ***
-Sigma(v)                      0.0429814  0.0039691 10.8290 < 2.2e-16 ***
-Sigma = Sqrt[(s^2(u)+s^2(v))] 0.1889834  0.0060460 31.2578 < 2.2e-16 ***
-Gamma = sigma(u)^2/sigma^2    0.9482733  0.0111449 85.0859 < 2.2e-16 ***
-Lambda = sigma(u)/sigma(v)    4.2816340  0.4864155  8.8024 < 2.2e-16 ***
-E[u]                          0.1468354          -       -         -    
-E[exp(-u)]                    0.8685736          -       -         -    
+                                Estimate Std. Error    z value  Pr(>|z|)    
+Sigma-squared(u)              3.2723e-02 1.8260e-14 1.7921e+12 < 2.2e-16 ***
+Sigma(u)                      1.8090e-01 5.0470e-14 3.5842e+12 < 2.2e-16 ***
+Sigma-squared(v)              4.4624e-16 5.2939e-28 8.4294e+11 < 2.2e-16 ***
+Sigma(v)                      2.1124e-08 1.2530e-20 1.6859e+12 < 2.2e-16 ***
+Sigma = Sqrt[(s^2(u)+s^2(v))] 1.8090e-01 5.0470e-14 3.5842e+12 < 2.2e-16 ***
+Gamma = sigma(u)^2/sigma^2    1.0000e+00 2.3497e-26 4.2558e+25 < 2.2e-16 ***
+Lambda = sigma(u)/sigma(v)    8.5633e+06 7.4278e-06 1.1529e+12 < 2.2e-16 ***
+E[u]                          1.4433e-01          -          -         -    
+E[exp(-u)]                    8.7058e-01          -          -         -    
 -----[ Tests vs. No Inefficiency ]-----
 Likelihood Ratio Test of Inefficiency
 Deg. freedom for inefficiency model                        1 
-Log Likelihood for OLS Log(H0) =                   552.11614 
+Log Likelihood for OLS Log(H0) =                   533.70137 
 LR statistic: 
-Chisq = 2*[LogL(H0)-LogL(H1)]  =                   132.19154 
+Chisq = 2*[LogL(H0)-LogL(H1)]  =                   489.35221 
 Kodde-Palm C*:       95%: 2.70554               99%: 5.41189 
 Coelli (1995) skewness test on OLS residuals
-M3T: z                         =                    11.66037 
-M3T: p.value                   =                     0.00000 
+M3T: z                         =                     3.81630 
+M3T: p.value                   =                     0.00014 
 Log likelihood status: successful convergence  
 
 ------------------------------------------------------------ 
 Efficiency Statistics (group means):
 ------------------------------------------------------------ 
-  N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
-0   297     297     0.97005    0.82818  0.85004
-1   494     494     0.78841    0.70284  0.89180
+        N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
+Class_1   303     303     0.77828    0.60776  0.78267
+Class_2   488     488     0.92338    0.88849  0.96217
 
-Overall: TE_group=0.8792  TE_meta=0.7655  MTR=0.8709
+Overall: TE_group=0.8508  TE_meta=0.7481  MTR=0.8724
 
 ------------------------------------------------------------ 
-Posterior Class Membership (by group):
+Posterior Class Membership (pooled LCM):
 ------------------------------------------------------------ 
-  Group: 0 
         % assigned Mean post. prob.
-Class 1       27.3            0.294
-Class 2       72.7            0.706
-
-  Group: 1 
-        % assigned Mean post. prob.
-Class 1       29.1            0.352
-Class 2       70.9            0.648
-
+Class 1       38.3            0.396
+Class 2       61.7            0.604
 ------------------------------------------------------------ 
-Total Log-likelihood: 852.9532 
-AIC: -1581.906   BIC: -1292.162   HQIC: -1470.54 
+Total Log-likelihood: 879.7056 
+AIC: -1685.411   BIC: -1512.499   HQIC: -1618.951 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -1340,7 +1172,6 @@ meta_lcm_ordonnell <- sfametafrontier(
     log(wl/wf) + log(wk/wf) + I(1/2 * (log(wl/wf))^2) + I(1/2 * (log(wk/wf))^2) +
     I(log(wl/wf) * log(wk/wf)) + I(log(y) * log(wl/wf)) + I(log(y) * log(wk/wf)),
   data        = utility,
-  group       = "regu",
   S           = -1,
   groupType   = "sfalcmcross",
   lcmClasses  = 2,
@@ -1350,21 +1181,11 @@ meta_lcm_ordonnell <- sfametafrontier(
   sfaApproach = "ordonnell"
 )
 summary(meta_lcm_ordonnell)
-
 ```
 <details>
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfalcmcross) ...
-  Group: 0 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-  Group: 1 
-Initialization: SFA + halfnormal - normal distributions...
-LCM 2 Classes Estimation...
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
@@ -1373,113 +1194,61 @@ SFA approach       : ordonnell
 Group approach     : Latent Class Stochastic Frontier Analysis 
 Group estimator    : sfalcmcross 
 Group optim solver : BFGS maximization 
-Groups ( 2 ): 0, 1 
+  (Pooled LCM - latent classes used as groups)
+Groups ( 2 ): Class_1, Class_2 
 Total observations : 791 
 Distribution       : hnormal 
 ============================================================ 
 
 ------------------------------------------------------------ 
-Group: 0 (N = 297)  Log-likelihood: 149.40486
+Pooled LCM (2 classes) on all data (N = 791)  Log-likelihood: 101.32815
 ------------------------------------------------------------ 
 
   -- Latent Class 1 --
   Frontier:
-                           Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -2.2518e+01  1.4559e-06 -15466842.2 < 2.2e-16 ***
-log(y)                      2.7534e+00  6.9251e-06    397594.0 < 2.2e-16 ***
-I(1/2 * (log(y))^2)        -7.9245e-03  4.8745e-06     -1625.7 < 2.2e-16 ***
-log(wl/wf)                 -2.0884e+00  1.7045e-05   -122526.4 < 2.2e-16 ***
-log(wk/wf)                 -4.8555e+00  1.0539e-05   -460723.7 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -8.7001e-01  4.7843e-05    -18184.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     2.7207e+00  5.5639e-05     48899.3 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -6.4067e-02  4.0952e-05     -1564.4 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      2.4997e-01  1.3337e-05     18742.9 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      7.9159e-01  1.4693e-05     53873.6 < 2.2e-16 ***
+                           Coefficient  Std. Error  z value  Pr(>|z|)    
+(Intercept)                 2.0372e+01  3.6085e-07 56456646 < 2.2e-16 ***
+log(y)                     -1.6227e+00  1.4373e-06 -1128996 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         9.8412e-02  1.0163e-06    96833 < 2.2e-16 ***
+log(wl/wf)                  5.2738e-01  7.2197e-06    73047 < 2.2e-16 ***
+log(wk/wf)                  2.4214e+00  4.5346e-06   533978 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -6.5635e-01  2.1916e-05   -29948 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.1625e+00  2.0697e-05    56167 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  1.0952e+00  1.2333e-05    88801 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.7348e-01  4.7381e-06    57719 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -9.9557e-02  3.1705e-06   -31401 < 2.2e-16 ***
   Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.8003e+00  6.2408e-10 -6089437545 < 2.2e-16 ***
-  Var(v):
                Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.8421e+01  1.2338e-13 -3.114e+14 < 2.2e-16 ***
-  Sigma_u=0.1495  Sigma_v=0.0000  Sigma=0.1495  Gamma=1.0000  Lambda=32945269.8375
-
-  -- Latent Class 2 --
-  Frontier:
-                           Coefficient  Std. Error    z value  Pr(>|z|)    
-(Intercept)                 1.3192e+01  3.7983e-07 34730892.6 < 2.2e-16 ***
-log(y)                     -7.7126e-02  6.1068e-06   -12629.5 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.4420e-02  4.9214e-05      293.0 < 2.2e-16 ***
-log(wl/wf)                 -8.2850e-01  9.1701e-07  -903472.1 < 2.2e-16 ***
-log(wk/wf)                  5.0859e+00  1.0495e-06  4845955.0 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -6.4887e-02  1.1194e-06   -57967.0 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     8.7917e-01  1.4553e-06   604098.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  4.7549e-01  2.5292e-06   187998.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      1.3367e-01  1.4763e-05     9053.8 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.9756e-01  1.6871e-05   -11710.6 < 2.2e-16 ***
-  Var(u):
-               Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.3749e+01  1.5647e-10 -8.7872e+10 < 2.2e-16 ***
+Zu_(Intercept) -2.1602e+00  2.3759e-14 -9.092e+13 < 2.2e-16 ***
   Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -4.5269e+00  4.5846e-09 -987418161 < 2.2e-16 ***
-  Sigma_u=0.0010  Sigma_v=0.1040  Sigma=0.1040  Gamma=0.0001  Lambda=0.0099
-
-  -- Class Membership (logit) --
-                Coefficient  Std. Error    z value  Pr(>|z|)    
-Cl1_(Intercept) -8.7581e-01  3.3261e-09 -263314181 < 2.2e-16 ***
----
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-Log likelihood status: successful convergence  
-
------------------------------------------------------------- 
-Group: 1 (N = 494)  Log-likelihood: 85.33642
------------------------------------------------------------- 
-
-  -- Latent Class 1 --
-  Frontier:
-                           Coefficient  Std. Error   z value  Pr(>|z|)    
-(Intercept)                 1.2215e+01  2.6961e-06 4530729.5 < 2.2e-16 ***
-log(y)                     -2.3567e-01  4.7192e-06  -49937.3 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         1.1777e-01  2.4086e-06   48893.5 < 2.2e-16 ***
-log(wl/wf)                 -4.9078e+00  1.5101e-05 -324986.7 < 2.2e-16 ***
-log(wk/wf)                  1.0650e-01  2.5303e-06   42088.5 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)     1.3822e+00  8.1745e-05   16908.6 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)     1.5056e+00  1.0123e-05  148735.7 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf)) -2.1076e-01  5.5303e-05   -3811.0 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      6.8397e-02  9.5779e-06    7141.1 < 2.2e-16 ***
-I(log(y) * log(wk/wf))      3.0884e-01  1.0234e-05   30178.5 < 2.2e-16 ***
-  Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -3.0722e+00  5.9615e-13 -5.1535e+12 < 2.2e-16 ***
-  Var(v):
-               Coefficient  Std. Error    z value  Pr(>|z|)    
-Zv_(Intercept) -3.5200e+01  2.6808e-12 -1.313e+13 < 2.2e-16 ***
-  Sigma_u=0.2152  Sigma_v=0.0000  Sigma=0.2152  Gamma=1.0000  Lambda=9471252.7715
+Zv_(Intercept) -4.0858e+01  4.4841e-14 -9.1116e+14 < 2.2e-16 ***
+  Sigma_u=0.3396  Sigma_v=0.0000  Sigma=0.3396  Gamma=1.0000  Lambda=252951557.4060
 
   -- Latent Class 2 --
   Frontier:
                            Coefficient  Std. Error     z value  Pr(>|z|)    
-(Intercept)                -3.1535e+00  2.1054e-06 -1497821.68 < 2.2e-16 ***
-log(y)                     -8.0990e-01  7.4781e-06  -108302.24 < 2.2e-16 ***
-I(1/2 * (log(y))^2)         7.7061e-02  5.6939e-06    13533.81 < 2.2e-16 ***
-log(wl/wf)                  5.4854e+00  1.6071e-05   341330.07 < 2.2e-16 ***
-log(wk/wf)                 -6.4631e+00  1.9385e-05  -333409.06 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -5.6940e-01  5.7789e-05    -9853.01 < 2.2e-16 ***
-I(1/2 * (log(wk/wf))^2)    -2.2954e+00  3.9877e-05   -57562.00 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  1.5812e+00  6.5499e-05    24140.47 < 2.2e-16 ***
-I(log(y) * log(wl/wf))      9.6870e-03  1.6406e-05      590.44 < 2.2e-16 ***
-I(log(y) * log(wk/wf))     -1.6669e-01  1.8369e-05    -9074.74 < 2.2e-16 ***
+(Intercept)                 2.5036e+00  9.7926e-13  2.5566e+12 < 2.2e-16 ***
+log(y)                      3.6180e-01  1.5692e-11  2.3057e+10 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         2.4432e-02  1.2604e-10  1.9383e+08 < 2.2e-16 ***
+log(wl/wf)                  7.7960e-01  2.0394e-12  3.8228e+11 < 2.2e-16 ***
+log(wk/wf)                  1.1749e+00  2.7966e-12  4.2013e+11 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)     3.8058e-03  2.1381e-12  1.7800e+09 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.6375e-01  3.9907e-12  4.1033e+10 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  4.7765e-01  5.8288e-12  8.1947e+10 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.6844e-02  3.2521e-11  8.2542e+08 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -6.9407e-02  4.4913e-11 -1.5454e+09 < 2.2e-16 ***
   Var(u):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zu_(Intercept) -1.6542e+00  2.7285e-12 -6.0626e+11 < 2.2e-16 ***
+Zu_(Intercept) -4.4416e+00  2.6532e-14 -1.6741e+14 < 2.2e-16 ***
   Var(v):
                Coefficient  Std. Error     z value  Pr(>|z|)    
-Zv_(Intercept) -3.4890e+01  1.2918e-12 -2.7009e+13 < 2.2e-16 ***
-  Sigma_u=0.4373  Sigma_v=0.0000  Sigma=0.4373  Gamma=1.0000  Lambda=16481838.3096
+Zv_(Intercept) -4.6164e+00  2.6643e-14 -1.7327e+14 < 2.2e-16 ***
+  Sigma_u=0.1085  Sigma_v=0.0994  Sigma=0.1472  Gamma=0.5436  Lambda=1.0913
 
   -- Class Membership (logit) --
                 Coefficient  Std. Error     z value  Pr(>|z|)    
-Cl1_(Intercept) -6.1040e-01  2.9508e-12 -2.0686e+11 < 2.2e-16 ***
+Cl1_(Intercept) -4.2121e-01  6.0669e-14 -6.9427e+12 < 2.2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 Log likelihood status: successful convergence  
@@ -1487,70 +1256,63 @@ Log likelihood status: successful convergence
 ------------------------------------------------------------ 
 Metafrontier Coefficients (sfa):
 Meta-optim solver  : BFGS maximization 
-                             Estimate Std. Error   z value  Pr(>|z|)    
-(Intercept)                 3.7822721  0.0037259 1015.1189 < 2.2e-16 ***
-log(y)                      0.0071690  0.0091507    0.7834  0.433370    
-I(1/2 * (log(y))^2)         0.1246971  0.0048604   25.6555 < 2.2e-16 ***
-log(wl/wf)                 -0.0993495  0.0137251   -7.2385 4.536e-13 ***
-log(wk/wf)                 -0.4475185  0.0263550  -16.9804 < 2.2e-16 ***
-I(1/2 * (log(wl/wf))^2)    -0.1603730  0.0547103   -2.9313  0.003375 ** 
-I(1/2 * (log(wk/wf))^2)     2.2110373  0.1003955   22.0233 < 2.2e-16 ***
-I(log(wl/wf) * log(wk/wf))  0.1468441  0.0558456    2.6295  0.008552 ** 
-I(log(y) * log(wl/wf))      0.0605982  0.0126839    4.7776 1.774e-06 ***
-I(log(y) * log(wk/wf))      0.4170853  0.0200532   20.7989 < 2.2e-16 ***
+                              Estimate  Std. Error z value  Pr(>|z|)    
+(Intercept)                 1.9614e+01  3.1346e-06 6257440 < 2.2e-16 ***
+log(y)                     -1.5220e+00  1.7233e-06 -883190 < 2.2e-16 ***
+I(1/2 * (log(y))^2)         9.5988e-02  2.1873e-06   43884 < 2.2e-16 ***
+log(wl/wf)                  5.1411e-01  4.9434e-06  103999 < 2.2e-16 ***
+log(wk/wf)                  2.4423e+00  7.1562e-06  341288 < 2.2e-16 ***
+I(1/2 * (log(wl/wf))^2)    -6.0468e-01  3.0442e-05  -19864 < 2.2e-16 ***
+I(1/2 * (log(wk/wf))^2)     1.1430e+00  1.7774e-05   64306 < 2.2e-16 ***
+I(log(wl/wf) * log(wk/wf))  1.0391e+00  3.3805e-05   30738 < 2.2e-16 ***
+I(log(y) * log(wl/wf))      2.5577e-01  8.2292e-06   31081 < 2.2e-16 ***
+I(log(y) * log(wk/wf))     -9.4399e-02  4.9573e-06  -19042 < 2.2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
   Meta-frontier Variance & Efficiency Statistics:
                                 Estimate Std. Error    z value  Pr(>|z|)    
-Sigma-squared(u)              3.1892e-06 1.9166e-11 166399.560 < 2.2e-16 ***
-Sigma(u)                      1.7858e-03 5.3661e-09 332799.120 < 2.2e-16 ***
-Sigma-squared(v)              1.0924e-02 5.4934e-04     19.885 < 2.2e-16 ***
-Sigma(v)                      1.0452e-01 2.6280e-03     39.770 < 2.2e-16 ***
-Sigma = Sqrt[(s^2(u)+s^2(v))] 1.0453e-01 2.6276e-03     39.782 < 2.2e-16 ***
-Gamma = sigma(u)^2/sigma^2    2.9187e-04 1.4672e-05     19.893 < 2.2e-16 ***
-Lambda = sigma(u)/sigma(v)    1.7087e-02 4.2959e-04     39.774 < 2.2e-16 ***
-E[u]                          1.4249e-03          -          -         -    
-E[exp(-u)]                    9.9858e-01          -          -         -    
+Sigma-squared(u)              1.9881e-03 1.9651e-15 1.0117e+12 < 2.2e-16 ***
+Sigma(u)                      4.4588e-02 2.2036e-14 2.0234e+12 < 2.2e-16 ***
+Sigma-squared(v)              1.7884e-15 3.3991e-27 5.2614e+11 < 2.2e-16 ***
+Sigma(v)                      4.2289e-08 4.0188e-20 1.0523e+12 < 2.2e-16 ***
+Sigma = Sqrt[(s^2(u)+s^2(v))] 4.4588e-02 2.2036e-14 2.0234e+12 < 2.2e-16 ***
+Gamma = sigma(u)^2/sigma^2    1.0000e+00 2.5815e-24 3.8736e+23 < 2.2e-16 ***
+Lambda = sigma(u)/sigma(v)    1.0544e+06 1.5128e-06 6.9696e+11 < 2.2e-16 ***
+E[u]                          3.5576e-02          -          -         -    
+E[exp(-u)]                    9.6539e-01          -          -         -    
 -----[ Tests vs. No Inefficiency ]-----
 Likelihood Ratio Test of Inefficiency
 Deg. freedom for inefficiency model                        1 
-Log Likelihood for OLS Log(H0) =                   663.98478 
+Log Likelihood for OLS Log(H0) =                  1764.29432 
 LR statistic: 
-Chisq = 2*[LogL(H0)-LogL(H1)]  =                    -0.00003 
+Chisq = 2*[LogL(H0)-LogL(H1)]  =                   243.65844 
 Kodde-Palm C*:       95%: 2.70554               99%: 5.41189 
 Coelli (1995) skewness test on OLS residuals
-M3T: z                         =                    -1.20704 
-M3T: p.value                   =                     0.22742 
+M3T: z                         =                    13.59090 
+M3T: p.value                   =                     0.00000 
 Log likelihood status: successful convergence  
 
 ------------------------------------------------------------ 
 Efficiency Statistics (group means):
 ------------------------------------------------------------ 
-  N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
-0   297     297     0.97005    0.99858  1.03481
-1   494     494     0.78841    0.99857  1.35042
+        N_obs N_valid TE_group_BC TE_meta_BC MTR_mean
+Class_1   303     303     0.77828    0.98452  1.32452
+Class_2   488     488     0.92338    0.97762  1.05950
 
-Overall: TE_group=0.8792  TE_meta=0.9986  MTR=1.1926
+Overall: TE_group=0.8508  TE_meta=0.9811  MTR=1.1920
 
 ------------------------------------------------------------ 
-Posterior Class Membership (by group):
+Posterior Class Membership (pooled LCM):
 ------------------------------------------------------------ 
-  Group: 0 
         % assigned Mean post. prob.
-Class 1       27.3            0.294
-Class 2       72.7            0.706
-
-  Group: 1 
-        % assigned Mean post. prob.
-Class 1       29.1            0.352
-Class 2       70.9            0.648
-
+Class 1       38.3            0.396
+Class 2       61.7            0.604
 ------------------------------------------------------------ 
-Total Log-likelihood: 898.726 
-AIC: -1673.452   BIC: -1383.708   HQIC: -1562.086 
+Total Log-likelihood: 1987.452 
+AIC: -3900.903   BIC: -3727.991   HQIC: -3834.443 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -1584,18 +1346,6 @@ summary(meta_sel_lp)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfaselectioncross) ...
-  Group: small 
-First step probit model...
-Second step Frontier model...
-  Group: medium 
-First step probit model...
-Second step Frontier model...
-  Group: large 
-First step probit model...
-Second step Frontier model...
-Group frontiers estimated.
-Estimating metafrontier using method: Linear Programming (LP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Linear Programming (LP) Metafrontier 
@@ -1716,7 +1466,7 @@ Metafrontier Coefficients (lp):
 Total Log-likelihood: -134.7799 
 AIC: 311.5597   BIC: 392.2132   HQIC: 343.683 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -1742,18 +1492,6 @@ summary(meta_sel_qp)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfaselectioncross) ...
-  Group: small 
-First step probit model...
-Second step Frontier model...
-  Group: medium 
-First step probit model...
-Second step Frontier model...
-  Group: large 
-First step probit model...
-Second step Frontier model...
-Group frontiers estimated.
-Estimating metafrontier using method: Quadratic Programming (QP) Metafrontier 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: Quadratic Programming (QP) Metafrontier 
@@ -1880,7 +1618,7 @@ Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’
 Total Log-likelihood: -134.7799 
 AIC: 319.5597   BIC: 415.5758   HQIC: 357.8018 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -1907,18 +1645,6 @@ summary(meta_sel_huang)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfaselectioncross) ...
-  Group: small 
-First step probit model...
-Second step Frontier model...
-  Group: medium 
-First step probit model...
-Second step Frontier model...
-  Group: large 
-First step probit model...
-Second step Frontier model...
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [Huang et al. (2014), two-stage] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [Huang et al. (2014), two-stage] 
@@ -2070,7 +1796,7 @@ Log likelihood status: successful convergence
 Total Log-likelihood: 225.5862 
 AIC: -397.1723   BIC: -293.475   HQIC: -355.8709 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 
@@ -2097,18 +1823,6 @@ summary(meta_sel_ordonnell)
   <summary>Toggle to see the output</summary>
 
 ```plaintext
-Estimating group-specific stochastic frontiers (sfaselectioncross) ...
-  Group: small 
-First step probit model...
-Second step Frontier model...
-  Group: medium 
-First step probit model...
-Second step Frontier model...
-  Group: large 
-First step probit model...
-Second step Frontier model...
-Group frontiers estimated.
-Estimating metafrontier using method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
 ============================================================ 
 Stochastic Metafrontier Analysis
 Metafrontier method: SFA Metafrontier [O'Donnell et al. (2008), envelope] 
@@ -2260,7 +1974,7 @@ Log likelihood status: successful convergence
 Total Log-likelihood: 283.0153 
 AIC: -512.0306   BIC: -408.3332   HQIC: -470.7292 
 ------------------------------------------------------------ 
-Model was estimated on : Feb Sat 28, 2026 at 00:48 
+Model was estimated on : Feb Sat 28, 2026 at 12:17 
 ```
 </details>
 

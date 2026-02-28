@@ -53,14 +53,23 @@ sfametafrontier(
 \item{formula}{A symbolic description of the frontier model.}
 
 \item{muhet}{A one-part formula for heterogeneity in the mean of the
-pre-truncated distribution (only for \code{groupType = "sfacross"}).}
+pre-truncated distribution (only for \code{groupType = "sfacross"}). This
+formula is used to capture structural differences in the modeled efficiency
+mean.}
 
-\item{uhet}{A one-part formula for heteroscedasticity in the one-sided error.}
+\item{uhet}{A one-part formula for heteroscedasticity in the one-sided error
+term. To accommodate heteroscedasticity in the variance parameters, the
+variances are modeled as: \eqn{\sigma^2_{u} = \exp(\delta'Z_u)}, where
+\eqn{Z_u} are the inefficiency drivers and \eqn{\delta} are the coefficients.}
 
-\item{vhet}{A one-part formula for heteroscedasticity in the two-sided error.}
+\item{vhet}{A one-part formula for heteroscedasticity in the two-sided error
+term. Modeled as \eqn{\sigma^2_{v} = \exp(\phi'Z_v)}, where \eqn{Z_v} are
+the heteroscedasticity variables and \eqn{\phi} the coefficients.}
 
 \item{thet}{A one-part formula for technological heterogeneity in LCM class
-construction (only for \code{groupType = "sfalcmcross"}).}
+construction (only for \code{groupType = "sfalcmcross"}). The variables
+specified are used in the logit formulation of the finite mixture model to
+compute the prior class membership probabilities.}
 
 \item{logDepVar}{Logical. Whether the dependent variable is logged. Default
 \code{TRUE}.}
@@ -81,11 +90,16 @@ For \code{groupType = "sfacross"}: all 10 distributions supported (see
 \code{"sfalcmcross"}: only \code{'hnormal'}.}
 
 \item{scaling}{Logical. Scaling property model for \code{groupType =
-"sfacross"} when \code{udist = 'tnormal'}. Default \code{FALSE}.}
+  "sfacross"} when \code{udist = 'tnormal'}. If \code{TRUE}, the scaling
+property is used to model the one-sided error conditional on the inefficiency drivers
+\eqn{Z_u} (e.g. \eqn{u = h(Z_u, \delta)u^*} where \eqn{u^*} is a homoscedastic
+random variable). Default \code{FALSE}.}
 
 \item{groupType}{Character string. Type of model used for each group's
-frontier. \code{"sfacross"} (default), \code{"sfaselectioncross"},
-or \code{"sfalcmcross"}.}
+frontier. \code{"sfacross"} (default) estimates a standard cross-sectional
+SFA, \code{"sfaselectioncross"} estimates a sample selection SFA adjusting
+for bias via a generalized Heckman approach, or \code{"sfalcmcross"} estimates
+a latent class SFA estimating a pooled mixture model.}
 
 \item{metaMethod}{Character string. Method for estimating the metafrontier.
 \itemize{
@@ -102,47 +116,61 @@ uses each observation's own group fitted value as the meta-stage dependent
 variable (Huang et al., 2014). \code{"ordonnell"}: uses the deterministic envelope of group betas
 evaluated at all observations (O'Donnell et al., 2008).}
 
-\item{selectionF}{A one-sided formula (e.g. \code{~ z1 + z2}) or a named
+\item{selectionF}{A two-sided formula (e.g. \code{selected ~ z1 + z2}) or a named
 list of formulas (one per group) specifying the sample selection equation. Only
 used when \code{groupType = "sfaselectioncross"}.}
 
 \item{lcmClasses}{Integer (2--5). Number of latent classes for
-\code{groupType = "sfalcmcross"}. Default \code{2}.}
+\code{groupType = "sfalcmcross"}. Default \code{2}. If \code{group} is
+not specified, \code{sfametafrontier} automatically splits the data evenly
+into \code{lcmClasses} classes.}
 
-\item{whichStart}{Integer. Starting value strategy for LCM (1 or 2, see
-\code{\link[sfaR]{sfalcmcross}}). Default \code{2}.}
+\item{whichStart}{Integer. Strategy for obtaining initial values for LCM
+optimization. \code{whichStart = 1} uses initialized values for each class,
+whereas \code{whichStart = 2} (default) estimates a pooled base homoscedastic
+model to provide uniform starting points.}
 
-\item{initAlg}{Character. Initialization algorithm for LCM. Default
-\code{"nm"}.}
+\item{initAlg}{Character. Initialization algorithm for LCM. A string specifying
+the non-gradient or gradient method. Options include \code{"nm"} for
+Nelder-Mead (default), \code{"bhhh"}, \code{"bfgs"}, \code{"cg"}, or
+\code{"sann"}.}
 
 \item{initIter}{Integer. Initialization iterations for LCM. Default
 \code{100}.}
 
-\item{lType}{Character. Likelihood type for selection model. Default
-\code{"ghermite"}.}
+\item{lType}{Character. Likelihood type for selection model. Options include
+\code{"ghermite"} for Gauss-Hermite quadrature (default) or \code{"msl"} for
+Maximum Simulated Likelihood.}
 
-\item{Nsub}{Integer. Quadrature nodes/subdivisions for selection model.
-Default \code{100}.}
+\item{Nsub}{Integer. Number of quadrature nodes/subdivisions for the
+selection model integration when \code{lType = "ghermite"}. Default
+\code{100}.}
 
-\item{uBound}{Numeric. Upper bound for integration in selection model.
+\item{uBound}{Numeric. Upper bound for integration in the selection model.
 Default \code{Inf}.}
 
-\item{intol}{Numeric. Integration tolerance for selection model. Default
+\item{intol}{Numeric. Integration tolerance for the selection model. Default
 \code{1e-6}.}
 
-\item{method}{Optimization algorithm for group models. Default \code{'bfgs'}.}
+\item{method}{Optimization algorithm for group models. Default \code{'bfgs'}.
+Other options include \code{"bhhh"}, \code{"nr"}, \code{"nm"}, \code{"cg"},
+and \code{"sann"}.}
 
-\item{hessianType}{Integer (\code{1} or \code{2}). Default \code{1}.}
+\item{hessianType}{Integer (\code{1} or \code{2}). Determines how the
+Hessian matrix is computed for standard SFA models. Default \code{1} uses
+analytic (when available) or finite-difference numerical Hessians.}
 
-\item{simType}{Simulation type for MSL. Default \code{'halton'}.}
+\item{simType}{Character. Simulation type for MSL. Options are \code{'halton'}
+(default), \code{'generalized_halton'}, \code{'sobol'}, or \code{'random'}.}
 
-\item{Nsim}{Number of MSL draws. Default \code{100}.}
+\item{Nsim}{Integer. Number of MSL draws. Default \code{100}.}
 
-\item{prime}{Prime number for Halton draws. Default \code{2}.}
+\item{prime}{Integer. Prime number for Halton draws. Default \code{2}.}
 
-\item{burn}{Initial Halton draws discarded. Default \code{10}.}
+\item{burn}{Integer. Number of initial Halton draws discarded. Default \code{10}.}
 
-\item{antithetics}{Logical. Default \code{FALSE}.}
+\item{antithetics}{Logical. If \code{TRUE}, evaluates antithetic draws to reduce
+variance in MSL. Default \code{FALSE}.}
 
 \item{seed}{Numeric seed. Default \code{12345}.}
 
@@ -227,10 +255,10 @@ values extracted via mathematical programming.
 }
 \item \strong{Efficiencies and Metatechnology Ratios (MTR):}
 \itemize{
-\item Group-specific Technical Efficiency (TE_group): \eqn{TE_{it}^g = \exp(-u_{it})}.
-\item Metafrontier Technical Efficiency (TE_meta): \eqn{TE_{it}^* = \exp(-u_{it} - U_{it})}.
+\item Group-specific Technical Efficiency (TE_group): \eqn{TE_{it}^g = exp(-u_{it})}.
+\item Metafrontier Technical Efficiency (TE_meta): \eqn{TE_{it}^*} = \eqn{exp(-u_{it} - U_{it})}.
 \item Metatechnology Ratio (MTR): The ratio mapping the distance from the group frontier
-to the potential metafrontier: \eqn{MTR_{it} = \frac{TE_{it}^*}{TE_{it}^g} = \exp(-U_{it})}.
+to the potential metafrontier: \eqn{MTR_{it} = \frac{TE_{it}^*}{TE_{it}^g} = exp(-U_{it})}.
 }
 }
 
@@ -241,34 +269,75 @@ the best-posterior-class fitted value \eqn{y_{it}^{c^*}} is routed to the metafr
 }
 \examples{
 \dontrun{
-## Standard SFA metafrontier (LP) with ricephil data
-data("ricephil")
+## 1. Standard SFA Metafrontier Models
+data("ricephil", package = "sfaR")
 ricephil$group <- cut(ricephil$AREA,
-  breaks = c(0, 1, 2, Inf),
-  labels = c("small", "medium", "large")
+  breaks = quantile(ricephil$AREA, probs = c(0, 1 / 3, 2 / 3, 1), na.rm = TRUE),
+  labels = c("small", "medium", "large"),
+  include.lowest = TRUE
 )
 
+# Linear Programming (LP) Metafrontier
 meta_lp <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
+  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data = ricephil, group = "group", S = 1, udist = "hnormal",
   metaMethod = "lp"
 )
 summary(meta_lp)
 
-## Huang (2014) two-stage SFA metafrontier
+# Quadratic Programming (QP) Metafrontier
+meta_qp <- sfametafrontier(
+  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data = ricephil, group = "group", S = 1, udist = "hnormal",
+  metaMethod = "qp"
+)
+
+# Huang (2014) Two-stage SFA Metafrontier
 meta_huang <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
+  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data = ricephil, group = "group", S = 1, udist = "hnormal",
   metaMethod = "sfa", sfaApproach = "huang"
 )
-summary(meta_huang)
 
-## Latent class group models
-meta_lcm <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK) + log(OTHER),
-  data = ricephil, group = "group", S = 1,
-  groupType = "sfalcmcross", lcmClasses = 2, metaMethod = "lp"
+# O'Donnell (2008) Stochastic Metafrontier on LP base
+data("utility", package = "sfaR")
+meta_ordonnell <- sfametafrontier(
+  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
+    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
+    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
+  data = utility, group = "regu", S = -1, udist = "hnormal",
+  metaMethod = "sfa", sfaApproach = "ordonnell"
 )
+
+## 2. Latent Class Metafrontier (LCM) Models - Unobserved Groups
+# LP Metafrontier using 2 posterior classes built automatically
+meta_lcm_lp <- sfametafrontier(
+  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
+    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
+    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
+  data = utility, S = -1, groupType = "sfalcmcross", lcmClasses = 2,
+  metaMethod = "lp"
+)
+summary(meta_lcm_lp)
+
+# Huang (2014) stochastic metafrontier on LCM classes
+meta_lcm_huang <- sfametafrontier(
+  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
+    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
+    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
+  data = utility, S = -1, groupType = "sfalcmcross", lcmClasses = 2,
+  metaMethod = "sfa", sfaApproach = "huang"
+)
+
+## 3. Sample Selection Metafrontier Models
+ricephil$laterSurvey <- as.integer(ricephil$YEARDUM > 3)
+# LP Metafrontier using generalized sample selection handling bias
+meta_sel_lp <- sfametafrontier(
+  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data = ricephil, group = "group", S = 1, groupType = "sfaselectioncross",
+  selectionF = laterSurvey ~ EDYRS + AGE, metaMethod = "lp"
+)
+summary(meta_sel_lp)
 }
 
 }

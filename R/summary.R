@@ -99,22 +99,22 @@ summary.sfametafrontier <- function(object, ...) {
 
       buildRow <- function(g) {
         idx <- which(grpVar == g)
-        nTE <- sum(!is.na(eff$teGroup_BC[idx]))
-        nMTR <- sum(!is.na(eff$mtr[idx]))
+        nTE <- sum(!is.na(eff$TE_group_BC[idx]))
+        nMTR <- sum(!is.na(eff$MTR[idx]))
         c(
           N_group = length(idx),
           N_valid = nTE,
           TE_group = if (nTE > 0) {
-            mean(eff$teGroup_BC[idx], na.rm = TRUE)
+            mean(eff$TE_group_BC[idx], na.rm = TRUE)
           } else {
             NA_real_
           },
           TE_meta = if (nMTR > 0) {
-            mean(eff$teMeta_BC[idx], na.rm = TRUE)
+            mean(eff$TE_meta_BC[idx], na.rm = TRUE)
           } else {
             NA_real_
           },
-          MTR = if (nMTR > 0) mean(eff$mtr[idx], na.rm = TRUE) else NA_real_
+          MTR = if (nMTR > 0) mean(eff$MTR[idx], na.rm = TRUE) else NA_real_
         )
       }
       statMat <- do.call(rbind, lapply(object$groups, buildRow))
