@@ -100,21 +100,16 @@ summary.sfametafrontier <- function(object, ...) {
       buildRow <- function(g) {
         idx <- which(grpVar == g)
         nTE <- sum(!is.na(eff$TE_group_BC[idx]))
-        nMTR <- sum(!is.na(eff$MTR[idx]))
+        nMTR <- sum(!is.na(eff$MTR_BC[idx]))
         c(
           N_group = length(idx),
           N_valid = nTE,
-          TE_group = if (nTE > 0) {
-            mean(eff$TE_group_BC[idx], na.rm = TRUE)
-          } else {
-            NA_real_
-          },
-          TE_meta = if (nMTR > 0) {
-            mean(eff$TE_meta_BC[idx], na.rm = TRUE)
-          } else {
-            NA_real_
-          },
-          MTR = if (nMTR > 0) mean(eff$MTR[idx], na.rm = TRUE) else NA_real_
+          TE_group_BC = if (nTE > 0) mean(eff$TE_group_BC[idx], na.rm = TRUE) else NA_real_,
+          TE_group_JLMS = if (nTE > 0) mean(eff$TE_group_JLMS[idx], na.rm = TRUE) else NA_real_,
+          TE_meta_BC = if (nMTR > 0) mean(eff$TE_meta_BC[idx], na.rm = TRUE) else NA_real_,
+          TE_meta_JLMS = if (nMTR > 0) mean(eff$TE_meta_JLMS[idx], na.rm = TRUE) else NA_real_,
+          MTR_BC = if (nMTR > 0) mean(eff$MTR_BC[idx], na.rm = TRUE) else NA_real_,
+          MTR_JLMS = if (nMTR > 0) mean(eff$MTR_JLMS[idx], na.rm = TRUE) else NA_real_
         )
       }
       statMat <- do.call(rbind, lapply(object$groups, buildRow))
@@ -755,26 +750,25 @@ print.summary.sfametafrontier <- function(
     out <- data.frame(
       N_obs = formatC(sm_eff[, "N_group"], format = "d"),
       N_valid = formatC(sm_eff[, "N_valid"], format = "d"),
-      TE_group_BC = formatC(
-        sm_eff[, "TE_group"],
-        digits = digits,
-        format = "f"
-      ),
-      TE_meta_BC = formatC(sm_eff[, "TE_meta"], digits = digits, format = "f"),
-      MTR_mean = formatC(sm_eff[, "MTR"], digits = digits, format = "f"),
+      TE_group_BC = formatC(sm_eff[, "TE_group_BC"], digits = digits, format = "f"),
+      TE_group_JLMS = formatC(sm_eff[, "TE_group_JLMS"], digits = digits, format = "f"),
+      TE_meta_BC = formatC(sm_eff[, "TE_meta_BC"], digits = digits, format = "f"),
+      TE_meta_JLMS = formatC(sm_eff[, "TE_meta_JLMS"], digits = digits, format = "f"),
+      MTR_BC = formatC(sm_eff[, "MTR_BC"], digits = digits, format = "f"),
+      MTR_JLMS = formatC(sm_eff[, "MTR_JLMS"], digits = digits, format = "f"),
       row.names = rownames(sm_eff),
       stringsAsFactors = FALSE
     )
     print(out)
     ov <- colMeans(
-      sm_eff[, c("TE_group", "TE_meta", "MTR"), drop = FALSE],
+      sm_eff[, c("TE_group_BC", "TE_group_JLMS", "TE_meta_BC", "TE_meta_JLMS", "MTR_BC", "MTR_JLMS"), drop = FALSE],
       na.rm = TRUE
     )
     cat(sprintf(
-      "\nOverall: TE_group=%.4f  TE_meta=%.4f  MTR=%.4f\n",
-      ov["TE_group"],
-      ov["TE_meta"],
-      ov["MTR"]
+      "\nOverall:\nTE_group_BC=%.4f  TE_group_JLMS=%.4f\nTE_meta_BC=%.4f   TE_meta_JLMS=%.4f\nMTR_BC=%.4f     MTR_JLMS=%.4f\n",
+      ov["TE_group_BC"], ov["TE_group_JLMS"],
+      ov["TE_meta_BC"], ov["TE_meta_JLMS"],
+      ov["MTR_BC"], ov["MTR_JLMS"]
     ))
 
     # LCM: posterior class proportions

@@ -205,52 +205,53 @@ extract_lcm_fitted <- function(lcmObj) {
   best_fitted
 }
 
-# Compute metatechnology ratio (MTR) -------------------------------------------
+# Compute metatechnology ratio (MTR) and metafrontier efficiencies ----------------
 #' @param yhat_group N-vector of group frontier fitted values
 #' @param yhat_meta N-vector of metafrontier fitted values
-#' @param teGroup N-vector of group efficiency (teBC from group SFA)
+#' @param teGroup_BC N-vector of group efficiency (teBC from group SFA)
+#' @param teGroup_JLMS N-vector of group efficiency (teJLMS from group SFA)
+#' @param uGroup N-vector of group inefficiency
 #' @param S integer 1 or -1
 #' @param metaMethod character "lp", "qp", or "sfa"
 #' @param sfaApproach character "ordonnell" or "huang" (used when metaMethod="sfa")
-#' @param teMeta_sfa optional N-vector - BC efficiency from the second-stage SFA
+#' @param effMeta_sfa optional data.frame of efficiency estimates from second-stage SFA
 #' @noRd
-compute_mtr <- function(yhat_group, yhat_meta, teGroup, S,
+compute_mtr <- function(yhat_group, yhat_meta, teGroup_BC, teGroup_JLMS, uGroup, S,
                         metaMethod = "lp", sfaApproach = "huang",
-                        teMeta_sfa = NULL) {
+                        effMeta_sfa = NULL) {
   if (metaMethod %in% c("lp", "qp")) {
-    # LP/QP: gap = S*(yhat_meta - yhat_group) >= 0 by construction of the envelope
-    # MTR_i = exp(-gap_i); TE_meta_i = TE_group_i * MTR_i
     gap <- S * (yhat_meta - yhat_group)
     mtr <- exp(-pmax(gap, 0))
-    teMeta <- teGroup * mtr
-    list(teMeta = teMeta, mtr = mtr)
+    teMeta_BC <- teGroup_BC * mtr
+    teMeta_JLMS <- teGroup_JLMS * mtr
+    u_meta <- uGroup - log(mtr)
+    list(teMeta_BC = teMeta_BC, teMeta_JLMS = teMeta_JLMS, mtr_BC = mtr, mtr_JLMS = mtr, u_meta = u_meta)
   } else if (sfaApproach == "huang") {
-    # Huang (2014): second-stage SFA DV = group frontier fitted value.
-    # u_meta captures how far the group frontier lies below the metafrontier.
-    # MTR_i = exp(-u_meta_i) = teBC from the second-stage SFA (Huang Eq. 9).
-    # TE_meta_i = TE_group_i * MTR_i  (Huang Eq. 8).
-    mtr <- teMeta_sfa # exp(-u_meta) from second-stage SFA
-    teMeta <- teGroup * mtr # obs-to-metafrontier TE
-    list(teMeta = teMeta, mtr = mtr)
+    mtr_BC <- effMeta_sfa$teBC
+    mtr_JLMS <- effMeta_sfa$teJLMS
+    u_mtr <- effMeta_sfa$u
+    teMeta_BC <- teGroup_BC * mtr_BC
+    teMeta_JLMS <- teGroup_JLMS * mtr_JLMS
+    u_meta <- uGroup + u_mtr
+    list(teMeta_BC = teMeta_BC, teMeta_JLMS = teMeta_JLMS, mtr_BC = mtr_BC, mtr_JLMS = mtr_JLMS, u_meta = u_meta)
   } else {
-    # O'Donnell (2008): second-stage SFA DV = LP envelope.
-    # TE_meta is the BC efficiency from that SFA relative to the metafrontier.
-    # MTR_i = TE_meta_i / TE_group_i.
-    teMeta <- teMeta_sfa
-    mtr <- teMeta / teGroup
-    n_neg <- sum(!is.na(mtr) & mtr < 0)
-    n_gt1 <- sum(!is.na(mtr) & mtr > 1)
-    if (n_neg > 0 || n_gt1 > 0) {
+    # ordonnell
+    teMeta_BC <- effMeta_sfa$teBC
+    teMeta_JLMS <- effMeta_sfa$teJLMS
+    u_meta <- effMeta_sfa$u
+    mtr_BC <- teMeta_BC / teGroup_BC
+    mtr_JLMS <- teMeta_JLMS / teGroup_JLMS
+
+    n_gt1 <- sum(!is.na(mtr_BC) & mtr_BC > 1)
+    if (n_gt1 > 0) {
       warning(
-        sprintf(
-          "%d MTR value(s) > 1 detected in O'Donnell SFA approach. ", n_gt1
-        ),
+        sprintf("%d MTR value(s) > 1 detected in O'Donnell SFA approach. ", n_gt1),
         "This typically occurs when the second-stage SFA estimates near-zero ",
         "inefficiency (sigma_u -> 0), causing TE_meta ~= 1 and MTR = TE_meta/TE_group > 1. ",
         "Consider using metaMethod='lp' or sfaApproach='huang' instead.",
         call. = FALSE
       )
     }
-    list(teMeta = teMeta, mtr = mtr)
+    list(teMeta_BC = teMeta_BC, teMeta_JLMS = teMeta_JLMS, mtr_BC = mtr_BC, mtr_JLMS = mtr_JLMS, u_meta = u_meta)
   }
 }

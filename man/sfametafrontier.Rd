@@ -14,10 +14,14 @@ sfametafrontier(
   logDepVar = TRUE,
   data,
   subset,
+  weights,
+  wscale = TRUE,
   group = NULL,
   S = 1L,
   udist = "hnormal",
+  start = NULL,
   scaling = FALSE,
+  modelType = "greene10",
   groupType = "sfacross",
   metaMethod = "lp",
   sfaApproach = "huang",
@@ -50,318 +54,827 @@ sfametafrontier(
 \method{print}{sfametafrontier}(x, ...)
 }
 \arguments{
-\item{formula}{A symbolic description of the frontier model.}
+\item{formula}{A symbolic description of the frontier model to be estimated,
+based on the generic function \code{\link[stats]{formula}}. For
+\code{groupType = "sfaselectioncross"}, this argument specifies the
+frontier (outcome) equation and must be a standard formula whose left-hand
+side is the output (or cost) variable and whose right-hand side contains
+the frontier regressors (see also \code{selectionF}).}
 
-\item{muhet}{A one-part formula for heterogeneity in the mean of the
-pre-truncated distribution (only for \code{groupType = "sfacross"}). This
-formula is used to capture structural differences in the modeled efficiency
-mean.}
+\item{muhet}{A one-part formula to account for heterogeneity in the mean of
+the pre-truncated normal distribution. Applicable only when
+\code{groupType = "sfacross"} and \code{udist = "tnormal"}. The variables
+specified model the conditional mean
+\eqn{\mu_i = \bm{\omega}'\mathbf{Z}_{\mu}} of the truncated normal
+inefficiency distribution (see section \sQuote{Details}).}
 
-\item{uhet}{A one-part formula for heteroscedasticity in the one-sided error
-term. To accommodate heteroscedasticity in the variance parameters, the
-variances are modeled as: \eqn{\sigma^2_{u} = \exp(\delta'Z_u)}, where
-\eqn{Z_u} are the inefficiency drivers and \eqn{\delta} are the coefficients.}
+\item{uhet}{A one-part formula to account for heteroscedasticity in the
+one-sided error variance. Applicable for all three model types. The
+variance of the inefficiency term is modelled as
+\eqn{\sigma^2_u = \exp(\bm{\delta}'\mathbf{Z}_u)}, where
+\eqn{\mathbf{Z}_u} are the inefficiency drivers and \eqn{\bm{\delta}}
+the associated coefficients (see section \sQuote{Details}).}
 
-\item{vhet}{A one-part formula for heteroscedasticity in the two-sided error
-term. Modeled as \eqn{\sigma^2_{v} = \exp(\phi'Z_v)}, where \eqn{Z_v} are
-the heteroscedasticity variables and \eqn{\phi} the coefficients.}
+\item{vhet}{A one-part formula to account for heteroscedasticity in the
+two-sided error variance. Applicable for all three model types. The
+variance of the noise term is modelled as
+\eqn{\sigma^2_v = \exp(\bm{\phi}'\mathbf{Z}_v)}, where
+\eqn{\mathbf{Z}_v} are the heteroscedasticity variables and
+\eqn{\bm{\phi}} the coefficients (see section \sQuote{Details}).}
 
-\item{thet}{A one-part formula for technological heterogeneity in LCM class
-construction (only for \code{groupType = "sfalcmcross"}). The variables
-specified are used in the logit formulation of the finite mixture model to
-compute the prior class membership probabilities.}
+\item{thet}{A one-part formula to account for technological heterogeneity
+in the construction of the latent classes. Applicable only when
+\code{groupType = "sfalcmcross"}. The variables specified enter the logit
+formulation that determines the prior class membership probabilities
+\eqn{\pi(i,j)} (see section \sQuote{Details}).}
 
-\item{logDepVar}{Logical. Whether the dependent variable is logged. Default
-\code{TRUE}.}
+\item{logDepVar}{Logical. Informs whether the dependent variable is logged
+(\code{TRUE}) or not (\code{FALSE}). Default \code{TRUE}. Must match the
+transformation applied to the left-hand side of \code{formula}.}
 
-\item{data}{The data frame.}
+\item{data}{A data frame containing all variables referenced in
+\code{formula}, \code{selectionF}, \code{muhet}, \code{uhet}, \code{vhet},
+\code{thet}, and \code{group}.}
 
-\item{subset}{An optional subset vector.}
+\item{subset}{An optional vector specifying a subset of observations to be
+used in the estimation process.}
 
-\item{group}{Character string. Name of the column in \code{data} that
-identifies the technology groups. Must have at least 2 unique values.}
+\item{weights}{An optional vector of weights to be used for weighted
+log-likelihood estimation. Should be \code{NULL} or a numeric vector with
+strictly positive values. When \code{NULL} (default), all observations
+receive equal weight.}
 
-\item{S}{\code{1} (default) for production/profit frontier; \code{-1} for
-cost frontier.}
+\item{wscale}{Logical. When \code{weights} is not \code{NULL}, a scaling
+transformation is applied such that the weights sum to the sample size:
+\deqn{w_{\mathrm{new}} = n \times
+    \frac{w_{\mathrm{old}}}{\sum w_{\mathrm{old}}}}
+Default \code{TRUE}. When \code{FALSE}, the raw weights are used without
+scaling.}
 
-\item{udist}{Character string. Distribution for the one-sided error term.
-For \code{groupType = "sfacross"}: all 10 distributions supported (see
-\code{\link[sfaR]{sfacross}}). For \code{groupType = "sfaselectioncross"} or
-\code{"sfalcmcross"}: only \code{'hnormal'}.}
+\item{group}{Character string. The name of the column in \code{data}
+identifying the technology group of each observation. The column is coerced
+to a factor internally and must have at least two unique values. When
+\code{groupType = "sfalcmcross"} and \code{group} is \code{NULL}, a single
+pooled latent class model is estimated and class assignments serve as groups
+(see section \sQuote{Details}).}
 
-\item{scaling}{Logical. Scaling property model for \code{groupType =
-  "sfacross"} when \code{udist = 'tnormal'}. If \code{TRUE}, the scaling
-property is used to model the one-sided error conditional on the inefficiency drivers
-\eqn{Z_u} (e.g. \eqn{u = h(Z_u, \delta)u^*} where \eqn{u^*} is a homoscedastic
-random variable). Default \code{FALSE}.}
-
-\item{groupType}{Character string. Type of model used for each group's
-frontier. \code{"sfacross"} (default) estimates a standard cross-sectional
-SFA, \code{"sfaselectioncross"} estimates a sample selection SFA adjusting
-for bias via a generalized Heckman approach, or \code{"sfalcmcross"} estimates
-a latent class SFA estimating a pooled mixture model.}
-
-\item{metaMethod}{Character string. Method for estimating the metafrontier.
+\item{S}{Integer. Frontier orientation.
 \itemize{
-\item \code{"lp"} (default): Deterministic envelope (column-wise maximum
-of group frontier values evaluated at all observations).
-\item \code{"qp"}: Constrained OLS of the envelope on \eqn{X}.
-\item \code{"sfa"}: Second-stage pooled SFA. The approach depends on
-\code{sfaApproach}.
+\item \code{S = 1} (default): production or profit frontier,
+\eqn{\varepsilon_i = v_i - u_i}.
+\item \code{S = -1}: cost frontier,
+\eqn{\varepsilon_i = v_i + u_i}.
 }}
 
-\item{sfaApproach}{Character string. Only relevant when \code{metaMethod =
-  "sfa"}. \code{"huang"} (default):
-uses each observation's own group fitted value as the meta-stage dependent
-variable (Huang et al., 2014). \code{"ordonnell"}: uses the deterministic envelope of group betas
-evaluated at all observations (O'Donnell et al., 2008).}
+\item{udist}{Character string. Distribution for the one-sided error term
+\eqn{u_i \ge 0}. The following distributions are available for
+\code{groupType = "sfacross"}:
+\itemize{
+\item \code{"hnormal"} (default): half-normal distribution
+(Aigner \emph{et al.}, 1977; Meeusen and van den Broeck, 1977).
+\item \code{"exponential"}: exponential distribution.
+\item \code{"tnormal"}: truncated normal distribution (Stevenson, 1980).
+\item \code{"rayleigh"}: Rayleigh distribution (Hajargasht, 2015).
+\item \code{"uniform"}: uniform distribution (Li, 1996; Nguyen, 2010).
+\item \code{"gamma"}: Gamma distribution, estimated by maximum simulated
+likelihood (Greene, 2003).
+\item \code{"lognormal"}: log-normal distribution, estimated by maximum
+simulated likelihood (Migon and Medici, 2001; Wang and Ye, 2020).
+\item \code{"weibull"}: Weibull distribution, estimated by maximum
+simulated likelihood (Tsionas, 2007).
+\item \code{"genexponential"}: generalised exponential distribution
+(Papadopoulos, 2020).
+\item \code{"tslaplace"}: truncated skewed Laplace distribution
+(Wang, 2012).
+}
+For \code{groupType = "sfaselectioncross"} and \code{"sfalcmcross"}, only
+\code{"hnormal"} is currently supported.}
 
-\item{selectionF}{A two-sided formula (e.g. \code{selected ~ z1 + z2}) or a named
-list of formulas (one per group) specifying the sample selection equation. Only
-used when \code{groupType = "sfaselectioncross"}.}
+\item{start}{Numeric vector. Optional starting values for the maximum
+likelihood (ML) or maximum simulated likelihood (MSL) estimation of the
+group-level frontier models. When \code{NULL} (default), starting values
+are computed automatically. For \code{groupType = "sfacross"}, they are
+derived from OLS residuals. For \code{groupType = "sfalcmcross"}, they
+depend on \code{whichStart}.}
 
-\item{lcmClasses}{Integer (2--5). Number of latent classes for
-\code{groupType = "sfalcmcross"}. Default \code{2}. If \code{group} is
-not specified, \code{sfametafrontier} automatically splits the data evenly
-into \code{lcmClasses} classes.}
+\item{scaling}{Logical. Applicable only when \code{groupType = "sfacross"}
+and \code{udist = "tnormal"}. When \code{TRUE}, the scaling property model
+(Wang and Schmidt, 2002) is estimated, whereby
+\eqn{u_i = h(\mathbf{Z}_u, \bm{\delta}) u^*_i} and \eqn{u^*_i} follows
+a truncated normal distribution \eqn{N^+(\tau, \exp(c_u))}. Default
+\code{FALSE}.}
 
-\item{whichStart}{Integer. Strategy for obtaining initial values for LCM
-optimization. \code{whichStart = 1} uses initialized values for each class,
-whereas \code{whichStart = 2} (default) estimates a pooled base homoscedastic
-model to provide uniform starting points.}
+\item{modelType}{Character string. Applicable only when
+\code{groupType = "sfaselectioncross"}. Specifies the model used to correct
+for selection bias. Currently, only \code{"greene10"} (default) is
+supported, corresponding to the two-step approach of Greene (2010): a
+probit model is estimated for the selection equation, and its inverse Mills
+ratio is included as a correction term in the stochastic frontier second
+step.}
 
-\item{initAlg}{Character. Initialization algorithm for LCM. A string specifying
-the non-gradient or gradient method. Options include \code{"nm"} for
-Nelder-Mead (default), \code{"bhhh"}, \code{"bfgs"}, \code{"cg"}, or
-\code{"sann"}.}
+\item{groupType}{Character string. Type of frontier model estimated for each
+technology group. Three options are available:
+\itemize{
+\item \code{"sfacross"} (default): standard cross-sectional stochastic
+frontier analysis (\code{\link[sfaR]{sfacross}}). Groups are defined
+by the \code{group} variable. All 10 distributions for \code{udist}
+are supported, along with heteroscedasticity in both error components
+(\code{uhet}, \code{vhet}), heterogeneity in the truncated mean
+(\code{muhet}), and the scaling property.
+\item \code{"sfaselectioncross"}: sample selection stochastic frontier
+analysis (\code{\link[sfaR]{sfaselectioncross}}). Corrects for sample
+selection bias via the generalised Heckman approach (Greene, 2010).
+Requires \code{selectionF}. Only observations for which the selection
+indicator equals one enter the frontier and metafrontier; efficiency
+estimates for non-selected observations are \code{NA}. Only
+\code{udist = "hnormal"} is supported.
+\item \code{"sfalcmcross"}: latent class stochastic frontier analysis
+(\code{\link[sfaR]{sfalcmcross}}). Estimates a finite mixture of
+frontier models with the number of classes determined by
+\code{lcmClasses}. When \code{group} is supplied, a separate latent
+class model is estimated per group-stratum and combined for the
+metafrontier. When \code{group} is omitted, a single pooled model is
+estimated and class assignments serve as technology groups. Supports
+\code{thet} for class-membership covariates and \code{uhet},
+\code{vhet} for within-class heteroscedasticity. Only
+\code{udist = "hnormal"} is supported.
+}}
 
-\item{initIter}{Integer. Initialization iterations for LCM. Default
-\code{100}.}
+\item{metaMethod}{Character string. Method for estimating the global
+metafrontier that envelopes all group frontiers. Three options are
+available:
+\itemize{
+\item \code{"lp"} (default): deterministic linear programming envelope.
+Finds the parameter vector \eqn{\bm{\beta}^*} minimising
+\eqn{\sum_i |\ln \hat{f}(x_i, \bm{\beta}^*) - \ln \hat{f}(x_i,
+      \hat{\bm{\beta}}_{(g)})|}
+subject to \eqn{\ln \hat{f}(x_i, \bm{\beta}^*) \ge \ln \hat{f}(x_i,
+      \hat{\bm{\beta}}_{(g)})} for all observations and all groups
+(Battese \emph{et al.}, 2004).
+\item \code{"qp"}: deterministic quadratic programming envelope.
+Minimises the sum of squared deviations under the same envelope
+constraint.
+\item \code{"sfa"}: stochastic metafrontier estimated by a second-stage
+pooled SFA. The specific construction of the dependent variable is
+determined by \code{sfaApproach}.
+}}
 
-\item{lType}{Character. Likelihood type for selection model. Options include
-\code{"ghermite"} for Gauss-Hermite quadrature (default) or \code{"msl"} for
-Maximum Simulated Likelihood.}
+\item{sfaApproach}{Character string. Applicable only when
+\code{metaMethod = "sfa"}. Determines how the second-stage SFA is
+constructed:
+\itemize{
+\item \code{"huang"} (default): the group-specific fitted frontier value
+\eqn{\ln \hat{y}^g_i} for each observation is used as the dependent
+variable in a pooled cross-sectional SFA
+(Huang, Huang, and Liu, 2014). The technology gap \eqn{U_i \ge 0} and
+second-stage noise \eqn{V_i} are estimated directly by the SFA
+procedure.
+\item \code{"ordonnell"}: the column-wise maximum of all group-fitted
+frontier values (the deterministic LP envelope) is used as the dependent
+variable in the second-stage SFA (O'Donnell, Rao, and Battese, 2008).
+}}
 
-\item{Nsub}{Integer. Number of quadrature nodes/subdivisions for the
-selection model integration when \code{lType = "ghermite"}. Default
-\code{100}.}
+\item{selectionF}{A two-sided formula specifying the sample selection
+equation, e.g., \code{selected ~ z1 + z2}. The left-hand side must be a
+binary (0/1) indicator already present in \code{data}: \code{1} means the
+observation participates in the frontier and metafrontier; \code{0} means
+it is excluded (efficiency estimates will be \code{NA}). Alternatively, a
+named list of formulas, one per group level, may be supplied to allow
+group-specific selection equations. Required when
+\code{groupType = "sfaselectioncross"}; ignored otherwise.}
 
-\item{uBound}{Numeric. Upper bound for integration in the selection model.
-Default \code{Inf}.}
+\item{lcmClasses}{Integer. Number of latent classes to be estimated per group
+when \code{groupType = "sfalcmcross"}. Must be between \code{2} and
+\code{5} (default \code{2}). The optimal number of classes can be selected
+based on information criteria (see \code{\link[sfaR]{ic}}).}
 
-\item{intol}{Numeric. Integration tolerance for the selection model. Default
-\code{1e-6}.}
+\item{whichStart}{Integer. Strategy for obtaining starting values in the
+latent class model (\code{groupType = "sfalcmcross"}):
+\itemize{
+\item \code{1}: starting values are obtained from the method of moments.
+\item \code{2} (default): the model is initialised by first solving a
+homoscedastic pooled cross-sectional SFA using the algorithm specified
+by \code{initAlg} for at most \code{initIter} iterations.
+}}
 
-\item{method}{Optimization algorithm for group models. Default \code{'bfgs'}.
-Other options include \code{"bhhh"}, \code{"nr"}, \code{"nm"}, \code{"cg"},
-and \code{"sann"}.}
+\item{initAlg}{Character string. Optimisation algorithm used during the
+initialisation of the latent class model when \code{whichStart = 2}.
+Only algorithms from the \code{maxLik} package are supported:
+\itemize{
+\item \code{"nm"} (default): Nelder-Mead (see
+\code{\link[maxLik]{maxNM}}).
+\item \code{"bfgs"}: Broyden-Fletcher-Goldfarb-Shanno (see
+\code{\link[maxLik]{maxBFGS}}).
+\item \code{"bhhh"}: Berndt-Hall-Hall-Hausman (see
+\code{\link[maxLik]{maxBHHH}}).
+\item \code{"nr"}: Newton-Raphson (see \code{\link[maxLik]{maxNR}}).
+\item \code{"cg"}: Conjugate Gradient (see
+\code{\link[maxLik]{maxCG}}).
+\item \code{"sann"}: Simulated Annealing (see
+\code{\link[maxLik]{maxSANN}}).
+}}
 
-\item{hessianType}{Integer (\code{1} or \code{2}). Determines how the
-Hessian matrix is computed for standard SFA models. Default \code{1} uses
-analytic (when available) or finite-difference numerical Hessians.}
+\item{initIter}{Integer. Maximum number of iterations for the initialisation
+algorithm when \code{whichStart = 2} and
+\code{groupType = "sfalcmcross"}. Default \code{100}.}
 
-\item{simType}{Character. Simulation type for MSL. Options are \code{'halton'}
-(default), \code{'generalized_halton'}, \code{'sobol'}, or \code{'random'}.}
+\item{lType}{Character string. Specifies how the likelihood is evaluated for
+the selection model (\code{groupType = "sfaselectioncross"}). Five options
+are available:
+\itemize{
+\item \code{"ghermite"} (default): Gauss-Hermite quadrature (see
+\code{\link[fastGHQuad]{gaussHermiteData}}).
+\item \code{"kronrod"}: Gauss-Kronrod quadrature (see
+\code{\link[stats]{integrate}}).
+\item \code{"hcubature"}: adaptive integration over hypercubes (see
+\code{\link[cubature]{hcubature}}).
+\item \code{"pcubature"}: p-adaptive cubature (see
+\code{\link[cubature]{pcubature}}).
+\item \code{"msl"}: maximum simulated likelihood (controlled by
+\code{simType}, \code{Nsim}, \code{prime}, \code{burn},
+\code{antithetics}, and \code{seed}).
+}}
 
-\item{Nsim}{Integer. Number of MSL draws. Default \code{100}.}
+\item{Nsub}{Integer. Number of quadrature nodes or integration subdivisions
+when \code{lType} is \code{"ghermite"}, \code{"kronrod"},
+\code{"hcubature"}, or \code{"pcubature"}. Applicable only when
+\code{groupType = "sfaselectioncross"}. Default \code{100}.}
 
-\item{prime}{Integer. Prime number for Halton draws. Default \code{2}.}
+\item{uBound}{Numeric. Upper bound for the numerical integration of the
+inefficiency component when \code{lType} is \code{"kronrod"},
+\code{"hcubature"}, or \code{"pcubature"}. For Gauss-Hermite the bound is
+automatically infinite. Applicable only when
+\code{groupType = "sfaselectioncross"}. Default \code{Inf}.}
 
-\item{burn}{Integer. Number of initial Halton draws discarded. Default \code{10}.}
+\item{intol}{Numeric. Integration tolerance for the quadrature approaches
+\code{"kronrod"}, \code{"hcubature"}, and \code{"pcubature"}. Applicable
+only when \code{groupType = "sfaselectioncross"}. Default \code{1e-6}.}
 
-\item{antithetics}{Logical. If \code{TRUE}, evaluates antithetic draws to reduce
-variance in MSL. Default \code{FALSE}.}
+\item{method}{Character string. Optimisation algorithm for the main ML/MSL
+estimation of each group-level frontier model. Default \code{"bfgs"}.
+Eleven algorithms are available:
+\itemize{
+\item \code{"bfgs"}: Broyden-Fletcher-Goldfarb-Shanno (see
+\code{\link[maxLik]{maxBFGS}}).
+\item \code{"bhhh"}: Berndt-Hall-Hall-Hausman (see
+\code{\link[maxLik]{maxBHHH}}).
+\item \code{"nr"}: Newton-Raphson (see \code{\link[maxLik]{maxNR}}).
+\item \code{"nm"}: Nelder-Mead (see \code{\link[maxLik]{maxNM}}).
+\item \code{"cg"}: Conjugate Gradient (see
+\code{\link[maxLik]{maxCG}}).
+\item \code{"sann"}: Simulated Annealing (see
+\code{\link[maxLik]{maxSANN}}).
+\item \code{"ucminf"}: quasi-Newton optimisation with BFGS updating of
+the inverse Hessian and soft line search (see
+\code{\link[ucminf]{ucminf}}).
+\item \code{"mla"}: Marquardt-Levenberg algorithm (see
+\code{\link[marqLevAlg]{mla}}).
+\item \code{"sr1"}: Symmetric Rank 1 trust-region method (see
+\code{\link[trustOptim]{trust.optim}}).
+\item \code{"sparse"}: trust-region method with sparse Hessian (see
+\code{\link[trustOptim]{trust.optim}}).
+\item \code{"nlminb"}: PORT routines optimisation (see
+\code{\link[stats]{nlminb}}).
+}}
 
-\item{seed}{Numeric seed. Default \code{12345}.}
+\item{hessianType}{Integer. Determines how the Hessian is computed for the
+group-level models.
+\itemize{
+\item \code{1} (default for \code{"sfacross"} and \code{"sfalcmcross"}):
+analytic Hessian.
+\item \code{2} (default for \code{"sfaselectioncross"}): BHHH
+approximation \eqn{\mathbf{G}'\mathbf{G}}, where \eqn{\mathbf{G}} is
+the matrix of individual score contributions. This default applies to
+the selection model because estimation is conducted in two steps.
+}}
 
-\item{itermax}{Maximum iterations. Default \code{2000}.}
+\item{simType}{Character string. Simulation method for maximum simulated
+likelihood (MSL). Applicable to \code{groupType = "sfacross"} when
+\code{udist} is \code{"gamma"}, \code{"lognormal"}, or \code{"weibull"},
+and to \code{groupType = "sfaselectioncross"} when \code{lType = "msl"}:
+\itemize{
+\item \code{"halton"} (default): Halton quasi-random sequences.
+\item \code{"ghalton"}: Generalised-Halton sequences.
+\item \code{"sobol"}: Sobol low-discrepancy sequences.
+\item \code{"uniform"}: pseudo-random uniform draws.
+}}
 
-\item{printInfo}{Logical. Default \code{FALSE}.}
+\item{Nsim}{Integer. Number of simulation draws for MSL. Default \code{100}.}
 
-\item{tol}{Convergence tolerance. Default \code{1e-12}.}
+\item{prime}{Integer. Prime number used to construct Halton or
+Generalised-Halton sequences. Default \code{2}.}
 
-\item{gradtol}{Gradient tolerance. Default \code{1e-06}.}
+\item{burn}{Integer. Number of leading draws discarded from the Halton
+sequence to reduce serial correlation. Default \code{10}.}
 
-\item{stepmax}{Step max for \code{ucminf}. Default \code{0.1}.}
+\item{antithetics}{Logical. If \code{TRUE}, antithetic draws are added: the
+first \code{Nsim/2} draws are taken, and the remaining \code{Nsim/2} are
+\eqn{1 - \text{draw}}. Default \code{FALSE}.}
 
-\item{qac}{QAC for \code{'bhhh'}/\code{'nr'}. Default \code{'marquardt'}.}
+\item{seed}{Integer. Random seed for simulation draws, ensuring
+reproducibility of MSL estimates. Default \code{12345}.}
 
-\item{...}{Additional arguments passed to the second-stage SFA call when
-\code{metaMethod = "sfa"}.}
+\item{itermax}{Integer. Maximum number of iterations for the main
+optimisation. Default \code{2000}. For \code{method = "sann"}, it is
+recommended to increase this substantially (e.g., \code{itermax = 20000}).}
 
-\item{x}{An object of class \code{'sfametafrontier'} (for printing).}
+\item{printInfo}{Logical. If \code{TRUE}, optimisation progress is printed
+during estimation of each group-level model. Default \code{FALSE}.}
+
+\item{tol}{Numeric. Convergence tolerance. The algorithm is considered
+converged when the change in the log-likelihood between successive
+iterations is smaller than \code{tol} in absolute value. Default
+\code{1e-12}.}
+
+\item{gradtol}{Numeric. Gradient convergence tolerance. The algorithm is
+considered converged when the Euclidean norm of the gradient is smaller
+than \code{gradtol}. Default \code{1e-6}.}
+
+\item{stepmax}{Numeric. Maximum step length used by the \code{"ucminf"}
+algorithm. Default \code{0.1}.}
+
+\item{qac}{Character string. Quadratic Approximation Correction for the
+\code{"bhhh"} and \code{"nr"} algorithms when the Hessian is not negative
+definite:
+\itemize{
+\item \code{"marquardt"} (default): step length is decreased while
+also shifting closer to the gradient direction.
+\item \code{"stephalving"}: step length is halved, preserving the
+current direction.
+}
+See \code{\link[maxLik]{maxBHHH}} and \code{\link[maxLik]{maxNR}} for
+details.}
+
+\item{...}{Additional arguments passed through to the second-stage SFA
+call when \code{metaMethod = "sfa"}.}
+
+\item{x}{An object of class \code{"sfametafrontier"}, as returned by
+\code{sfametafrontier}, for use with the \code{print} method.}
 }
 \value{
-\code{\link{sfametafrontier}} returns a list of class \code{'sfametafrontier'} containing the following elements:
-\item{groupModels}{A list containing the fitted frontier models for each group (class \code{'sfacross'}, \code{'sfaselectioncross'}, or \code{'sfalcmcross'}).}
-\item{metaSfaObj}{The fitted metafrontier model object. If \code{metaMethod = "sfa"}, this is an object of class \code{'sfacross'} representing the second-stage stochastic frontier. If \code{metaMethod = "lp"} or \code{"qp"}, this contains optimization statistics and coefficients from the deterministic envelope.}
-\item{metaRes}{A matrix or data frame of the estimated metafrontier coefficients, standard errors, z-values, and p-values.}
-\item{efficiencies}{A list containing efficiency estimates, including group-specific technical efficiencies (\code{TE_group}), metafrontier technical efficiencies (\code{TE_meta}), and the metatechnology ratios (\code{MTR}).}
-\item{formula}{The formula used for the frontier.}
-\item{metaMethod}{The metafrontier estimation method used (\code{"lp"}, \code{"qp"}, or \code{"sfa"}).}
-\item{sfaApproach}{The SFA approach used in the second stage (\code{"huang"} or \code{"ordonnell"}).}
-\item{groupType}{The type of group-level models estimated (\code{"sfacross"}, \code{"sfaselectioncross"}, or \code{"sfalcmcross"}).}
-\item{groups}{A character vector containing the names of the unique groups identified in the data.}
+\code{sfametafrontier} returns an object of class
+\code{"sfametafrontier"}, which is a list containing:
+\item{call}{The matched call.}
+\item{groupModels}{A named list of fitted group-level frontier objects,
+one per technology group. Each element is of class \code{"sfacross"},
+\code{"sfaselectioncross"}, or \code{"sfalcmcross"}, depending on
+\code{groupType}.}
+\item{metaSfaObj}{The fitted metafrontier object. For
+\code{metaMethod = "sfa"}, an object of class \code{"sfacross"}
+from the second-stage SFA. For \code{metaMethod = "lp"} or
+\code{"qp"}, a list containing the optimisation result and the
+estimated envelope coefficients.}
+\item{metaRes}{Estimated metafrontier coefficients (with standard errors,
+z-values, and p-values for \code{metaMethod = "sfa"}, or the plain
+coefficient vector for deterministic envelopes).}
+\item{formula}{The \code{formula} supplied to the call.}
+\item{metaMethod}{The metafrontier estimation method used.}
+\item{sfaApproach}{The second-stage SFA approach; \code{NA} when
+\code{metaMethod} is not \code{"sfa"}.}
+\item{groupType}{The type of group-level frontier model estimated.}
+\item{group}{The name of the grouping variable.}
+\item{groups}{Character vector of unique group labels.}
+\item{S}{The frontier orientation (\code{1} or \code{-1}).}
+\item{dataTable}{The data used in estimation, augmented with
+\code{.mf_yhat_group} (group-specific fitted frontier values) and
+\code{.mf_yhat_meta} (metafrontier fitted values).}
+\item{lcmNoGroup}{Logical. \code{TRUE} when \code{groupType = "sfalcmcross"}
+and \code{group} was not supplied.}
+\item{lcmObj}{When \code{lcmNoGroup = TRUE}, the pooled
+\code{sfalcmcross} object.}
 }
 \description{
 \code{\link{sfametafrontier}} estimates a stochastic metafrontier model
-following the theoretical frameworks of Battese, Rao, and O'Donnell (2004) and O'Donnell, Rao, and
-Battese (2008). It additionally implements the two-stage stochastic approach of Huang, Huang, and
-Liu (2014). Three types of group-level frontier models from the \code{sfaR} package are supported:
-standard stochastic frontier analysis (\code{\link[sfaR]{sfacross}}), sample selection SFA
-(\code{\link[sfaR]{sfaselectioncross}}), and latent class SFA (\code{\link[sfaR]{sfalcmcross}}).
+for cross-sectional or pooled data. The function follows the theoretical
+frameworks of Battese, Rao, and O'Donnell (2004) and O'Donnell, Rao, and
+Battese (2008), and additionally implements the two-stage stochastic approach
+of Huang, Huang, and Liu (2014). Three types of group-level frontier models
+are supported: standard stochastic frontier analysis
+(\code{\link[sfaR]{sfacross}}), sample selection stochastic frontier
+analysis (\code{\link[sfaR]{sfaselectioncross}}), and latent class stochastic
+frontier analysis (\code{\link[sfaR]{sfalcmcross}}).
 }
 \details{
-The stochastic metafrontier analysis workflow comprises two sequential stages.
-Suppose we have \eqn{N} observations divided into \eqn{G} technology groups.
-The underlying group frontier for firm \eqn{i} in group \eqn{g} at time \eqn{t} is specified as:
-\deqn{y_{it} = f(x_{it}, \beta_{(g)}) e^{v_{it} - u_{it}}}
-where \eqn{f(\cdot)} is the deterministic frontier (e.g., translog or Cobb-Douglas),
-\eqn{x_{it}} represents the input vector (or output vector for cost models),
-\eqn{\beta_{(g)}} is the technology parameter vector for group \eqn{g},
-\eqn{v_{it}} is the statistical noise, and \eqn{u_{it} \ge 0} represents technical inefficiency.
+\subsection{Standard stochastic frontier (\code{groupType = "sfacross"})}{
+The stochastic frontier model is defined as:
+\deqn{y_i = \alpha + \mathbf{x}_i'\bm{\beta} + v_i - Su_i}
+where \eqn{y} is the output (cost, revenue, or profit), \eqn{\mathbf{x}}
+is the vector of frontier regressors, \eqn{u_i \ge 0} is the one-sided
+inefficiency term with variance \eqn{\sigma^2_u}, and \eqn{v_i} is the
+symmetric noise term with variance \eqn{\sigma^2_v}.
 
-\enumerate{
-\item \strong{Group-specific estimations:} The data is split into \eqn{G} groups
-based on the \code{group} variable (unless \code{groupType="sfalcmcross"}
-with \code{group} omitted, in which case a single pooled latent class model
-is estimated to map observations to underlying groups automatically). For each explicitly or
-implicitly defined group, a frontier model is estimated natively by maximizing
-the log-likelihood function.
-\item \strong{Metafrontier estimation:} The global metafrontier \eqn{f(x_{it}, \beta^*)}
-envelopes all group frontiers \eqn{f(x_{it}, \beta_{(g)})}. The methodologies are:
-\itemize{
-\item \strong{Linear Programming (LP):} Fits a deterministic envelope over the fitted
-group frontier values by minimizing the absolute sum of deviations (Battese et al., 2004).
-The objective is to find a single parameter vector \eqn{\beta^*} such that the
-metafrontier predictions are completely uniformly larger than the group-specific predictions:
-\deqn{\min_{\beta^*} \sum_{i} \sum_{t} \left| \ln f(x_{it}, \beta^*) - \ln \hat{f}(x_{it}, \hat{\beta}_{(g)}) \right|}
-subject to \eqn{\ln f(x_{it}, \beta^*) \ge \ln \hat{f}(x_{it}, \hat{\beta}_{(g)})}.
-\item \strong{Quadratic Programming (QP):} Similar to LP, but minimizes the sum of squared deviations
-between the metafrontier and the underlying group frontiers.
-\item \strong{Stochastic Metafrontier (Huang et al., 2014):} Formulates the relationship between the
-metafrontier and the group frontier stochastically. Because the true group frontiers
-are unobservable, Huang et al. replace them with their estimates:
-\deqn{\ln \hat{f}(x_{it}, \hat{\beta}_{(g)}) = \ln f(x_{it}, \beta^*) + V_{it} - U_{it}}
-where \eqn{V_{it}} absorbs the statistical noise mapping from the first-stage estimation
-(representing the estimation error of the group frontier),
-and \eqn{U_{it} \ge 0} captures the technology gap between the group frontier and the
-global metafrontier. This method relies directly on estimating a second-stage stochastic frontier
-using the group-specific fitted values \eqn{\ln \hat{y}_{it}} as the dependent variable.
-\item \strong{Stochastic Metafrontier (O'Donnell et al., 2008):} Derives a stochastic metafrontier by fundamentally
-fitting an SFA over the pre-computed, deterministically enveloped values across all observations.
-Specifically, the dependent variable in this secondary stage relies on the theoretical
-values extracted via mathematical programming.
-}
-\item \strong{Efficiencies and Metatechnology Ratios (MTR):}
-\itemize{
-\item Group-specific Technical Efficiency (TE_group): \eqn{TE_{it}^g = exp(-u_{it})}.
-\item Metafrontier Technical Efficiency (TE_meta): \eqn{TE_{it}^*} = \eqn{exp(-u_{it} - U_{it})}.
-\item Metatechnology Ratio (MTR): The ratio mapping the distance from the group frontier
-to the potential metafrontier: \eqn{MTR_{it} = \frac{TE_{it}^*}{TE_{it}^g} = exp(-U_{it})}.
-}
+Estimation is by ML for all distributions except \code{"gamma"},
+\code{"lognormal"}, and \code{"weibull"}, for which MSL is used with
+Halton, Generalised-Halton, Sobol, or uniform draws. Antithetic draws are
+available for the uniform case.
+
+To account for heteroscedasticity, the variances are modelled as
+\eqn{\sigma^2_u = \exp(\bm{\delta}'\mathbf{Z}_u)} and
+\eqn{\sigma^2_v = \exp(\bm{\phi}'\mathbf{Z}_v)}. For the truncated normal
+distribution, heterogeneity in the pre-truncation mean is modelled as
+\eqn{\mu_i = \bm{\omega}'\mathbf{Z}_{\mu}}. The scaling property (Wang and
+Schmidt, 2002) can also be imposed for the truncated normal.
 }
 
-When \code{groupType = "sfaselectioncross"}, only the selected observations
-(\code{selectDum == 1}) participate in the metafrontier; the MTR evaluates as
-\code{NA} for non-selected observations. When \code{groupType = "sfalcmcross"},
-the best-posterior-class fitted value \eqn{y_{it}^{c^*}} is routed to the metafrontier algorithm.
+\subsection{Sample selection frontier (\code{groupType = "sfaselectioncross"})}{
+This model extends the Heckman (1979) selection framework to the
+stochastic frontier setting (Greene, 2010; Dakpo \emph{et al.}, 2021).
+The selection and frontier equations are:
+\deqn{y_{1i}^* = \mathbf{Z}_{si}'\bm{\gamma} + w_i, \quad
+    w_i \sim \mathcal{N}(0,1)}
+\deqn{y_{2i}^* = \mathbf{x}_i'\bm{\beta} + v_i - Su_i}
+where \eqn{y_{1i} = \mathbf{1}(y_{1i}^* > 0)} is the binary selection
+indicator and \eqn{y_{2i} = y_{2i}^*} is observed only when
+\eqn{y_{1i} = 1}. Selection bias arises from
+\eqn{\rho = \mathrm{Corr}(w_i, v_i) \ne 0}. Only selected observations
+enter the frontier and metafrontier estimation; efficiency estimates for
+non-selected observations are \code{NA}.
+}
+
+\subsection{Latent class frontier (\code{groupType = "sfalcmcross"})}{
+The latent class model (Orea and Kumbhakar, 2004) estimates a finite
+mixture of \eqn{J} frontier models:
+\deqn{y_i = \alpha_j + \mathbf{x}_i'\bm{\beta}_j + v_{i|j} - Su_{i|j}}
+The prior class probability follows a logit specification:
+\deqn{\pi(i,j) = \frac{\exp(\bm{\theta}_j'\mathbf{Z}_{hi})}
+    {\sum_{m=1}^{J}\exp(\bm{\theta}_m'\mathbf{Z}_{hi})}}
+Class assignment is based on the maximum posterior probability computed via
+Bayes' rule. When \code{group} is omitted, a single pooled model is
+estimated and class assignments serve as technology groups.
+}
+
+\subsection{Metafrontier estimation}{
+The global metafrontier \eqn{f(x_i, \bm{\beta}^*)} envelopes all
+group frontiers. With LP (Battese \emph{et al.}, 2004),
+\eqn{\bm{\beta}^*} minimises
+\eqn{\sum_i |\ln \hat{f}(x_i, \bm{\beta}^*) - \ln \hat{f}(x_i,
+  \hat{\bm{\beta}}_{(g)})|}
+subject to \eqn{\ln \hat{f}(x_i, \bm{\beta}^*) \ge \ln \hat{f}(x_i,
+  \hat{\bm{\beta}}_{(g)})}. QP minimises the squared analogue. The
+stochastic approaches (Huang \emph{et al.}, 2014; O'Donnell \emph{et al.},
+2008) treat the technology gap \eqn{U_i} as a one-sided error in a
+second-stage SFA. Group and metafrontier efficiencies are:
+\deqn{TE_i^g = \exp(-u_i^g), \quad
+    MTR_i = \exp(-U_i), \quad
+    TE_i^* = TE_i^g \times MTR_i}
+Both Jondrow \emph{et al.} (1982) and Battese and Coelli (1988) estimators
+are provided for each measure. See \code{\link{efficiencies}} for details.
+}
 }
 \examples{
 \dontrun{
-## 1. Standard SFA Metafrontier Models
+###########################################################################
+## -------- SECTION 1: Standard SFA Group Frontier ----------------------##
+## Using the rice production dataset (ricephil) from Battese et al.      ##
+## Groups are formed based on farm area terciles (small/medium/large).   ##
+###########################################################################
+
 data("ricephil", package = "sfaR")
 ricephil$group <- cut(ricephil$AREA,
-  breaks = quantile(ricephil$AREA, probs = c(0, 1 / 3, 2 / 3, 1), na.rm = TRUE),
+  breaks = quantile(ricephil$AREA, probs = c(0, 1/3, 2/3, 1), na.rm = TRUE),
   labels = c("small", "medium", "large"),
   include.lowest = TRUE
 )
 
-# Linear Programming (LP) Metafrontier
-meta_lp <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
-  data = ricephil, group = "group", S = 1, udist = "hnormal",
+## 1a. sfacross groups + LP metafrontier
+##     Deterministic envelope via linear programming (Battese et al., 2004).
+meta_sfacross_lp <- sfametafrontier(
+  formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data       = ricephil,
+  group      = "group",
+  S          = 1,
+  udist      = "hnormal",
+  groupType  = "sfacross",
   metaMethod = "lp"
 )
-summary(meta_lp)
+summary(meta_sfacross_lp)
+# Retrieve individual efficiency and metatechnology ratio estimates:
+ef_lp <- efficiencies(meta_sfacross_lp)
+head(ef_lp)
 
-# Quadratic Programming (QP) Metafrontier
-meta_qp <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
-  data = ricephil, group = "group", S = 1, udist = "hnormal",
+## 1b. sfacross groups + QP metafrontier
+##     Deterministic envelope via quadratic programming.
+meta_sfacross_qp <- sfametafrontier(
+  formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data       = ricephil,
+  group      = "group",
+  S          = 1,
+  udist      = "hnormal",
+  groupType  = "sfacross",
   metaMethod = "qp"
 )
+summary(meta_sfacross_qp)
 
-# Huang (2014) Two-stage SFA Metafrontier
-meta_huang <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
-  data = ricephil, group = "group", S = 1, udist = "hnormal",
-  metaMethod = "sfa", sfaApproach = "huang"
+## 1c. sfacross groups + Two-stage SFA metafrontier (Huang et al., 2014)
+##     The group-specific fitted frontier values serve as the dependent
+##     variable in the second-stage SFA, yielding a stochastic technology gap.
+meta_sfacross_huang <- sfametafrontier(
+  formula     = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data        = ricephil,
+  group       = "group",
+  S           = 1,
+  udist       = "hnormal",
+  groupType   = "sfacross",
+  metaMethod  = "sfa",
+  sfaApproach = "huang"
 )
+summary(meta_sfacross_huang)
+ef_huang <- efficiencies(meta_sfacross_huang)
 
-# O'Donnell (2008) Stochastic Metafrontier on LP base
+## 1d. sfacross groups + O'Donnell et al. (2008) stochastic metafrontier
+##     The LP deterministic envelope is used as the second-stage dependent
+##     variable: the metafrontier is estimated stochastically around the
+##     envelope.
+meta_sfacross_odonnell <- sfametafrontier(
+  formula     = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data        = ricephil,
+  group       = "group",
+  S           = 1,
+  udist       = "hnormal",
+  groupType   = "sfacross",
+  metaMethod  = "sfa",
+  sfaApproach = "ordonnell"
+)
+summary(meta_sfacross_odonnell)
+
+###########################################################################
+## -------- SECTION 2: Latent Class (LCM) Group Frontier ---------------##
+## No observed group variable: a pooled sfalcmcross model assigns       ##
+## observations to 2 latent technology classes; these classes become the ##
+## technology groups for the metafrontier.                               ##
+###########################################################################
+
 data("utility", package = "sfaR")
-meta_ordonnell <- sfametafrontier(
-  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
-    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
-    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
-  data = utility, group = "regu", S = -1, udist = "hnormal",
-  metaMethod = "sfa", sfaApproach = "ordonnell"
-)
 
-## 2. Latent Class Metafrontier (LCM) Models - Unobserved Groups
-# LP Metafrontier using 2 posterior classes built automatically
+## 2a. sfalcmcross (pooled, 2 classes) + LP metafrontier
 meta_lcm_lp <- sfametafrontier(
-  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
-    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
-    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
-  data = utility, S = -1, groupType = "sfalcmcross", lcmClasses = 2,
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility,
+  S          = -1,
+  groupType  = "sfalcmcross",
+  lcmClasses = 2,
   metaMethod = "lp"
 )
 summary(meta_lcm_lp)
+ef_lcm_lp <- efficiencies(meta_lcm_lp)
+# Per-class posterior probabilities and class-specific efficiencies are
+# included alongside group and metafrontier efficiencies.
 
-# Huang (2014) stochastic metafrontier on LCM classes
-meta_lcm_huang <- sfametafrontier(
-  formula = log(tc / wf) ~ log(y) + I(1 / 2 * (log(y))^2) +
-    log(wl / wf) + log(wk / wf) + I(1 / 2 * (log(wl / wf))^2) + I(1 / 2 * (log(wk / wf))^2) +
-    I(log(wl / wf) * log(wk / wf)) + I(log(y) * log(wl / wf)) + I(log(y) * log(wk / wf)),
-  data = utility, S = -1, groupType = "sfalcmcross", lcmClasses = 2,
-  metaMethod = "sfa", sfaApproach = "huang"
+## 2b. sfalcmcross (pooled, 2 classes) + QP metafrontier
+meta_lcm_qp <- sfametafrontier(
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility,
+  S          = -1,
+  groupType  = "sfalcmcross",
+  lcmClasses = 2,
+  metaMethod = "qp"
 )
+summary(meta_lcm_qp)
 
-## 3. Sample Selection Metafrontier Models
-ricephil$laterSurvey <- as.integer(ricephil$YEARDUM > 3)
-# LP Metafrontier using generalized sample selection handling bias
+## 2c. sfalcmcross (pooled, 2 classes) + Two-stage SFA metafrontier
+##     (Huang et al., 2014)
+meta_lcm_huang <- sfametafrontier(
+  formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data        = utility,
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  metaMethod  = "sfa",
+  sfaApproach = "huang"
+)
+summary(meta_lcm_huang)
+ef_lcm_huang <- efficiencies(meta_lcm_huang)
+
+## 2d. sfalcmcross (pooled, 2 classes) + O'Donnell et al. (2008)
+meta_lcm_odonnell <- sfametafrontier(
+  formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data        = utility,
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  metaMethod  = "sfa",
+  sfaApproach = "ordonnell"
+)
+summary(meta_lcm_odonnell)
+
+###########################################################################
+## -------- SECTION 3: Sample Selection SFA Group Frontier -------------##
+## Simulated dataset with a Heckman selection mechanism. Only selected  ##
+## observations (d == 1) participate in the frontier and metafrontier.  ##
+## Efficiency estimates for non-selected observations are NA.           ##
+###########################################################################
+
+N <- 2000; set.seed(12345)
+z1 <- rnorm(N); z2 <- rnorm(N)
+v1 <- rnorm(N); v2 <- rnorm(N)
+g  <- rnorm(N)
+e1 <- v1
+e2 <- 0.7071 * (v1 + v2)
+ds <- z1 + z2 + e1
+d  <- ifelse(ds > 0, 1, 0)        # binary selection indicator
+group <- ifelse(g > 0, 1, 0)      # two technology groups (0 and 1)
+u  <- abs(rnorm(N))
+x1 <- rnorm(N); x2 <- rnorm(N)
+y  <- x1 + x2 + e2 - u
+dat <- as.data.frame(cbind(y=y, x1=x1, x2=x2, z1=z1, z2=z2, d=d, group=group))
+
+## 3a. sfaselectioncross + LP metafrontier
+##     Selection bias is corrected via the Greene (2010) two-step probit
+##     approach. The LP envelope envelopes both groups' selected-sample
+##     frontier fitted values.
 meta_sel_lp <- sfametafrontier(
-  formula = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
-  data = ricephil, group = "group", S = 1, groupType = "sfaselectioncross",
-  selectionF = laterSurvey ~ EDYRS + AGE, metaMethod = "lp"
+  formula    = y ~ x1 + x2,
+  selectionF = d ~ z1 + z2,
+  data       = dat,
+  group      = "group",
+  S          = 1L,
+  udist      = "hnormal",
+  groupType  = "sfaselectioncross",
+  modelType  = "greene10",
+  lType      = "kronrod",
+  Nsub       = 100,
+  uBound     = Inf,
+  method     = "bfgs",
+  itermax    = 2000,
+  metaMethod = "lp"
 )
 summary(meta_sel_lp)
+ef_sel_lp <- efficiencies(meta_sel_lp)
+
+## 3b. sfaselectioncross + QP metafrontier
+meta_sel_qp <- sfametafrontier(
+  formula    = y ~ x1 + x2,
+  selectionF = d ~ z1 + z2,
+  data       = dat,
+  group      = "group",
+  S          = 1L,
+  udist      = "hnormal",
+  groupType  = "sfaselectioncross",
+  modelType  = "greene10",
+  lType      = "kronrod",
+  Nsub       = 100,
+  uBound     = Inf,
+  method     = "bfgs",
+  itermax    = 2000,
+  metaMethod = "qp"
+)
+summary(meta_sel_qp)
+
+## 3c. sfaselectioncross + Two-stage SFA metafrontier (Huang et al., 2014)
+meta_sel_huang <- sfametafrontier(
+  formula     = y ~ x1 + x2,
+  selectionF  = d ~ z1 + z2,
+  data        = dat,
+  group       = "group",
+  S           = 1L,
+  udist       = "hnormal",
+  groupType   = "sfaselectioncross",
+  modelType   = "greene10",
+  lType       = "kronrod",
+  Nsub        = 100,
+  uBound      = Inf,
+  simType     = "halton",
+  Nsim        = 300,
+  prime       = 2L,
+  burn        = 10,
+  antithetics = FALSE,
+  seed        = 12345,
+  method      = "bfgs",
+  itermax     = 2000,
+  metaMethod  = "sfa",
+  sfaApproach = "huang"
+)
+summary(meta_sel_huang)
+ef_sel_huang <- efficiencies(meta_sel_huang)
+
+## 3d. sfaselectioncross + O'Donnell et al. (2008) stochastic metafrontier
+meta_sel_odonnell <- sfametafrontier(
+  formula     = y ~ x1 + x2,
+  selectionF  = d ~ z1 + z2,
+  data        = dat,
+  group       = "group",
+  S           = 1L,
+  udist       = "hnormal",
+  groupType   = "sfaselectioncross",
+  modelType   = "greene10",
+  lType       = "kronrod",
+  Nsub        = 100,
+  uBound      = Inf,
+  method      = "bfgs",
+  itermax     = 2000,
+  metaMethod  = "sfa",
+  sfaApproach = "ordonnell"
+)
+summary(meta_sel_odonnell)
 }
 
 }
 \references{
+Aigner, D. J., Lovell, C. A. K., and Schmidt, P. 1977. Formulation and
+estimation of stochastic frontier production function models.
+\emph{Journal of Econometrics}, \bold{6}(1), 21--37.
+\url{https://doi.org/10.1016/0304-4076(77)90052-5}
+
+Battese, G. E., and Coelli, T. J. 1988. Prediction of firm-level technical
+efficiencies with a generalized frontier production function and panel data.
+\emph{Journal of Econometrics}, \bold{38}(3), 387--399.
+\url{https://doi.org/10.1016/0304-4076(88)90053-X}
+
 Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
 production function for estimation of technical efficiencies and technology
 gaps for firms operating under different technologies.
 \emph{Journal of Productivity Analysis}, \bold{21}(1), 91--103.
 \url{https://doi.org/10.1023/B:PROD.0000012454.06094.29}
 
+Dakpo, K. H., Desjeux, Y., Latruffe, L., and Jeanneaux, P. 2021.
+Modelling pollution-generating technologies in performance benchmarking.
+\emph{Omega}, \bold{102}, 102347.
+\url{https://doi.org/10.1016/j.omega.2020.102347}
+
+Greene, W. 2003. Simulated likelihood estimation of the normal-gamma
+stochastic frontier function. \emph{Journal of Productivity Analysis},
+\bold{19}(2-3), 179--190.
+\url{https://doi.org/10.1023/A:1022853416499}
+
+Greene, W. 2010. A stochastic frontier model with correction for sample
+selection. \emph{Journal of Productivity Analysis}, \bold{34}(1), 15--24.
+\url{https://doi.org/10.1007/s11123-009-0159-1}
+
+Hajargasht, G. 2015. Stochastic frontiers with a Rayleigh distribution.
+\emph{Journal of Productivity Analysis}, \bold{44}(2), 199--208.
+\url{https://doi.org/10.1007/s11123-014-0417-8}
+
+Heckman, J. J. 1979. Sample selection bias as a specification error.
+\emph{Econometrica}, \bold{47}(1), 153--161.
+\url{https://doi.org/10.2307/1912352}
+
 Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
 estimating the metafrontier production function based on a stochastic
 frontier framework. \emph{Journal of Productivity Analysis},
-\bold{42}(3), 241--254.
-\url{https://doi.org/10.1007/s11123-014-0402-2}
+\bold{42}(3), 241--254. \url{https://doi.org/10.1007/s11123-014-0402-2}
+
+Jondrow, J., Lovell, C. A. K., Materov, I. S., and Schmidt, P. 1982. On
+the estimation of technical inefficiency in the stochastic frontier
+production function model. \emph{Journal of Econometrics},
+\bold{19}(2-3), 233--238.
+\url{https://doi.org/10.1016/0304-4076(82)90004-5}
+
+Li, Q. 1996. Estimating a stochastic production frontier when the adjusted
+error is skewed. \emph{Economics Letters}, \bold{52}(3), 221--228.
+\url{https://doi.org/10.1016/S0165-1765(96)00857-9}
+
+Meeusen, W., and van den Broeck, J. 1977. Efficiency estimation from
+Cobb-Douglas production functions with composed error.
+\emph{International Economic Review}, \bold{18}(2), 435--444.
+\url{https://doi.org/10.2307/2525757}
+
+Migon, H. S., and Medici, E. 2001. Bayesian inference for generalised
+exponential models. Working paper, Universidade Federal do Rio de Janeiro.
+
+Nguyen, N. B. 2010. Estimation of technical efficiency in stochastic
+frontier analysis. PhD thesis, Bowling Green State University.
 
 O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
 frameworks for the study of firm-level efficiencies and technology ratios.
 \emph{Empirical Economics}, \bold{34}(2), 231--255.
 \url{https://doi.org/10.1007/s00181-007-0119-4}
+
+Orea, L., and Kumbhakar, S. C. 2004. Efficiency measurement using a latent
+class stochastic frontier model. \emph{Empirical Economics}, \bold{29}(1),
+169--183. \url{https://doi.org/10.1007/s00181-003-0184-2}
+
+Papadopoulos, A. 2020. The half-normal specification for the two-tier
+stochastic frontier model. \emph{Journal of Productivity Analysis},
+\bold{56}(1), 1--14. \url{https://doi.org/10.1007/s11123-021-00611-8}
+
+Stevenson, R. E. 1980. Likelihood functions for generalised stochastic
+frontier estimation. \emph{Journal of Econometrics}, \bold{13}(1), 57--66.
+\url{https://doi.org/10.1016/0304-4076(80)90042-1}
+
+Tsionas, E. G. 2007. Efficiency measurement with the Weibull stochastic
+frontier. \emph{Oxford Bulletin of Economics and Statistics},
+\bold{69}(5), 693--706. \url{https://doi.org/10.1111/j.1468-0084.2007.00475.x}
+
+Wang, H.-J. 2012. Stochastic frontier models. In \emph{A Companion to
+Theoretical Econometrics}, ed. B. H. Baltagi, Blackwell, Oxford.
+
+Wang, H.-J., and Schmidt, P. 2002. One-step and two-step estimation of the
+effects of exogenous variables on technical efficiency levels.
+\emph{Journal of Productivity Analysis}, \bold{18}(2), 129--144.
+\url{https://doi.org/10.1023/A:1016565719882}
+
+Wang, W., and Ye, F. 2020. Estimation of the stochastic frontier model with
+a log-normal composite error. \emph{Journal of Productivity Analysis},
+\bold{54}(1), 1--13. \url{https://doi.org/10.1007/s11123-020-00579-x}
+
+Dakpo, K. H., Desjeux, Y., and Latruffe, L. 2023. sfaR: Stochastic Frontier
+Analysis using R. R package version 1.0.1.
+\url{https://CRAN.R-project.org/package=sfaR}
 }
 \seealso{
 \code{\link[sfaR]{sfacross}}, \code{\link[sfaR]{sfaselectioncross}},
-\code{\link[sfaR]{sfalcmcross}}
+\code{\link[sfaR]{sfalcmcross}}, \code{\link{efficiencies}},
+\code{\link{summary.sfametafrontier}}, \code{\link[sfaR]{ic}}
 }
 \keyword{metafrontier}
 \keyword{models}
