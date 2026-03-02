@@ -9,7 +9,7 @@
 
 > **Metafrontier Analysis Routines**
 
-An R package for implementing various metafrontier analyses for productivity and performance benchmarking, assessing technical efficiencies, computing metatechnology ratios (MTRs), and measuring technology gaps for firms operating under different technologies.
+An R package for implementing various deterministic and stochastic metafrontier analyses for efficiency and performance benchmarking, assessing technical efficiencies (TE), metafrontier technical efficiencies (MTE), computing metatechnology ratios (MTRs), and measuring technology gap ratios (TGRs) for firms operating under different technologies.
 
 `metafrontieR` provides routines for:
 
@@ -18,8 +18,8 @@ An R package for implementing various metafrontier analyses for productivity and
 
 In addition, the package implements:
 
-- **Latent class stochastic metafrontier analysis** — when technology groups are unobserved, the latent class model (LCM) automatically identifies classes and routes them to the metafrontier.
-- **Sample selection correction metafrontier models** — corrects for sample selection bias following [Greene (2010)](https://doi.org/10.1007/s11123-009-0159-1).
+- **Latent class stochastic metafrontier analysis** — when technology groups are unobserved, the latent class model (LCM) robustly identifies classes and routes them to the metafrontier for benchmarking following [Greene and Hensher (2003)](https://doi.org/10.1016/S0191-2615(02)00046-2), [Orea and Kumbhakar (2004)](https://doi.org/10.1007/s00181-003-0184-2), [Greene (2005)](https://doi.org/10.1007/s11123-004-8545-1), [Parmeter and Kumbhakar (2014)](https://doi.org/10.1561/0800000023).
+- **Sample selection correction metafrontier models** — corrects for sample selection bias following [Heckman (1979)](https://doi.org/10.2307/1912352), [Greene (2010)](https://doi.org/10.1007/s11123-009-0159-1), [Greene (2003)](https://elibrary.pearson.de/book/99.150005/9781292231150).
 
 > **Dependency:** `metafrontieR` depends on the [`sfaR`](https://CRAN.R-project.org/package=sfaR) package by [Dakpo, Desjeux & Latruffe (2023)](https://CRAN.R-project.org/package=sfaR), which provides the underlying stochastic frontier estimation routines for all group-level models.
 
