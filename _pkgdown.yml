@@ -36,7 +36,7 @@ home:
 navbar:
   structure:
     left: [intro, articles, reference, news]
-    right: [search, github]
+    right: [search, lightswitch, github]
   components:
     intro:
       text: "Get Started"
