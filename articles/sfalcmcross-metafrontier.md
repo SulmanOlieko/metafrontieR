@@ -1,0 +1,154 @@
+# Latent Class SFA Metafrontier (groupType = "sfalcmcross")
+
+## Overview
+
+In many applications, the technology groups that firms belong to are
+**unobserved** — we cannot directly observe which firms operate under
+which technology type. The latent class model (LCM) addresses this by:
+
+1.  Fitting a **pooled latent class SFA** on the entire dataset,
+    simultaneously estimating class-specific frontier parameters and
+    class membership probabilities for each firm.
+2.  Assigning each firm to a class based on its highest **posterior
+    class probability**.
+3.  Using these assignments as the technology groups for the
+    metafrontier.
+
+This approach is appropriate when: - No observed group variable is
+available. - Technology heterogeneity is suspected but not directly
+measurable. - A priori group boundaries are unclear or arbitrary.
+
+## Data Preparation
+
+We use the `utility` dataset from `sfaR`, which contains 791
+observations from US electricity utilities. We estimate a cost frontier
+with no explicit group variable.
+
+``` r
+library(metafrontieR)
+data("utility", package = "sfaR")
+```
+
+## Method 1: LCM + LP Metafrontier
+
+Fit a 2-class latent class pooled SFA, then estimate the LP
+deterministic envelope over the inferred class frontiers.
+
+``` r
+meta_lcm_lp <- sfametafrontier(
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility,
+  S          = -1,          # cost frontier (S = -1)
+  groupType  = "sfalcmcross",
+  lcmClasses = 2,           # number of latent classes
+  metaMethod = "lp"
+)
+summary(meta_lcm_lp)
+```
+
+> **Note:** The `group` argument is not needed when
+> `groupType = "sfalcmcross"` — the latent classes are identified
+> automatically by the LCM. The `lcmClasses` argument controls the
+> number of classes.
+
+## Method 2: LCM + QP Metafrontier
+
+``` r
+meta_lcm_qp <- sfametafrontier(
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility,
+  S          = -1,
+  groupType  = "sfalcmcross",
+  lcmClasses = 2,
+  metaMethod = "qp"
+)
+summary(meta_lcm_qp)
+```
+
+## Method 3: LCM + SFA (Huang)
+
+``` r
+meta_lcm_huang <- sfametafrontier(
+  formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data        = utility,
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  metaMethod  = "sfa",
+  sfaApproach = "huang"
+)
+summary(meta_lcm_huang)
+```
+
+## Method 4: LCM + SFA (O’Donnell)
+
+``` r
+meta_lcm_odonnell <- sfametafrontier(
+  formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data        = utility,
+  S           = -1,
+  groupType   = "sfalcmcross",
+  lcmClasses  = 2,
+  metaMethod  = "sfa",
+  sfaApproach = "ordonnell"
+)
+summary(meta_lcm_odonnell)
+```
+
+## Choosing the Number of Classes
+
+The number of latent classes (`lcmClasses`) should be guided by economic
+theory and information criteria. You can compare models with different
+numbers of classes:
+
+``` r
+meta_lcm_2 <- sfametafrontier(
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility, S = -1,
+  groupType  = "sfalcmcross", lcmClasses = 2, metaMethod = "lp"
+)
+meta_lcm_3 <- sfametafrontier(
+  formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
+  data       = utility, S = -1,
+  groupType  = "sfalcmcross", lcmClasses = 3, metaMethod = "lp"
+)
+# Compare information criteria
+ic(meta_lcm_2)
+ic(meta_lcm_3)
+```
+
+Prefer the model with the lower AIC/BIC.
+
+## Extracting Efficiencies and Posterior Probabilities
+
+For LCM models,
+[`efficiencies()`](https://SulmanOlieko.github.io/metafrontieR/reference/efficiencies.md)
+returns extra columns for posterior class membership probabilities,
+which can be used for robustness checks or classification:
+
+``` r
+eff_lcm <- efficiencies(meta_lcm_lp)
+head(eff_lcm)
+
+# Key LCM-specific columns:
+# Group_c          — most likely class assignment
+# PosteriorProb_c  — posterior probability of assigned class
+# PosteriorProb_c1 — posterior probability of Class 1
+# PosteriorProb_c2 — posterior probability of Class 2
+```
+
+### Class membership summary
+
+``` r
+# Proportion assigned to each class and mean posterior probability
+with(eff_lcm, table(Group_c)) / nrow(eff_lcm) * 100   # % in each class
+```
+
+## Key Difference from `sfacross`
+
+| Feature | `sfacross` | `sfalcmcross` |
+|----|----|----|
+| Group variable | Required | Not required |
+| Group estimation | Separate SFA per group | Pooled LCM simultaneously |
+| Output | Group-level SFA summaries | Pooled LCM summary with class-specific parameters |
+| Extra efficiency columns | Confidence bounds | Posterior class probabilities |

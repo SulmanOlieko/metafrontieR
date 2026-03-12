@@ -1,0 +1,139 @@
+# Getting Started with metafrontieR
+
+## What is metafrontieR?
+
+`metafrontieR` is an R package for implementing **metafrontier
+analysis** — a framework for productivity and performance benchmarking
+of firms (or farms, utilities, hospitals, etc.) that operate under
+*different* technologies. This is also referred to as “heterogeneous
+technology” analysis.
+
+The classic **stochastic frontier analysis (SFA)** estimates a single
+frontier for all firms. Metafrontier analysis extends this by:
+
+1.  Estimating **group-specific frontiers** for each technology
+    sub-group.
+2.  Estimating a common **metafrontier** that envelops all group
+    frontiers.
+3.  Computing **metatechnology ratios (MTR)**, which quantify how far
+    each group’s frontier lies below the best-practice metafrontier.
+
+This allows researchers to disentangle:
+
+- **Technical efficiency** relative to the group’s own frontier
+  (TE_group).
+- **Metafrontier efficiency** relative to the common best-practice
+  frontier (TE_meta).
+- **Technology gap ratio** (MTR = TE_meta / TE_group), which captures
+  how technologically advanced a group’s production possibilities are.
+
+## Conceptual Framework
+
+``` math
+\text{MTR}_i = \frac{\text{TE\_meta}_i}{\text{TE\_group}_i}
+```
+
+A **MTR close to 1** means the group’s technology is near the
+metafrontier (advanced technology). A **MTR far below 1** means the
+group operates under a less advanced technology.
+
+## Methods Supported
+
+`metafrontieR` supports four metafrontier estimation methods
+(`metaMethod`):
+
+| Method | Description |
+|----|----|
+| `"lp"` | Linear programming deterministic envelope — Battese, Rao & O’Donnell (2004) |
+| `"qp"` | Quadratic programming deterministic envelope |
+| `"sfa"` (`sfaApproach = "huang"`) | Two-stage stochastic metafrontier — Huang, Huang & Liu (2014) |
+| `"sfa"` (`sfaApproach = "ordonnell"`) | Two-stage SFA on LP envelope — O’Donnell, Rao & Battese (2008) |
+
+And three group frontier types (`groupType`):
+
+| Group Type | When to Use |
+|----|----|
+| `"sfacross"` | Technology groups are *observed* (e.g., a group variable exists) |
+| `"sfalcmcross"` | Technology groups are *unobserved* — latent class model identifies them |
+| `"sfaselectioncross"` | Sample selection bias is present (e.g., a binary selection indicator) |
+
+## Installation
+
+``` r
+# Install devtools if needed
+if (!require("devtools")) install.packages("devtools")
+
+# Install metafrontieR from GitHub
+devtools::install_github("SulmanOlieko/metafrontieR")
+```
+
+> **Note:** `sfaR` is automatically installed as a dependency — you do
+> not need to install it separately.
+
+## Quick-Start Example
+
+This minimal example demonstrates the core workflow using the `ricephil`
+dataset from the `sfaR` package, with three Filipino rice farm-size
+groups (small, medium, large).
+
+### Step 1: Load data and create groups
+
+``` r
+library(metafrontieR)
+data("ricephil", package = "sfaR")
+
+# Create technology groups based on farm area terciles
+ricephil$group <- cut(
+  ricephil$AREA,
+  breaks        = quantile(ricephil$AREA, probs = c(0, 1/3, 2/3, 1), na.rm = TRUE),
+  labels        = c("small", "medium", "large"),
+  include.lowest = TRUE
+)
+table(ricephil$group)
+```
+
+### Step 2: Fit the metafrontier model
+
+``` r
+meta_lp <- sfametafrontier(
+  formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
+  data       = ricephil,
+  group      = "group",
+  S          = 1,            # production frontier (S=1) or cost frontier (S=-1)
+  udist      = "hnormal",
+  groupType  = "sfacross",
+  metaMethod = "lp"
+)
+```
+
+### Step 3: Summarise results
+
+``` r
+summary(meta_lp)
+```
+
+### Step 4: Extract firm-level efficiencies
+
+``` r
+eff <- efficiencies(meta_lp)
+head(eff)
+```
+
+Key output columns:
+
+| Column        | Description                      |
+|---------------|----------------------------------|
+| `TE_group_BC` | Group TE (Battese & Coelli 1988) |
+| `TE_meta_BC`  | Metafrontier TE                  |
+| `MTR_BC`      | Metatechnology ratio             |
+
+## What Next?
+
+- **Standard SFA groups** → see
+  [`vignette("sfacross-metafrontier")`](https://SulmanOlieko.github.io/metafrontieR/articles/sfacross-metafrontier.md)
+- **Unobserved/latent groups** → see
+  [`vignette("sfalcmcross-metafrontier")`](https://SulmanOlieko.github.io/metafrontieR/articles/sfalcmcross-metafrontier.md)
+- **Sample selection** → see
+  [`vignette("sfaselectioncross-metafrontier")`](https://SulmanOlieko.github.io/metafrontieR/articles/sfaselectioncross-metafrontier.md)
+- **Extracting all outputs** → see
+  [`vignette("efficiency-extraction")`](https://SulmanOlieko.github.io/metafrontieR/articles/efficiency-extraction.md)
