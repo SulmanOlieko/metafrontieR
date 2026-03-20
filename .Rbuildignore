@@ -5,9 +5,11 @@
 ^\.DS_Store$
 ^\.git$
 ^metafrontieR-manual\.pdf$
-^\.\.Rcheck$
-^\.\.pdf$
 ^.*\.Rcheck$
+^.*\.tar\.gz$
 ^_pkgdown\.yml$
 ^pkgdown$
 ^docs$
+^\.nojekyll$
+^cran-comments\.md$
+^NEWS\.md$

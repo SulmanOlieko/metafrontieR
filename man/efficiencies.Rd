@@ -228,33 +228,33 @@ which group-level efficiency estimator was used as the basis.
 Battese, G. E., and Coelli, T. J. 1988. Prediction of firm-level technical
 efficiencies with a generalized frontier production function and panel data.
 \emph{Journal of Econometrics}, \bold{38}(3), 387--399.
-\url{https://doi.org/10.1016/0304-4076(88)90053-X}
+\doi{10.1016/0304-4076(88)90053-X}
 
 Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
 production function for estimation of technical efficiencies and technology
 gaps for firms operating under different technologies.
 \emph{Journal of Productivity Analysis}, \bold{21}(1), 91--103.
-\url{https://doi.org/10.1023/B:PROD.0000012454.06094.29}
+\doi{10.1023/B:PROD.0000012454.06094.29}
 
 Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
 estimating the metafrontier production function based on a stochastic
 frontier framework. \emph{Journal of Productivity Analysis},
-\bold{42}(3), 241--254. \url{https://doi.org/10.1007/s11123-014-0402-2}
+\bold{42}(3), 241--254. \doi{10.1007/s11123-014-0402-2}
 
 Jondrow, J., Lovell, C. A. K., Materov, I. S., and Schmidt, P. 1982. On
 the estimation of technical inefficiency in the stochastic frontier
 production function model. \emph{Journal of Econometrics},
 \bold{19}(2-3), 233--238.
-\url{https://doi.org/10.1016/0304-4076(82)90004-5}
+\doi{10.1016/0304-4076(82)90004-5}
 
 O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
 frameworks for the study of firm-level efficiencies and technology ratios.
 \emph{Empirical Economics}, \bold{34}(2), 231--255.
-\url{https://doi.org/10.1007/s00181-007-0119-4}
+\doi{10.1007/s00181-007-0119-4}
 
 Orea, L., and Kumbhakar, S. C. 2004. Efficiency measurement using a latent
 class stochastic frontier model. \emph{Empirical Economics}, \bold{29}(1),
-169--183. \url{https://doi.org/10.1007/s00181-003-0184-2}
+169--183. \doi{10.1007/s00181-003-0184-2}
 
 Dakpo, K. H., Desjeux, Y., and Latruffe, L. 2023. sfaR: Stochastic Frontier
 Analysis using R. R package version 1.0.1.
