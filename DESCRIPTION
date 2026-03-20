@@ -6,15 +6,15 @@ Authors@R: c(
            role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-7401-5326"))
   )
-Description: Implements metafrontier analyses for productivity and performance
-    benchmarking across firms operating under different technologies. Contains
-    routines for the deterministic metafrontier envelope of O'Donnell et al.
-    (2008) <doi:10.1007/s00181-007-0119-4> via linear and quadratic programming,
-    and the stochastic metafrontier of Huang et al. (2014)
-    <doi:10.1007/s11123-014-0402-2>. Also supports latent class stochastic
-    metafrontier analysis and sample selection correction stochastic metafrontier
-    models. Depends on the 'sfaR' package by Dakpo et al. (2023)
-    <https://CRAN.R-project.org/package=sfaR>.
+Description: Implements analyses for productivity and performance
+    benchmarking across firms operating under different technologies.
+    Contains routines for deterministic envelope estimation via linear and
+    quadratic programming <doi:10.1007/s00181-007-0119-4>, stochastic
+    frontier-based estimation <doi:10.1007/s11123-014-0402-2>, latent
+    class stochastic frontier estimation, and sample selection corrected
+    frontier estimation. Group-level and meta-level technical efficiencies,
+    along with metatechnology ratios, are returned via a unified interface.
+    Builds on the 'sfaR' package <https://CRAN.R-project.org/package=sfaR>.
 License: GPL (>= 3)
 URL: https://github.com/SulmanOlieko/metafrontieR,
     https://SulmanOlieko.github.io/metafrontieR/

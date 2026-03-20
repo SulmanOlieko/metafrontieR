@@ -104,8 +104,10 @@ observed.</li>
 <p>If selection into the sample is correlated with firm efficiency,
 ignoring this leads to biased frontier estimates.
 <code>sfaselectioncross</code> implements the <strong>two-step ML
-estimator of Greene (2010)</strong> that corrects for this bias using a
-probit selection equation (Heckman 1979 correction).</p>
+estimator of Greene (2010)</strong>, leveraging the sample selection
+correction provided via <code>sfaR</code> (Dakpo et al. 2022), which
+corrects for this bias using a probit selection equation (Heckman 1979
+correction).</p>
 <p>The selection model requires: - A <strong>binary selection
 indicator</strong> <code>d</code> (1 = selected/observed, 0 = not
 selected). - A <strong>selection equation formula</strong>

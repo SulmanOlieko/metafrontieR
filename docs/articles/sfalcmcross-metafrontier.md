@@ -6,7 +6,8 @@ In many applications, the technology groups that firms belong to are
 **unobserved** — we cannot directly observe which firms operate under
 which technology type. The latent class model (LCM) addresses this by:
 
-1.  Fitting a **pooled latent class SFA** on the entire dataset,
+1.  Fitting a **pooled latent class SFA** on the entire dataset using
+    the `sfaR` implementation based on Dakpo et al. (2021),
     simultaneously estimating class-specific frontier parameters and
     class membership probabilities for each firm.
 2.  Assigning each firm to a class based on its highest **posterior

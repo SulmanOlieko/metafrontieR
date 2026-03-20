@@ -12,9 +12,10 @@ random draw from the population. For example:
 
 If selection into the sample is correlated with firm efficiency,
 ignoring this leads to biased frontier estimates. `sfaselectioncross`
-implements the **two-step ML estimator of Greene (2010)** that corrects
-for this bias using a probit selection equation (Heckman 1979
-correction).
+implements the **two-step ML estimator of Greene (2010)**, leveraging
+the sample selection correction provided via `sfaR` (Dakpo et al. 2022),
+which corrects for this bias using a probit selection equation (Heckman
+1979 correction).
 
 The selection model requires: - A **binary selection indicator** `d` (1
 = selected/observed, 0 = not selected). - A **selection equation

@@ -93,11 +93,14 @@
 <div class="section level2">
 <h2 id="what-is-metafrontier">What is metafrontieR?<a class="anchor" aria-label="anchor" href="#what-is-metafrontier"></a>
 </h2>
-<p><code>metafrontieR</code> is an R package for implementing
-<strong>metafrontier analysis</strong> — a framework for productivity
-and performance benchmarking of firms (or farms, utilities, hospitals,
-etc.) that operate under <em>different</em> technologies. This is also
-referred to as “heterogeneous technology” analysis.</p>
+<p><code>metafrontieR</code> implements analyses for productivity and
+performance benchmarking across firms operating under different
+technologies. It contains routines for deterministic envelope estimation
+via linear and quadratic programming, stochastic frontier-based
+estimation, latent class stochastic frontier estimation, and sample
+selection corrected frontier estimation. Group-level and meta-level
+technical efficiencies, along with metatechnology ratios, are returned
+via a unified interface. Builds on the ‘sfaR’ package.</p>
 <p>The classic <strong>stochastic frontier analysis (SFA)</strong>
 estimates a single frontier for all firms. Metafrontier analysis extends
 this by:</p>
@@ -119,7 +122,7 @@ frontier (TE_group).</li>
 <strong>Metafrontier efficiency</strong> relative to the common
 best-practice frontier (TE_meta).</li>
 <li>
-<strong>Technology gap ratio</strong> (MTR = TE_meta / TE_group),
+<strong>Metatechnology ratio</strong> (MTR = TE_meta / TE_group),
 which captures how technologically advanced a group’s production
 possibilities are.</li>
 </ul>
@@ -190,12 +193,11 @@ exists)</td>
 <tr class="even">
 <td><code>"sfalcmcross"</code></td>
 <td>Technology groups are <em>unobserved</em> — latent class model
-identifies them</td>
+identifies them (Dakpo et al. 2021)</td>
 </tr>
 <tr class="odd">
 <td><code>"sfaselectioncross"</code></td>
-<td>Sample selection bias is present (e.g., a binary selection
-indicator)</td>
+<td>Sample selection bias is present (Dakpo et al. 2022)</td>
 </tr>
 </tbody>
 </table>

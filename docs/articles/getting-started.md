@@ -2,11 +2,14 @@
 
 ## What is metafrontieR?
 
-`metafrontieR` is an R package for implementing **metafrontier
-analysis** — a framework for productivity and performance benchmarking
-of firms (or farms, utilities, hospitals, etc.) that operate under
-*different* technologies. This is also referred to as “heterogeneous
-technology” analysis.
+`metafrontieR` implements analyses for productivity and performance
+benchmarking across firms operating under different technologies. It
+contains routines for deterministic envelope estimation via linear and
+quadratic programming, stochastic frontier-based estimation, latent
+class stochastic frontier estimation, and sample selection corrected
+frontier estimation. Group-level and meta-level technical efficiencies,
+along with metatechnology ratios, are returned via a unified interface.
+Builds on the ‘sfaR’ package.
 
 The classic **stochastic frontier analysis (SFA)** estimates a single
 frontier for all firms. Metafrontier analysis extends this by:
@@ -24,7 +27,7 @@ This allows researchers to disentangle:
   (TE_group).
 - **Metafrontier efficiency** relative to the common best-practice
   frontier (TE_meta).
-- **Technology gap ratio** (MTR = TE_meta / TE_group), which captures
+- **Metatechnology ratio** (MTR = TE_meta / TE_group), which captures
   how technologically advanced a group’s production possibilities are.
 
 ## Conceptual Framework
@@ -54,8 +57,8 @@ And three group frontier types (`groupType`):
 | Group Type | When to Use |
 |----|----|
 | `"sfacross"` | Technology groups are *observed* (e.g., a group variable exists) |
-| `"sfalcmcross"` | Technology groups are *unobserved* — latent class model identifies them |
-| `"sfaselectioncross"` | Sample selection bias is present (e.g., a binary selection indicator) |
+| `"sfalcmcross"` | Technology groups are *unobserved* — latent class model identifies them (Dakpo et al. 2021) |
+| `"sfaselectioncross"` | Sample selection bias is present (Dakpo et al. 2022) |
 
 ## Installation
 

@@ -1,4 +1,4 @@
-# metafrontieR: Metafrontier Analysis in R.
+# metafrontieR: Stochastic and Deterministic Metafrontier Analysis
 <img src="man/figures/logo.png" align="right" height="139" alt="metafrontieR logo" />
 
 [![CodeFactor](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR/badge)](https://www.codefactor.io/repository/github/SulmanOlieko/metafrontieR)
@@ -7,9 +7,9 @@
 [![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/metafrontieR)
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/metafrontieR.svg)](https://github.com/SulmanOlieko/metafrontieR)
 
-> **Metafrontier Analysis Routines**
+> **Stochastic and Deterministic Metafrontier Analysis**
 
-An R package for implementing various deterministic and stochastic metafrontier analyses for efficiency and performance benchmarking, assessing technical efficiencies (TE), metafrontier technical efficiencies (MTE), computing metatechnology ratios (MTRs), and measuring technology gap ratios (TGRs) for firms operating under different technologies.
+Implements analyses for productivity and performance benchmarking across firms operating under different technologies. Contains routines for deterministic envelope estimation via linear and quadratic programming, stochastic frontier-based estimation, latent class stochastic frontier estimation, and sample selection corrected frontier estimation. Group-level and meta-level technical efficiencies, along with metatechnology ratios, are returned via a unified interface. Builds on the 'sfaR' package.
 
 `metafrontieR` provides routines for:
 

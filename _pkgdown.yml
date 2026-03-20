@@ -33,10 +33,10 @@ home:
     analysis and sample selection correction stochastic metafrontier models.
     Depends on the 'sfaR' package by Dakpo et al. (2023).
   links:
-  - text: Report a bug
-    href: https://github.com/SulmanOlieko/metafrontieR/issues
-  - text: View on GitHub
-    href: https://github.com/SulmanOlieko/metafrontieR
+    - text: Report a bug
+      href: https://github.com/SulmanOlieko/metafrontieR/issues
+    - text: View on GitHub
+      href: https://github.com/SulmanOlieko/metafrontieR
 
 navbar:
   structure:
@@ -49,60 +49,60 @@ navbar:
     articles:
       text: "Articles"
       menu:
-      - text: "Getting Started"
-        href: articles/getting-started.html
-      - text: "---"
-      - text: "Group Frontier Models"
-      - text: "Standard SFA Metafrontier (sfacross)"
-        href: articles/sfacross-metafrontier.html
-      - text: "Latent Class SFA Metafrontier (sfalcmcross)"
-        href: articles/sfalcmcross-metafrontier.html
-      - text: "Sample Selection SFA Metafrontier (sfaselectioncross)"
-        href: articles/sfaselectioncross-metafrontier.html
-      - text: "---"
-      - text: "Outputs & Extraction"
-      - text: "Extracting Efficiencies and MTRs"
-        href: articles/efficiency-extraction.html
+        - text: "Getting Started"
+          href: articles/getting-started.html
+        - text: "---"
+        - text: "Group Frontier Models"
+        - text: "Standard SFA Metafrontier (sfacross)"
+          href: articles/sfacross-metafrontier.html
+        - text: "Latent Class SFA Metafrontier (sfalcmcross)"
+          href: articles/sfalcmcross-metafrontier.html
+        - text: "Sample Selection SFA Metafrontier (sfaselectioncross)"
+          href: articles/sfaselectioncross-metafrontier.html
+        - text: "---"
+        - text: "Outputs & Extraction"
+        - text: "Extracting Efficiencies and MTRs"
+          href: articles/efficiency-extraction.html
     github:
       icon: fab fa-github
       href: https://github.com/SulmanOlieko/metafrontieR
       aria-label: GitHub
 
 reference:
-- title: "Core Function"
-  desc: >
-    The main function for fitting all metafrontier models in `metafrontieR`.
-  contents:
-  - sfametafrontier
+  - title: "Core Function"
+    desc: >
+      The main function for fitting all metafrontier models in `metafrontieR`.
+    contents:
+      - sfametafrontier
 
-- title: "Model Summary"
-  desc: >
-    Summarise and print fitted metafrontier model objects.
-  contents:
-  - summary.sfametafrontier
+  - title: "Model Summary"
+    desc: >
+      Summarise and print fitted metafrontier model objects.
+    contents:
+      - summary.sfametafrontier
 
-- title: "Efficiency & MTR Extraction"
-  desc: >
-    Extract firm-level efficiencies and metatechnology ratios from fitted models.
-  contents:
-  - efficiencies.sfametafrontier
+  - title: "Efficiency & MTR Extraction"
+    desc: >
+      Extract firm-level efficiencies and metatechnology ratios from fitted models.
+    contents:
+      - efficiencies.sfametafrontier
 
-- title: "Parameter Extraction"
-  desc: >
-    Extract estimated parameters and variance-covariance matrices.
-  contents:
-  - coef.sfametafrontier
-  - vcov.sfametafrontier
+  - title: "Parameter Extraction"
+    desc: >
+      Extract estimated parameters and variance-covariance matrices.
+    contents:
+      - coef.sfametafrontier
+      - vcov.sfametafrontier
 
-- title: "Model Fit Statistics"
-  desc: >
-    Information criteria and model fit diagnostics.
-  contents:
-  - logLik.sfametafrontier
-  - ic.sfametafrontier
-  - nobs.sfametafrontier
-  - fitted.sfametafrontier
-  - residuals.sfametafrontier
+  - title: "Model Fit Statistics"
+    desc: >
+      Information criteria and model fit diagnostics.
+    contents:
+      - logLik.sfametafrontier
+      - ic.sfametafrontier
+      - nobs.sfametafrontier
+      - fitted.sfametafrontier
+      - residuals.sfametafrontier
 
 footer:
   structure:
