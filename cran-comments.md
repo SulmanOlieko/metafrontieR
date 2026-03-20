@@ -16,12 +16,8 @@
 
 * checking CRAN incoming feasibility ... NOTE
   - "New submission" — first-time submission, expected.
-  - All other sub-items in the NOTE have been addressed:
-    - Title no longer starts with the package name.
-    - All misspelled technical terms added to `inst/WORDLIST`.
-    - All `\url{https://doi.org/...}` converted to `\doi{...}`.
-    - The three references with unresolvable DOIs have been replaced with
-      correct, verified DOIs and bibliographic details.
+  - "Possibly misspelled words in DESCRIPTION" — the flagged words (`Dakpo`, `Metafrontier`, `al`, `et`, `metafrontier`) are correct authors' names and domain-specific terminology.
+  - All other sub-items in the NOTE have been addressed.
 
 ## Platform
 
