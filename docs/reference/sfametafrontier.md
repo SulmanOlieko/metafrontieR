@@ -693,55 +693,56 @@ for details.
 Aigner, D. J., Lovell, C. A. K., and Schmidt, P. 1977. Formulation and
 estimation of stochastic frontier production function models. *Journal
 of Econometrics*, **6**(1), 21–37.
-<https://doi.org/10.1016/0304-4076(77)90052-5>
+[doi:10.1016/0304-4076(77)90052-5](https://doi.org/10.1016/0304-4076%2877%2990052-5)
 
 Battese, G. E., and Coelli, T. J. 1988. Prediction of firm-level
 technical efficiencies with a generalized frontier production function
 and panel data. *Journal of Econometrics*, **38**(3), 387–399.
-<https://doi.org/10.1016/0304-4076(88)90053-X>
+[doi:10.1016/0304-4076(88)90053-X](https://doi.org/10.1016/0304-4076%2888%2990053-X)
 
 Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
 production function for estimation of technical efficiencies and
 technology gaps for firms operating under different technologies.
 *Journal of Productivity Analysis*, **21**(1), 91–103.
-<https://doi.org/10.1023/B:PROD.0000012454.06094.29>
-
-Dakpo, K. H., Desjeux, Y., Latruffe, L., and Jeanneaux, P. 2021.
-Modelling pollution-generating technologies in performance benchmarking.
-*Omega*, **102**, 102347. <https://doi.org/10.1016/j.omega.2020.102347>
+[doi:10.1023/B:PROD.0000012454.06094.29](https://doi.org/10.1023/B%3APROD.0000012454.06094.29)
 
 Greene, W. 2003. Simulated likelihood estimation of the normal-gamma
 stochastic frontier function. *Journal of Productivity Analysis*,
-**19**(2-3), 179–190. <https://doi.org/10.1023/A:1022853416499>
+**19**(2-3), 179–190.
+[doi:10.1023/A:1022853416499](https://doi.org/10.1023/A%3A1022853416499)
 
 Greene, W. 2010. A stochastic frontier model with correction for sample
 selection. *Journal of Productivity Analysis*, **34**(1), 15–24.
-<https://doi.org/10.1007/s11123-009-0159-1>
+[doi:10.1007/s11123-009-0159-1](https://doi.org/10.1007/s11123-009-0159-1)
 
 Hajargasht, G. 2015. Stochastic frontiers with a Rayleigh distribution.
 *Journal of Productivity Analysis*, **44**(2), 199–208.
-<https://doi.org/10.1007/s11123-014-0417-8>
+[doi:10.1007/s11123-014-0417-8](https://doi.org/10.1007/s11123-014-0417-8)
 
 Heckman, J. J. 1979. Sample selection bias as a specification error.
-*Econometrica*, **47**(1), 153–161. <https://doi.org/10.2307/1912352>
+*Econometrica*, **47**(1), 153–161.
+[doi:10.2307/1912352](https://doi.org/10.2307/1912352)
 
 Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
 estimating the metafrontier production function based on a stochastic
 frontier framework. *Journal of Productivity Analysis*, **42**(3),
-241–254. <https://doi.org/10.1007/s11123-014-0402-2>
+241–254.
+[doi:10.1007/s11123-014-0402-2](https://doi.org/10.1007/s11123-014-0402-2)
 
 Jondrow, J., Lovell, C. A. K., Materov, I. S., and Schmidt, P. 1982. On
 the estimation of technical inefficiency in the stochastic frontier
 production function model. *Journal of Econometrics*, **19**(2-3),
-233–238. <https://doi.org/10.1016/0304-4076(82)90004-5>
+233–238.
+[doi:10.1016/0304-4076(82)90004-5](https://doi.org/10.1016/0304-4076%2882%2990004-5)
 
 Li, Q. 1996. Estimating a stochastic production frontier when the
-adjusted error is skewed. *Economics Letters*, **52**(3), 221–228.
-<https://doi.org/10.1016/S0165-1765(96)00857-9>
+adjusted error is symmetric. *Economics Letters*, **52**(3), 221–228.
+[doi:10.1016/S0165-1765(96)00857-9](https://doi.org/10.1016/S0165-1765%2896%2900857-9)
 
 Meeusen, W., and van den Broeck, J. 1977. Efficiency estimation from
 Cobb-Douglas production functions with composed error. *International
-Economic Review*, **18**(2), 435–444. <https://doi.org/10.2307/2525757>
+Economic Review*, **18**(2), 435–444.
+[doi:10.2307/2525757](https://doi.org/10.2307/2525757)
 
 Migon, H. S., and Medici, E. 2001. Bayesian inference for generalised
 exponential models. Working paper, Universidade Federal do Rio de
@@ -753,23 +754,45 @@ frontier analysis. PhD thesis, Bowling Green State University.
 O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
 frameworks for the study of firm-level efficiencies and technology
 ratios. *Empirical Economics*, **34**(2), 231–255.
-<https://doi.org/10.1007/s00181-007-0119-4>
+[doi:10.1007/s00181-007-0119-4](https://doi.org/10.1007/s00181-007-0119-4)
 
 Orea, L., and Kumbhakar, S. C. 2004. Efficiency measurement using a
 latent class stochastic frontier model. *Empirical Economics*,
-**29**(1), 169–183. <https://doi.org/10.1007/s00181-003-0184-2>
+**29**(1), 169–183.
+[doi:10.1007/s00181-003-0184-2](https://doi.org/10.1007/s00181-003-0184-2)
 
-Papadopoulos, A. 2020. The half-normal specification for the two-tier
+Dakpo, K. H., Jeanneaux, P., and Latruffe, L. 2016. Modelling
+pollution-generating technologies in performance benchmarking: Recent
+developments, limits and future prospects in the nonparametric
+framework. *European Journal of Operational Research*, **250**(2),
+347–359.
+[doi:10.1016/j.ejor.2015.07.024](https://doi.org/10.1016/j.ejor.2015.07.024)
+
+Papadopoulos, A. 2015. The half-normal specification for the two-tier
 stochastic frontier model. *Journal of Productivity Analysis*,
-**56**(1), 1–14. <https://doi.org/10.1007/s11123-021-00611-8>
+**43**(2), 225–230.
+[doi:10.1007/s11123-014-0389-8](https://doi.org/10.1007/s11123-014-0389-8)
 
 Stevenson, R. E. 1980. Likelihood functions for generalised stochastic
 frontier estimation. *Journal of Econometrics*, **13**(1), 57–66.
-<https://doi.org/10.1016/0304-4076(80)90042-1>
+[doi:10.1016/0304-4076(80)90042-1](https://doi.org/10.1016/0304-4076%2880%2990042-1)
+
+Dakpo, K. H., Latruffe, L., Desjeux, Y., and Jeanneaux, P. 2021. Latent
+class modelling for a robust assessment of productivity: Application to
+French grazing livestock farms. *Journal of Agricultural Economics*,
+**72**(3), 760–781.
+[doi:10.1111/1477-9552.12422](https://doi.org/10.1111/1477-9552.12422)
+
+Dakpo, K. H., Latruffe, L., Desjeux, Y., and Jeanneaux, P. 2022.
+Modeling heterogeneous technologies in the presence of sample selection:
+The case of dairy farms and the adoption of agri-environmental schemes
+in France. *Agricultural Economics*, **53**(3), 422–438.
+[doi:10.1111/agec.12683](https://doi.org/10.1111/agec.12683)
 
 Tsionas, E. G. 2007. Efficiency measurement with the Weibull stochastic
 frontier. *Oxford Bulletin of Economics and Statistics*, **69**(5),
-693–706. <https://doi.org/10.1111/j.1468-0084.2007.00475.x>
+693–706.
+[doi:10.1111/j.1468-0084.2007.00475.x](https://doi.org/10.1111/j.1468-0084.2007.00475.x)
 
 Wang, H.-J. 2012. Stochastic frontier models. In *A Companion to
 Theoretical Econometrics*, ed. B. H. Baltagi, Blackwell, Oxford.
@@ -777,11 +800,7 @@ Theoretical Econometrics*, ed. B. H. Baltagi, Blackwell, Oxford.
 Wang, H.-J., and Schmidt, P. 2002. One-step and two-step estimation of
 the effects of exogenous variables on technical efficiency levels.
 *Journal of Productivity Analysis*, **18**(2), 129–144.
-<https://doi.org/10.1023/A:1016565719882>
-
-Wang, W., and Ye, F. 2020. Estimation of the stochastic frontier model
-with a log-normal composite error. *Journal of Productivity Analysis*,
-**54**(1), 1–13. <https://doi.org/10.1007/s11123-020-00579-x>
+[doi:10.1023/A:1016565719882](https://doi.org/10.1023/A%3A1016565719882)
 
 Dakpo, K. H., Desjeux, Y., and Latruffe, L. 2023. sfaR: Stochastic
 Frontier Analysis using R. R package version 1.0.1.

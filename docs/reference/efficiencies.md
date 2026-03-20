@@ -282,32 +282,35 @@ basis.
 Battese, G. E., and Coelli, T. J. 1988. Prediction of firm-level
 technical efficiencies with a generalized frontier production function
 and panel data. *Journal of Econometrics*, **38**(3), 387–399.
-<https://doi.org/10.1016/0304-4076(88)90053-X>
+[doi:10.1016/0304-4076(88)90053-X](https://doi.org/10.1016/0304-4076%2888%2990053-X)
 
 Battese, G. E., Rao, D. S. P., and O'Donnell, C. J. 2004. A metafrontier
 production function for estimation of technical efficiencies and
 technology gaps for firms operating under different technologies.
 *Journal of Productivity Analysis*, **21**(1), 91–103.
-<https://doi.org/10.1023/B:PROD.0000012454.06094.29>
+[doi:10.1023/B:PROD.0000012454.06094.29](https://doi.org/10.1023/B%3APROD.0000012454.06094.29)
 
 Huang, C. J., Huang, T.-H., and Liu, N.-H. 2014. A new approach to
 estimating the metafrontier production function based on a stochastic
 frontier framework. *Journal of Productivity Analysis*, **42**(3),
-241–254. <https://doi.org/10.1007/s11123-014-0402-2>
+241–254.
+[doi:10.1007/s11123-014-0402-2](https://doi.org/10.1007/s11123-014-0402-2)
 
 Jondrow, J., Lovell, C. A. K., Materov, I. S., and Schmidt, P. 1982. On
 the estimation of technical inefficiency in the stochastic frontier
 production function model. *Journal of Econometrics*, **19**(2-3),
-233–238. <https://doi.org/10.1016/0304-4076(82)90004-5>
+233–238.
+[doi:10.1016/0304-4076(82)90004-5](https://doi.org/10.1016/0304-4076%2882%2990004-5)
 
 O'Donnell, C. J., Rao, D. S. P., and Battese, G. E. 2008. Metafrontier
 frameworks for the study of firm-level efficiencies and technology
 ratios. *Empirical Economics*, **34**(2), 231–255.
-<https://doi.org/10.1007/s00181-007-0119-4>
+[doi:10.1007/s00181-007-0119-4](https://doi.org/10.1007/s00181-007-0119-4)
 
 Orea, L., and Kumbhakar, S. C. 2004. Efficiency measurement using a
 latent class stochastic frontier model. *Empirical Economics*,
-**29**(1), 169–183. <https://doi.org/10.1007/s00181-003-0184-2>
+**29**(1), 169–183.
+[doi:10.1007/s00181-003-0184-2](https://doi.org/10.1007/s00181-003-0184-2)
 
 Dakpo, K. H., Desjeux, Y., and Latruffe, L. 2023. sfaR: Stochastic
 Frontier Analysis using R. R package version 1.0.1.

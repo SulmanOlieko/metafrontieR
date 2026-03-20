@@ -6,7 +6,8 @@ citHeader("To cite the 'metafrontieR' package in publications please use:")
 bibentry(
    bibtype = "Manual",
    title = "metafrontieR: Stochastic and Deterministic Metafrontier Analysis.",
-   author = c(person("Sulman Olieko", "Owili")),
+   author = c(person("Sulman Olieko", "Owili",
+              comment = c(ORCID = "0000-0001-7401-5326"))),
    year = year,
    note = vers,
    url = "https://github.com/SulmanOlieko/metafrontieR",

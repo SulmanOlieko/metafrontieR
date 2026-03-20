@@ -3,7 +3,8 @@ Title: Stochastic and Deterministic Metafrontier Analysis
 Version: 1.0.0
 Authors@R: c(
     person("Sulman Olieko", "Owili", email = "oliekosulman@gmail.com",
-           role = c("aut", "cre"))
+           role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-7401-5326"))
   )
 Description: Implements metafrontier analyses for productivity and performance
     benchmarking across firms operating under different technologies. Contains
