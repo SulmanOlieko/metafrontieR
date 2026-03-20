@@ -10,14 +10,11 @@
 
 > **Stochastic and Deterministic Metafrontier Analysis**
 
-Implements analyses for productivity and performance benchmarking across
-firms operating under different technologies. Contains routines for
-deterministic envelope estimation via linear and quadratic programming,
-stochastic frontier-based estimation, latent class stochastic frontier
-estimation, and sample selection corrected frontier estimation.
-Group-level and meta-level technical efficiencies, along with
-metatechnology ratios, are returned via a unified interface. Builds on
-the ‘sfaR’ package.
+An R package for implementing various deterministic and stochastic
+metafrontier analyses for efficiency and performance benchmarking,
+assessing technical efficiencies (TE), metafrontier technical
+efficiencies (MTE), and computing metatechnology ratios (MTRs) for firms
+operating under different technologies.
 
 `metafrontieR` provides routines for:
 

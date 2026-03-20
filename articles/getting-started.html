@@ -93,14 +93,11 @@
 <div class="section level2">
 <h2 id="what-is-metafrontier">What is metafrontieR?<a class="anchor" aria-label="anchor" href="#what-is-metafrontier"></a>
 </h2>
-<p><code>metafrontieR</code> implements analyses for productivity and
-performance benchmarking across firms operating under different
-technologies. It contains routines for deterministic envelope estimation
-via linear and quadratic programming, stochastic frontier-based
-estimation, latent class stochastic frontier estimation, and sample
-selection corrected frontier estimation. Group-level and meta-level
-technical efficiencies, along with metatechnology ratios, are returned
-via a unified interface. Builds on the ‘sfaR’ package.</p>
+<p><code>metafrontieR</code> is an R package for implementing
+<strong>metafrontier analysis</strong> — a framework for productivity
+and performance benchmarking of firms (or farms, utilities, hospitals,
+etc.) that operate under <em>different</em> technologies. This is also
+referred to as “heterogeneous technology” analysis.</p>
 <p>The classic <strong>stochastic frontier analysis (SFA)</strong>
 estimates a single frontier for all firms. Metafrontier analysis extends
 this by:</p>
@@ -232,8 +229,8 @@ three Filipino rice farm-size groups (small, medium, large).</p>
 <span><span class="co"># Create technology groups based on farm area terciles</span></span>
 <span><span class="va">ricephil</span><span class="op">$</span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span></span>
 <span>  <span class="va">ricephil</span><span class="op">$</span><span class="va">AREA</span>,</span>
-<span>  breaks        <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ricephil</span><span class="op">$</span><span class="va">AREA</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">/</span><span class="fl">3</span>, <span class="fl">2</span><span class="op">/</span><span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
-<span>  labels        <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span><span class="op">)</span>,</span>
+<span>  breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html" class="external-link">quantile</a></span><span class="op">(</span><span class="va">ricephil</span><span class="op">$</span><span class="va">AREA</span>, probs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span> <span class="op">/</span> <span class="fl">3</span>, <span class="fl">2</span> <span class="op">/</span> <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"small"</span>, <span class="st">"medium"</span>, <span class="st">"large"</span><span class="op">)</span>,</span>
 <span>  include.lowest <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">ricephil</span><span class="op">$</span><span class="va">group</span><span class="op">)</span></span></code></pre></div>
@@ -246,7 +243,7 @@ three Filipino rice farm-size groups (small, medium, large).</p>
 <span>  formula    <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">PROD</span><span class="op">)</span> <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">AREA</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">LABOR</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">log</a></span><span class="op">(</span><span class="va">NPK</span><span class="op">)</span>,</span>
 <span>  data       <span class="op">=</span> <span class="va">ricephil</span>,</span>
 <span>  group      <span class="op">=</span> <span class="st">"group"</span>,</span>
-<span>  S          <span class="op">=</span> <span class="fl">1</span>,            <span class="co"># production frontier (S=1) or cost frontier (S=-1)</span></span>
+<span>  S          <span class="op">=</span> <span class="fl">1</span>, <span class="co"># production frontier (S=1) or cost frontier (S=-1)</span></span>
 <span>  udist      <span class="op">=</span> <span class="st">"hnormal"</span>,</span>
 <span>  groupType  <span class="op">=</span> <span class="st">"sfacross"</span>,</span>
 <span>  metaMethod <span class="op">=</span> <span class="st">"lp"</span></span>

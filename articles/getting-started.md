@@ -2,14 +2,11 @@
 
 ## What is metafrontieR?
 
-`metafrontieR` implements analyses for productivity and performance
-benchmarking across firms operating under different technologies. It
-contains routines for deterministic envelope estimation via linear and
-quadratic programming, stochastic frontier-based estimation, latent
-class stochastic frontier estimation, and sample selection corrected
-frontier estimation. Group-level and meta-level technical efficiencies,
-along with metatechnology ratios, are returned via a unified interface.
-Builds on the ‘sfaR’ package.
+`metafrontieR` is an R package for implementing **metafrontier
+analysis** — a framework for productivity and performance benchmarking
+of firms (or farms, utilities, hospitals, etc.) that operate under
+*different* technologies. This is also referred to as “heterogeneous
+technology” analysis.
 
 The classic **stochastic frontier analysis (SFA)** estimates a single
 frontier for all firms. Metafrontier analysis extends this by:
@@ -86,8 +83,8 @@ data("ricephil", package = "sfaR")
 # Create technology groups based on farm area terciles
 ricephil$group <- cut(
   ricephil$AREA,
-  breaks        = quantile(ricephil$AREA, probs = c(0, 1/3, 2/3, 1), na.rm = TRUE),
-  labels        = c("small", "medium", "large"),
+  breaks = quantile(ricephil$AREA, probs = c(0, 1 / 3, 2 / 3, 1), na.rm = TRUE),
+  labels = c("small", "medium", "large"),
   include.lowest = TRUE
 )
 table(ricephil$group)
@@ -100,7 +97,7 @@ meta_lp <- sfametafrontier(
   formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data       = ricephil,
   group      = "group",
-  S          = 1,            # production frontier (S=1) or cost frontier (S=-1)
+  S          = 1, # production frontier (S=1) or cost frontier (S=-1)
   udist      = "hnormal",
   groupType  = "sfacross",
   metaMethod = "lp"
