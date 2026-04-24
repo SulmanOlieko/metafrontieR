@@ -101,36 +101,36 @@ summary(meta_lcm_lp)
 #>   -- Latent Class 1 --
 #>   Frontier:
 #>             Coefficient  Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.4472e+00  5.0799e-05  -28489 < 2.2e-16 ***
-#> log(y)       8.4541e-01  2.8752e-06  294038 < 2.2e-16 ***
-#> log(wl/wf)   3.5408e-01  5.6877e-06   62254 < 2.2e-16 ***
-#> log(wk/wf)   4.2883e-01  1.7424e-05   24612 < 2.2e-16 ***
+#> (Intercept) -1.4472e+00  4.0975e-05  -35320 < 2.2e-16 ***
+#> log(y)       8.4541e-01  2.4537e-06  344539 < 2.2e-16 ***
+#> log(wl/wf)   3.5408e-01  4.7006e-06   75327 < 2.2e-16 ***
+#> log(wk/wf)   4.2883e-01  1.4333e-05   29919 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error   z value  Pr(>|z|)    
-#> Zu_(Intercept) -1.7658e+00  5.8804e-08 -30029297 < 2.2e-16 ***
+#> Zu_(Intercept) -1.7658e+00  5.8803e-08 -30029717 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error     z value  Pr(>|z|)    
-#> Zv_(Intercept) -3.7713e+01  7.2436e-13 -5.2064e+13 < 2.2e-16 ***
-#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=63950436.4742
+#> Zv_(Intercept) -3.8640e+01  3.6587e-13 -1.0561e+14 < 2.2e-16 ***
+#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=101648736.5567
 #> 
 #>   -- Latent Class 2 --
 #>   Frontier:
 #>             Coefficient  Std. Error   z value  Pr(>|z|)    
-#> (Intercept) -2.0490e+00  2.5608e-05 -80011.01 < 2.2e-16 ***
+#> (Intercept) -2.0490e+00  2.5608e-05 -80011.10 < 2.2e-16 ***
 #> log(y)       1.0079e+00  4.1082e-04   2453.37 < 2.2e-16 ***
-#> log(wl/wf)  -2.5913e-02  6.3375e-05   -408.88 < 2.2e-16 ***
-#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.72 < 2.2e-16 ***
+#> log(wl/wf)  -2.5916e-02  6.3375e-05   -408.92 < 2.2e-16 ***
+#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.73 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653953 < 2.2e-16 ***
+#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653955 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219961 < 2.2e-16 ***
+#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219984 < 2.2e-16 ***
 #>   Sigma_u=0.2218  Sigma_v=0.0835  Sigma=0.2370  Gamma=0.8759  Lambda=2.6573
 #> 
 #>   -- Class Membership (logit) --
 #>                 Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192446 < 2.2e-16 ***
+#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192457 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> Log likelihood status: successful convergence  
@@ -162,9 +162,9 @@ summary(meta_lcm_lp)
 #> Class 2       74.5            0.646
 #> ------------------------------------------------------------ 
 #> Total Log-likelihood: 61.35324 
-#> AIC: -96.70648   BIC: -35.9536   HQIC: -73.35551 
+#> AIC: -96.70649   BIC: -35.95362   HQIC: -73.35552 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48
 ```
 
 > **Note:** The `group` argument is not needed when
@@ -207,36 +207,36 @@ summary(meta_lcm_qp)
 #>   -- Latent Class 1 --
 #>   Frontier:
 #>             Coefficient  Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.4472e+00  5.0799e-05  -28489 < 2.2e-16 ***
-#> log(y)       8.4541e-01  2.8752e-06  294038 < 2.2e-16 ***
-#> log(wl/wf)   3.5408e-01  5.6877e-06   62254 < 2.2e-16 ***
-#> log(wk/wf)   4.2883e-01  1.7424e-05   24612 < 2.2e-16 ***
+#> (Intercept) -1.4472e+00  4.0975e-05  -35320 < 2.2e-16 ***
+#> log(y)       8.4541e-01  2.4537e-06  344539 < 2.2e-16 ***
+#> log(wl/wf)   3.5408e-01  4.7006e-06   75327 < 2.2e-16 ***
+#> log(wk/wf)   4.2883e-01  1.4333e-05   29919 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error   z value  Pr(>|z|)    
-#> Zu_(Intercept) -1.7658e+00  5.8804e-08 -30029297 < 2.2e-16 ***
+#> Zu_(Intercept) -1.7658e+00  5.8803e-08 -30029717 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error     z value  Pr(>|z|)    
-#> Zv_(Intercept) -3.7713e+01  7.2436e-13 -5.2064e+13 < 2.2e-16 ***
-#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=63950436.4742
+#> Zv_(Intercept) -3.8640e+01  3.6587e-13 -1.0561e+14 < 2.2e-16 ***
+#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=101648736.5567
 #> 
 #>   -- Latent Class 2 --
 #>   Frontier:
 #>             Coefficient  Std. Error   z value  Pr(>|z|)    
-#> (Intercept) -2.0490e+00  2.5608e-05 -80011.01 < 2.2e-16 ***
+#> (Intercept) -2.0490e+00  2.5608e-05 -80011.10 < 2.2e-16 ***
 #> log(y)       1.0079e+00  4.1082e-04   2453.37 < 2.2e-16 ***
-#> log(wl/wf)  -2.5913e-02  6.3375e-05   -408.88 < 2.2e-16 ***
-#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.72 < 2.2e-16 ***
+#> log(wl/wf)  -2.5916e-02  6.3375e-05   -408.92 < 2.2e-16 ***
+#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.73 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653953 < 2.2e-16 ***
+#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653955 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219961 < 2.2e-16 ***
+#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219984 < 2.2e-16 ***
 #>   Sigma_u=0.2218  Sigma_v=0.0835  Sigma=0.2370  Gamma=0.8759  Lambda=2.6573
 #> 
 #>   -- Class Membership (logit) --
 #>                 Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192446 < 2.2e-16 ***
+#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192457 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> Log likelihood status: successful convergence  
@@ -244,10 +244,10 @@ summary(meta_lcm_qp)
 #> ------------------------------------------------------------ 
 #> Metafrontier Coefficients (qp):
 #>               Estimate Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.3923615  0.0310119 -44.898 < 2.2e-16 ***
-#> log(y)       0.8649984  0.0012419 696.525 < 2.2e-16 ***
-#> log(wl/wf)   0.2909738  0.0047964  60.665 < 2.2e-16 ***
-#> log(wk/wf)   0.5028970  0.0069500  72.360 < 2.2e-16 ***
+#> (Intercept) -1.3923609  0.0310122 -44.897 < 2.2e-16 ***
+#> log(y)       0.8649986  0.0012419 696.520 < 2.2e-16 ***
+#> log(wl/wf)   0.2909729  0.0047965  60.664 < 2.2e-16 ***
+#> log(wk/wf)   0.5028977  0.0069500  72.359 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> 
@@ -274,9 +274,9 @@ summary(meta_lcm_qp)
 #> Class 2       74.5            0.646
 #> ------------------------------------------------------------ 
 #> Total Log-likelihood: 61.35324 
-#> AIC: -88.70648   BIC: -9.26041   HQIC: -58.17059 
+#> AIC: -88.70649   BIC: -9.26042   HQIC: -58.17061 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48
 ```
 
 ## Method 3: LCM + SFA (Huang)
@@ -316,36 +316,36 @@ summary(meta_lcm_huang)
 #>   -- Latent Class 1 --
 #>   Frontier:
 #>             Coefficient  Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.4472e+00  5.0799e-05  -28489 < 2.2e-16 ***
-#> log(y)       8.4541e-01  2.8752e-06  294038 < 2.2e-16 ***
-#> log(wl/wf)   3.5408e-01  5.6877e-06   62254 < 2.2e-16 ***
-#> log(wk/wf)   4.2883e-01  1.7424e-05   24612 < 2.2e-16 ***
+#> (Intercept) -1.4472e+00  4.0975e-05  -35320 < 2.2e-16 ***
+#> log(y)       8.4541e-01  2.4537e-06  344539 < 2.2e-16 ***
+#> log(wl/wf)   3.5408e-01  4.7006e-06   75327 < 2.2e-16 ***
+#> log(wk/wf)   4.2883e-01  1.4333e-05   29919 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error   z value  Pr(>|z|)    
-#> Zu_(Intercept) -1.7658e+00  5.8804e-08 -30029297 < 2.2e-16 ***
+#> Zu_(Intercept) -1.7658e+00  5.8803e-08 -30029717 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error     z value  Pr(>|z|)    
-#> Zv_(Intercept) -3.7713e+01  7.2436e-13 -5.2064e+13 < 2.2e-16 ***
-#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=63950436.4742
+#> Zv_(Intercept) -3.8640e+01  3.6587e-13 -1.0561e+14 < 2.2e-16 ***
+#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=101648736.5567
 #> 
 #>   -- Latent Class 2 --
 #>   Frontier:
 #>             Coefficient  Std. Error   z value  Pr(>|z|)    
-#> (Intercept) -2.0490e+00  2.5608e-05 -80011.01 < 2.2e-16 ***
+#> (Intercept) -2.0490e+00  2.5608e-05 -80011.10 < 2.2e-16 ***
 #> log(y)       1.0079e+00  4.1082e-04   2453.37 < 2.2e-16 ***
-#> log(wl/wf)  -2.5913e-02  6.3375e-05   -408.88 < 2.2e-16 ***
-#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.72 < 2.2e-16 ***
+#> log(wl/wf)  -2.5916e-02  6.3375e-05   -408.92 < 2.2e-16 ***
+#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.73 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653953 < 2.2e-16 ***
+#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653955 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219961 < 2.2e-16 ***
+#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219984 < 2.2e-16 ***
 #>   Sigma_u=0.2218  Sigma_v=0.0835  Sigma=0.2370  Gamma=0.8759  Lambda=2.6573
 #> 
 #>   -- Class Membership (logit) --
 #>                 Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192446 < 2.2e-16 ***
+#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192457 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> Log likelihood status: successful convergence  
@@ -354,10 +354,10 @@ summary(meta_lcm_huang)
 #> Metafrontier Coefficients (sfa):
 #> Meta-optim solver  : BFGS maximization 
 #>               Estimate Std. Error  z value  Pr(>|z|)    
-#> (Intercept) -2.2495068  0.0686626 -32.7618 < 2.2e-16 ***
-#> log(y)       0.9909912  0.0024686 401.4310 < 2.2e-16 ***
-#> log(wl/wf)   0.0399614  0.0106166   3.7641 0.0001672 ***
-#> log(wk/wf)   0.7890981  0.0143800  54.8748 < 2.2e-16 ***
+#> (Intercept) -2.2495090  0.0686629 -32.7617 < 2.2e-16 ***
+#> log(y)       0.9909917  0.0024687 401.4295 < 2.2e-16 ***
+#> log(wl/wf)   0.0399592  0.0106166   3.7638 0.0001673 ***
+#> log(wk/wf)   0.7890982  0.0143800  54.8745 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> 
@@ -367,8 +367,8 @@ summary(meta_lcm_huang)
 #> Dependent Variable:                                          group_fitted_values 
 #> Log likelihood solver:                                         BFGS maximization 
 #> Log likelihood iter:                                                          58 
-#> Log likelihood value:                                                  759.63171 
-#> Log likelihood gradient norm:                                        2.06994e-03 
+#> Log likelihood value:                                                  759.62958 
+#> Log likelihood gradient norm:                                        2.06038e-03 
 #> Estimation based on:                                         N =  791 and K =  6 
 #> Inf. Cr:                                        AIC  =  -1507.3 AIC/N  =  -1.906 
 #>                                                 BIC  =  -1479.2 BIC/N  =  -1.870 
@@ -380,7 +380,7 @@ summary(meta_lcm_huang)
 #>            Sigma(u)           =                                          0.02713 
 #> Sigma = Sqrt[(s^2(u)+s^2(v))] =                                          0.16676 
 #> Gamma = sigma(u)^2/sigma^2    =                                          0.97554 
-#> Lambda = sigma(u)/sigma(v)    =                                          6.31589 
+#> Lambda = sigma(u)/sigma(v)    =                                          6.31586 
 #> Var[u]/{Var[u]+Var[v]}        =                                          0.93546 
 #> -------------------------------------------------------------------------------- 
 #> Average inefficiency E[ui]     =                                         0.13141 
@@ -390,22 +390,22 @@ summary(meta_lcm_huang)
 #> -----[ Tests vs. No Inefficiency ]-----
 #> Likelihood Ratio Test of Inefficiency
 #> Deg. freedom for inefficiency model                                            1 
-#> Log Likelihood for OLS Log(H0) =                                       588.59175 
+#> Log Likelihood for OLS Log(H0) =                                       588.59019 
 #> LR statistic:  
-#> Chisq = 2*[LogL(H0)-LogL(H1)]  =                                       342.07992 
+#> Chisq = 2*[LogL(H0)-LogL(H1)]  =                                       342.07878 
 #> Kodde-Palm C*:       95%: 2.70554                                   99%: 5.41189 
 #> Coelli (1995) skewness test on OLS residuals
-#> M3T: z                         =                                        10.23624 
+#> M3T: z                         =                                        10.23625 
 #> M3T: p.value                   =                                         0.00000 
 #> Final maximum likelihood estimates 
 #> -------------------------------------------------------------------------------- 
 #>                          Deterministic Component of SFA 
 #> -------------------------------------------------------------------------------- 
 #>                Coefficient Std. Error  z value  Pr(>|z|)    
-#> (Intercept)       -2.24951    0.06866 -32.7618 < 2.2e-16 ***
-#> .X2                0.99099    0.00247 401.4310 < 2.2e-16 ***
-#> .X3                0.03996    0.01062   3.7641 0.0001672 ***
-#> .X4                0.78910    0.01438  54.8748 < 2.2e-16 ***
+#> (Intercept)       -2.24951    0.06866 -32.7617 < 2.2e-16 ***
+#> .X2                0.99099    0.00247 401.4295 < 2.2e-16 ***
+#> .X3                0.03996    0.01062   3.7638 0.0001673 ***
+#> .X4                0.78910    0.01438  54.8745 < 2.2e-16 ***
 #> -------------------------------------------------------------------------------- 
 #>                   Parameter in variance of u (one-sided error) 
 #> -------------------------------------------------------------------------------- 
@@ -415,11 +415,11 @@ summary(meta_lcm_huang)
 #>                  Parameters in variance of v (two-sided error) 
 #> -------------------------------------------------------------------------------- 
 #>                Coefficient Std. Error z value  Pr(>|z|)    
-#> Zv_(Intercept)    -7.29335    0.12966  -56.25 < 2.2e-16 ***
+#> Zv_(Intercept)    -7.29334    0.12966  -56.25 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -446,10 +446,10 @@ summary(meta_lcm_huang)
 #> Class 1       25.5            0.354
 #> Class 2       74.5            0.646
 #> ------------------------------------------------------------ 
-#> Total Log-likelihood: 820.985 
-#> AIC: -1603.97   BIC: -1515.177   HQIC: -1569.842 
+#> Total Log-likelihood: 820.9828 
+#> AIC: -1603.966   BIC: -1515.173   HQIC: -1569.837 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48
 ```
 
 ## Method 4: LCM + SFA (O’Donnell)
@@ -494,36 +494,36 @@ summary(meta_lcm_odonnell)
 #>   -- Latent Class 1 --
 #>   Frontier:
 #>             Coefficient  Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.4472e+00  5.0799e-05  -28489 < 2.2e-16 ***
-#> log(y)       8.4541e-01  2.8752e-06  294038 < 2.2e-16 ***
-#> log(wl/wf)   3.5408e-01  5.6877e-06   62254 < 2.2e-16 ***
-#> log(wk/wf)   4.2883e-01  1.7424e-05   24612 < 2.2e-16 ***
+#> (Intercept) -1.4472e+00  4.0975e-05  -35320 < 2.2e-16 ***
+#> log(y)       8.4541e-01  2.4537e-06  344539 < 2.2e-16 ***
+#> log(wl/wf)   3.5408e-01  4.7006e-06   75327 < 2.2e-16 ***
+#> log(wk/wf)   4.2883e-01  1.4333e-05   29919 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error   z value  Pr(>|z|)    
-#> Zu_(Intercept) -1.7658e+00  5.8804e-08 -30029297 < 2.2e-16 ***
+#> Zu_(Intercept) -1.7658e+00  5.8803e-08 -30029717 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error     z value  Pr(>|z|)    
-#> Zv_(Intercept) -3.7713e+01  7.2436e-13 -5.2064e+13 < 2.2e-16 ***
-#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=63950436.4742
+#> Zv_(Intercept) -3.8640e+01  3.6587e-13 -1.0561e+14 < 2.2e-16 ***
+#>   Sigma_u=0.4136  Sigma_v=0.0000  Sigma=0.4136  Gamma=1.0000  Lambda=101648736.5567
 #> 
 #>   -- Latent Class 2 --
 #>   Frontier:
 #>             Coefficient  Std. Error   z value  Pr(>|z|)    
-#> (Intercept) -2.0490e+00  2.5608e-05 -80011.01 < 2.2e-16 ***
+#> (Intercept) -2.0490e+00  2.5608e-05 -80011.10 < 2.2e-16 ***
 #> log(y)       1.0079e+00  4.1082e-04   2453.37 < 2.2e-16 ***
-#> log(wl/wf)  -2.5913e-02  6.3375e-05   -408.88 < 2.2e-16 ***
-#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.72 < 2.2e-16 ***
+#> log(wl/wf)  -2.5916e-02  6.3375e-05   -408.92 < 2.2e-16 ***
+#> log(wk/wf)   8.8450e-01  6.9315e-05  12760.73 < 2.2e-16 ***
 #>   Var(u):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653953 < 2.2e-16 ***
+#> Zu_(Intercept) -3.0117e+00  1.1348e-06 -2653955 < 2.2e-16 ***
 #>   Var(v):
 #>                Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219961 < 2.2e-16 ***
+#> Zv_(Intercept) -4.9663e+00  5.3865e-07 -9219984 < 2.2e-16 ***
 #>   Sigma_u=0.2218  Sigma_v=0.0835  Sigma=0.2370  Gamma=0.8759  Lambda=2.6573
 #> 
 #>   -- Class Membership (logit) --
 #>                 Coefficient  Std. Error  z value  Pr(>|z|)    
-#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192446 < 2.2e-16 ***
+#> Cl1_(Intercept) -6.0163e-01  5.0453e-07 -1192457 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> Log likelihood status: successful convergence  
@@ -532,10 +532,10 @@ summary(meta_lcm_odonnell)
 #> Metafrontier Coefficients (sfa):
 #> Meta-optim solver  : BFGS maximization 
 #>                Estimate  Std. Error z value  Pr(>|z|)    
-#> (Intercept) -1.4655e+00  1.6691e-05  -87805 < 2.2e-16 ***
-#> log(y)       8.5052e-01  2.3139e-06  367577 < 2.2e-16 ***
-#> log(wl/wf)   3.4196e-01  9.2564e-06   36943 < 2.2e-16 ***
-#> log(wk/wf)   4.4325e-01  1.3052e-05   33960 < 2.2e-16 ***
+#> (Intercept) -1.4655e+00  1.4795e-05  -99060 < 2.2e-16 ***
+#> log(y)       8.5052e-01  2.0492e-06  415057 < 2.2e-16 ***
+#> log(wl/wf)   3.4196e-01  8.1363e-06   42028 < 2.2e-16 ***
+#> log(wk/wf)   4.4325e-01  1.1627e-05   38121 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> 
@@ -544,11 +544,11 @@ summary(meta_lcm_odonnell)
 #> Normal-Half Normal SF Model 
 #> Dependent Variable:                                                  lp_envelope 
 #> Log likelihood solver:                                         BFGS maximization 
-#> Log likelihood iter:                                                        1946 
-#> Log likelihood value:                                                 1949.17638 
-#> Log likelihood gradient norm:                                        3.82419e+03 
+#> Log likelihood iter:                                                        1703 
+#> Log likelihood value:                                                 1949.16842 
+#> Log likelihood gradient norm:                                        6.64643e+02 
 #> Estimation based on:                                         N =  791 and K =  6 
-#> Inf. Cr:                                        AIC  =  -3886.4 AIC/N  =  -4.913 
+#> Inf. Cr:                                        AIC  =  -3886.3 AIC/N  =  -4.913 
 #>                                                 BIC  =  -3858.3 BIC/N  =  -4.878 
 #>                                                 HQIC =  -3875.6 HQIC/N =  -4.900 
 #> -------------------------------------------------------------------------------- 
@@ -558,7 +558,7 @@ summary(meta_lcm_odonnell)
 #>            Sigma(u)           =                                          0.00170 
 #> Sigma = Sqrt[(s^2(u)+s^2(v))] =                                          0.04117 
 #> Gamma = sigma(u)^2/sigma^2    =                                          1.00000 
-#> Lambda = sigma(u)/sigma(v)    =                                    3453499.37923 
+#> Lambda = sigma(u)/sigma(v)    =                                    4078429.86815 
 #> Var[u]/{Var[u]+Var[v]}        =                                          1.00000 
 #> -------------------------------------------------------------------------------- 
 #> Average inefficiency E[ui]     =                                         0.03285 
@@ -568,36 +568,36 @@ summary(meta_lcm_odonnell)
 #> -----[ Tests vs. No Inefficiency ]-----
 #> Likelihood Ratio Test of Inefficiency
 #> Deg. freedom for inefficiency model                                            1 
-#> Log Likelihood for OLS Log(H0) =                                      1595.36741 
+#> Log Likelihood for OLS Log(H0) =                                      1595.36072 
 #> LR statistic:  
-#> Chisq = 2*[LogL(H0)-LogL(H1)]  =                                       707.61794 
+#> Chisq = 2*[LogL(H0)-LogL(H1)]  =                                       707.61541 
 #> Kodde-Palm C*:       95%: 2.70554                                   99%: 5.41189 
 #> Coelli (1995) skewness test on OLS residuals
-#> M3T: z                         =                                        30.29517 
+#> M3T: z                         =                                        30.29501 
 #> M3T: p.value                   =                                         0.00000 
 #> Final maximum likelihood estimates 
 #> -------------------------------------------------------------------------------- 
 #>                          Deterministic Component of SFA 
 #> -------------------------------------------------------------------------------- 
 #>                Coefficient Std. Error z value  Pr(>|z|)    
-#> (Intercept)       -1.46554    0.00002  -87805 < 2.2e-16 ***
-#> .X2                0.85052    0.00000  367577 < 2.2e-16 ***
-#> .X3                0.34196    0.00001   36943 < 2.2e-16 ***
-#> .X4                0.44325    0.00001   33960 < 2.2e-16 ***
+#> (Intercept)       -1.46554    0.00001  -99060 < 2.2e-16 ***
+#> .X2                0.85052    0.00000  415057 < 2.2e-16 ***
+#> .X3                0.34196    0.00001   42028 < 2.2e-16 ***
+#> .X4                0.44325    0.00001   38121 < 2.2e-16 ***
 #> -------------------------------------------------------------------------------- 
 #>                   Parameter in variance of u (one-sided error) 
 #> -------------------------------------------------------------------------------- 
-#>                Coefficient Std. Error    z value  Pr(>|z|)    
-#> Zu_(Intercept)       -6.38       0.00 -5.404e+14 < 2.2e-16 ***
+#>                Coefficient Std. Error     z value  Pr(>|z|)    
+#> Zu_(Intercept)       -6.38       0.00 -7.3289e+13 < 2.2e-16 ***
 #> -------------------------------------------------------------------------------- 
 #>                  Parameters in variance of v (two-sided error) 
 #> -------------------------------------------------------------------------------- 
 #>                Coefficient Std. Error     z value  Pr(>|z|)    
-#> Zv_(Intercept)      -36.49       0.00 -3.1769e+13 < 2.2e-16 ***
+#> Zv_(Intercept)     -36.822      0.000 -4.5151e+13 < 2.2e-16 ***
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -624,10 +624,10 @@ summary(meta_lcm_odonnell)
 #> Class 1       25.5            0.354
 #> Class 2       74.5            0.646
 #> ------------------------------------------------------------ 
-#> Total Log-likelihood: 2010.53 
-#> AIC: -3983.059   BIC: -3894.267   HQIC: -3948.931 
+#> Total Log-likelihood: 2010.522 
+#> AIC: -3983.043   BIC: -3894.251   HQIC: -3948.915 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:43
+#> Model was estimated on : Apr Fri 24, 2026 at 14:48
 ```
 
 ## Choosing the Number of Classes
@@ -655,11 +655,11 @@ meta_lcm_3 <- smfa(
 #> Warning: hessian is singular for 'qr.solve' switching to 'ginv'
 # Compare information criteria
 ic(meta_lcm_2)
-#>         AIC      BIC      HQIC
-#> 1 -96.70648 -35.9536 -73.35551
-ic(meta_lcm_3)
 #>         AIC       BIC      HQIC
-#> 1 -116.0641 -22.59817 -80.13956
+#> 1 -96.70649 -35.95362 -73.35552
+ic(meta_lcm_3)
+#>         AIC       BIC     HQIC
+#> 1 -116.4994 -23.03341 -80.5748
 ```
 
 Prefer the model with the lower AIC/BIC.
@@ -675,40 +675,40 @@ which can be used for robustness checks or classification:
 eff_lcm <- efficiencies(meta_lcm_lp)
 head(eff_lcm)
 #>   id Group_c        u_g TE_group_JLMS TE_group_BC TE_group_BC_reciprocal
-#> 1  1       2 0.15842872     0.8534838   0.8557677               1.174839
-#> 2  2       2 0.11418869     0.8920896   0.8939934               1.123407
-#> 3  3       2 0.08540348     0.9181418   0.9196131               1.090951
-#> 4  4       2 0.08020699     0.9229253   0.9243031               1.085176
-#> 5  5       2 0.05774182     0.9438936   0.9448240               1.060519
-#> 6  6       2 0.08181852     0.9214392   0.9228464               1.086964
+#> 1  1       2 0.15842767     0.8534847   0.8557685               1.174838
+#> 2  2       2 0.11418786     0.8920904   0.8939941               1.123406
+#> 3  3       2 0.08540301     0.9181422   0.9196135               1.090950
+#> 4  4       2 0.08020650     0.9229257   0.9243035               1.085176
+#> 5  5       2 0.05774143     0.9438940   0.9448244               1.060519
+#> 6  6       2 0.08181804     0.9214396   0.9228469               1.086964
 #>   PosteriorProb_c PosteriorProb_c1 PriorProb_c1       u_c1   teBC_c1
-#> 1       0.7249980        0.2750020     0.353972 0.19428009 0.8234272
-#> 2       0.7334012        0.2665988     0.353972 0.16086083 0.8514106
-#> 3       0.7039784        0.2960216     0.353972 0.10301514 0.9021133
-#> 4       0.6909126        0.3090874     0.353972 0.07745687 0.9254669
-#> 5       0.5808787        0.4191213     0.353972 0.05410186 0.9473356
-#> 6       0.6927824        0.3072176     0.353972 0.05781994 0.9438199
+#> 1       0.7249993        0.2750007    0.3539713 0.19428008 0.8234272
+#> 2       0.7334018        0.2665982    0.3539713 0.16086081 0.8514106
+#> 3       0.7039783        0.2960217    0.3539713 0.10301513 0.9021133
+#> 4       0.6909122        0.3090878    0.3539713 0.07745685 0.9254670
+#> 5       0.5808759        0.4191241    0.3539713 0.05410185 0.9473356
+#> 6       0.6927820        0.3072180    0.3539713 0.05781993 0.9438199
 #>   teBC_reciprocal_c1 PosteriorProb_c2 PriorProb_c2       u_c2   teBC_c2
-#> 1           1.214436        0.7249980     0.646028 0.15842872 0.8557677
-#> 2           1.174521        0.7334012     0.646028 0.11418869 0.8939934
-#> 3           1.108508        0.7039784     0.646028 0.08540348 0.9196131
-#> 4           1.080536        0.6909126     0.646028 0.08020699 0.9243031
-#> 5           1.055592        0.5808787     0.646028 0.05774182 0.9448240
-#> 6           1.059524        0.6927824     0.646028 0.08181852 0.9228464
+#> 1           1.214436        0.7249993    0.6460287 0.15842767 0.8557685
+#> 2           1.174521        0.7334018    0.6460287 0.11418786 0.8939941
+#> 3           1.108508        0.7039783    0.6460287 0.08540301 0.9196135
+#> 4           1.080536        0.6909122    0.6460287 0.08020650 0.9243035
+#> 5           1.055592        0.5808759    0.6460287 0.05774143 0.9448244
+#> 6           1.059524        0.6927820    0.6460287 0.08181804 0.9228469
 #>   teBC_reciprocal_c2 ineff_c1   ineff_c2 effBC_c1  effBC_c2 ReffBC_c1 ReffBC_c2
-#> 1           1.174839       NA 0.15842872       NA 0.8557677        NA  1.174839
-#> 2           1.123407       NA 0.11418869       NA 0.8939934        NA  1.123407
-#> 3           1.090951       NA 0.08540348       NA 0.9196131        NA  1.090951
-#> 4           1.085176       NA 0.08020699       NA 0.9243031        NA  1.085176
-#> 5           1.060519       NA 0.05774182       NA 0.9448240        NA  1.060519
-#> 6           1.086964       NA 0.08181852       NA 0.9228464        NA  1.086964
+#> 1           1.174838       NA 0.15842767       NA 0.8557685        NA  1.174838
+#> 2           1.123406       NA 0.11418786       NA 0.8939941        NA  1.123406
+#> 3           1.090950       NA 0.08540301       NA 0.9196135        NA  1.090950
+#> 4           1.085176       NA 0.08020650       NA 0.9243035        NA  1.085176
+#> 5           1.060519       NA 0.05774143       NA 0.9448244        NA  1.060519
+#> 6           1.086964       NA 0.08181804       NA 0.9228469        NA  1.086964
 #>       u_meta TE_meta_JLMS TE_meta_BC MTR_JLMS MTR_BC
-#> 1 0.15842872    0.8534838  0.8557677        1      1
-#> 2 0.11418869    0.8920896  0.8939934        1      1
-#> 3 0.08540348    0.9181418  0.9196131        1      1
-#> 4 0.08020699    0.9229253  0.9243031        1      1
-#> 5 0.05774182    0.9438936  0.9448240        1      1
-#> 6 0.08181852    0.9214392  0.9228464        1      1
+#> 1 0.15842767    0.8534847  0.8557685        1      1
+#> 2 0.11418786    0.8920904  0.8939941        1      1
+#> 3 0.08540301    0.9181422  0.9196135        1      1
+#> 4 0.08020650    0.9229257  0.9243035        1      1
+#> 5 0.05774143    0.9438940  0.9448244        1      1
+#> 6 0.08181804    0.9214396  0.9228469        1      1
 
 # Key LCM-specific columns:
 # Group_c          — most likely class assignment
