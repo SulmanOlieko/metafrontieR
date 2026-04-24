@@ -10,8 +10,8 @@
 Source:
 [`inst/CITATION`](https://github.com/SulmanOlieko/smfa/blob/HEAD/inst/CITATION)
 
-Owili SO. (2026). smfa: Stochastic and Deterministic Metafrontier
-Analysis. R package version 1.0.0.
+Owili SO. (2026). smfa: Stochastic Metafrontier Analysis. R package
+version 1.0.0.
 
     @Manual{,
       title = {smfa: Stochastic Metafrontier Analysis.},
