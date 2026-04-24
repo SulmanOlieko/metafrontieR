@@ -52,10 +52,10 @@ library(smfa)
 #>                        888            
 #> .d8888b  88888b.d88b.  888888 8888b.  
 #> 88K      888 "888 "88b 888       "88b 
-#> Y8888b. 888  888  888 888   .d888888 
+#>  Y8888b. 888  888  888 888   .d888888  
 #>      X88 888  888  888 888   888  888 
-#>  88888P' 888  888  888 888   "Y888888
-#>                          version 1.0.0
+#>  88888P' 888  888  888 888   "Y888888 
+#>                           version 1.0.0
 #> 
 #> * Please cite the 'smfa' package as:
 #> Owili, S. O. (2026). smfa: Stochastic Metafrontier Analysis. R package version 1.0.0.
@@ -180,7 +180,7 @@ summary(meta_sel_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -239,7 +239,7 @@ summary(meta_sel_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -265,7 +265,7 @@ summary(meta_sel_lp)
 #> Total Log-likelihood: -423.0023 
 #> AIC: 870.0045   BIC: 920.5798   HQIC: 889.8502 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09
 ```
 
 > **Note:** The `selectionF` argument is compulsory for
@@ -365,7 +365,7 @@ summary(meta_sel_qp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -424,7 +424,7 @@ summary(meta_sel_qp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -455,7 +455,7 @@ summary(meta_sel_qp)
 #> Total Log-likelihood: -423.0023 
 #> AIC: 876.0045   BIC: 939.2237   HQIC: 900.8116 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09
 ```
 
 ## Method 3: sfaselectioncross + SFA (Huang)
@@ -551,7 +551,7 @@ summary(meta_sel_huang)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -610,7 +610,7 @@ summary(meta_sel_huang)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -681,7 +681,7 @@ summary(meta_sel_huang)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -704,7 +704,7 @@ summary(meta_sel_huang)
 #> Total Log-likelihood: -117.5979 
 #> AIC: 269.1957   BIC: 340.844   HQIC: 297.3104 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09
 ```
 
 ## Method 4: sfaselectioncross + SFA (O’Donnell)
@@ -806,7 +806,7 @@ summary(meta_sel_odonnell)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -865,7 +865,7 @@ summary(meta_sel_odonnell)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -936,7 +936,7 @@ summary(meta_sel_odonnell)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -959,7 +959,7 @@ summary(meta_sel_odonnell)
 #> Total Log-likelihood: 579.7904 
 #> AIC: -1125.581   BIC: -1053.933   HQIC: -1097.466 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 13:55
+#> Model was estimated on : Apr Fri 24, 2026 at 14:09
 ```
 
 ## Interpreting the Selection Correction
