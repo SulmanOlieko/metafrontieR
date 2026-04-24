@@ -92,8 +92,7 @@ summary.smfa <- function(object, ...) {
   }
 
   # Efficiency statistics (computed once for the summary panel)
-  effStats <- tryCatch(
-    {
+  effStats <- tryCatch({
       eff <- efficiencies(object)
       grpVar <- object$dataTable$.mf_group
 
@@ -360,8 +359,7 @@ print.summary.smfa <- function(
         na.print = "NA"
       )
       # Per-class variance derived stats
-      vs <- tryCatch(
-        {
+      vs <- tryCatch({
           # Extract class-k sigma_u^2 from Zu intercept
           # Interleaved position
           Zu_int <- lcm_m$mlParam[
@@ -482,8 +480,7 @@ print.summary.smfa <- function(
             na.print = "NA"
           )
           # Per-class derived variance stats (point estimates only from mlParam)
-          tryCatch(
-            {
+          tryCatch({
               Zu_int <- m$mlParam[(k - 1) * (nX + nU + nV) + nX + 1]
               Zv_int <- m$mlParam[(k - 1) * (nX + nU + nV) + nX + nU + 1]
               su2_k <- exp(Zu_int)

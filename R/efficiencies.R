@@ -365,8 +365,7 @@ efficiencies.smfa <- function(
     for (g in groups) {
       idx <- which(dataFull[[groupVar]] == g)
 
-      effG <- tryCatch(
-        {
+      effG <- tryCatch({
           m_g_obj <- object$groupModels[[g]]
           efficiencies(m_g_obj, level = level)
         },
