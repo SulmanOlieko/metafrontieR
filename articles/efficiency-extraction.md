@@ -143,7 +143,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:08 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:43 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -207,7 +207,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:08 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:43 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -218,9 +218,9 @@ summary(meta_lp)
 #> Normal-Half Normal SF Model 
 #> Dependent Variable:                                                    log(PROD) 
 #> Log likelihood solver:                                         BFGS maximization 
-#> Log likelihood iter:                                                          68 
+#> Log likelihood iter:                                                          69 
 #> Log likelihood value:                                                   -8.02197 
-#> Log likelihood gradient norm:                                        4.01301e-05 
+#> Log likelihood gradient norm:                                        8.20588e-06 
 #> Estimation based on:                                         N =  115 and K =  6 
 #> Inf. Cr:                                            AIC  =  28.0 AIC/N  =  0.244 
 #>                                                     BIC  =  44.5 BIC/N  =  0.387 
@@ -271,7 +271,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:08 
+#> Model was estimated on : Apr Fri 24, 2026 at 14:43 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -299,7 +299,7 @@ summary(meta_lp)
 #> Total Log-likelihood: -74.28939 
 #> AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 14:08
+#> Model was estimated on : Apr Fri 24, 2026 at 14:43
 ```
 
 ## `efficiencies()` — Firm-Level Efficiency and MTR Scores
@@ -315,16 +315,16 @@ head(eff)
 #>   id  group       u_g TE_group_JLMS TE_group_BC TE_group_BC_reciprocal
 #> 1  1 medium 0.2697165     0.7635959   0.7673345               1.316036
 #> 2  2  large 0.3515642     0.7035867   0.7080897               1.430406
-#> 3  3  large 0.2774565     0.7577085   0.7623358               1.327899
+#> 3  3  large 0.2774565     0.7577085   0.7623359               1.327899
 #> 4  4 medium 0.1710417     0.8427864   0.8461331               1.191355
 #> 5  5  large 0.2119629     0.8089947   0.8133556               1.242901
 #> 6  6  small 0.1987499     0.8197549   0.8275685               1.232467
 #>         uLB_g     uUB_g        m_g TE_group_mode  teBCLB_g  teBCUB_g    u_meta
 #> 1 0.077581942 0.4657010 0.26858570     0.7644599 0.6276949 0.9253512 0.3944439
-#> 2 0.130356248 0.5739174 0.35118207     0.7038556 0.5633144 0.8777827 0.3779836
-#> 3 0.065447909 0.4980807 0.27501606     0.7595599 0.6076959 0.9366478 0.3049531
+#> 2 0.130356246 0.5739174 0.35118207     0.7038556 0.5633144 0.8777827 0.3779836
+#> 3 0.065447907 0.4980807 0.27501606     0.7595599 0.6076959 0.9366478 0.3049531
 #> 4 0.018022507 0.3583190 0.15885675     0.8531186 0.6988501 0.9821389 0.1710417
-#> 5 0.027125654 0.4268531 0.20231520     0.8168374 0.6525594 0.9732389 0.2379271
+#> 5 0.027125653 0.4268531 0.20231520     0.8168374 0.6525594 0.9732389 0.2379271
 #> 6 0.009050601 0.5251973 0.07998025     0.9231346 0.5914386 0.9909902 0.3295263
 #>   TE_meta_JLMS TE_meta_BC  MTR_JLMS    MTR_BC
 #> 1    0.6740548  0.6773549 0.8827375 0.8827375
