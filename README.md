@@ -3,7 +3,6 @@
 
 [![Lifecycle: maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
 [![](https://img.shields.io/badge/R->=%203.5.0-blue.svg)](https://cran.r-project.org/)
-[![Codecov test coverage](https://codecov.io/gh/SulmanOlieko/smfa/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SulmanOlieko/smfa?branch=main)
 [![](https://img.shields.io/github/last-commit/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/commits/main)
 [![](https://img.shields.io/github/issues/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/issues)
 [![R-CMD-check](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml)
