@@ -143,7 +143,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 15:13 
+#> Model was estimated on : Apr Sat 25, 2026 at 19:36 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -207,7 +207,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 15:13 
+#> Model was estimated on : Apr Sat 25, 2026 at 19:36 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -271,7 +271,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Fri 24, 2026 at 15:13 
+#> Model was estimated on : Apr Sat 25, 2026 at 19:36 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -299,7 +299,7 @@ summary(meta_lp)
 #> Total Log-likelihood: -74.28939 
 #> AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Fri 24, 2026 at 15:13
+#> Model was estimated on : Apr Sat 25, 2026 at 19:36
 ```
 
 ## `efficiencies()` — Firm-Level Efficiency and MTR Scores

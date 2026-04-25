@@ -2,7 +2,16 @@
 
 ![smfa logo](reference/figures/logo.png)
 
-[![CodeFactor](https://www.codefactor.io/repository/github/SulmanOlieko/smfa/badge)](https://www.codefactor.io/repository/github/SulmanOlieko/smfa)
+[![Lifecycle:
+maturing](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html#maturing)
+[![](https://img.shields.io/badge/R-%3E=%204.1.0-blue.svg)](https://cran.r-project.org/)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/smfa)](https://CRAN.R-project.org/package=smfa)
+[![Codecov test
+coverage](https://codecov.io/gh/SulmanOlieko/smfa/branch/main/graph/badge.svg)](https://app.codecov.io/gh/SulmanOlieko/smfa?branch=main)
+[![](https://img.shields.io/github/last-commit/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/commits/main)
+[![](https://img.shields.io/github/issues/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/issues)
+
 [![R-CMD-check](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml)
 [![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/smfa)
