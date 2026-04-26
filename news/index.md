@@ -1,6 +1,16 @@
 # Changelog
 
-## smfa 1.0.0
+## smfa v1.0.0: Imitation is the sincerest form of flattery
+
+The definitive, original implementation of stochastic metafrontier
+analysis for R is officially stable.
+
+After rigorous development, extensive methodological testing, and
+refinement for CRAN submission, `smfa` v1.0.0 provides a robust,
+production-ready environment for productivity and performance
+benchmarking across firms operating under different technologies. This
+release establishes the standard for stochastic metafrontier analysis in
+the R ecosystem.
 
 ### Initial CRAN release
 
