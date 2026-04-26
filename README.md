@@ -9,6 +9,8 @@
 [![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
+[![GitHub Downloads](https://img.shields.io/github/downloads/SulmanOlieko/smfa/total.svg)](https://github.com/SulmanOlieko/smfa/releases)
+[![Views](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FSulmanOlieko%2Fsmfa&title=views&count_bg=%2379C83D&title_bg=%23555555)](https://github.com/SulmanOlieko/smfa)
 
 > **Stochastic Metafrontier Analysis**
 
