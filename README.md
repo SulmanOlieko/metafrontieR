@@ -11,6 +11,10 @@
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa)](https://github.com/SulmanOlieko/smfa)
 
+[![CRAN Downloads](https://img.shields.io/cran/dm/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
+[![CRAN Total Downloads](https://img.shields.io/cran/dt/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
+[![CRAN status](https://www.r-pkg.org/badges/version/smfa)](https://CRAN.R-project.org/package=smfa)
+
 > **Stochastic Metafrontier Analysis**
 
 An R package for implementing various deterministic and stochastic metafrontier analyses for efficiency and performance benchmarking, assessing technical efficiencies (TE), metafrontier technical efficiencies (MTE), and computing metatechnology ratios (MTRs) for firms operating under different technologies.
