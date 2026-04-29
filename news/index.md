@@ -2,6 +2,8 @@
 
 ## smfa v1.0.0: Imitation is the sincerest form of flattery
 
+CRAN release: 2026-04-28
+
 The definitive, original implementation of stochastic metafrontier
 analysis for R is officially stable.
 

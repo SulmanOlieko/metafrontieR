@@ -87,11 +87,12 @@
 </h1>
 </div>
 <p><img src="reference/figures/logo.png" align="right" height="139" alt="smfa logo"></p>
-<p><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R-%3E=%203.5.0-blue.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/issues" class="external-link"><img src="https://img.shields.io/github/issues/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/badge/license-GPL-blue"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/releases" class="external-link"><img src="https://img.shields.io/github/downloads/SulmanOlieko/smfa/total.svg" alt="GitHub Downloads"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa" alt="Visitors"></a></p>
+<p><a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://img.shields.io/badge/lifecycle-stable-brightgreen.svg" alt="Lifecycle: stable"></a> <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R-%3E=%203.5.0-blue.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/issues" class="external-link"><img src="https://img.shields.io/github/issues/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/badge/license-GPL-blue"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg"></a> <a href="https://github.com/SulmanOlieko/smfa" class="external-link"><img src="https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa" alt="Visitors"></a></p>
 <blockquote>
 <p><strong>Stochastic Metafrontier Analysis</strong></p>
 </blockquote>
 <p>An R package for implementing various deterministic and stochastic metafrontier analyses for efficiency and performance benchmarking, assessing technical efficiencies (TE), metafrontier technical efficiencies (MTE), and computing metatechnology ratios (MTRs) for firms operating under different technologies.</p>
+<p>The package is available on CRAN: <a href="https://doi.org/10.32614/CRAN.package.smfa" class="external-link">10.32614/CRAN.package.smfa</a></p>
 <p><code>smfa</code> provides routines for:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -114,11 +115,13 @@
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># Install devtools if not already installed</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://devtools.r-lib.org/" class="external-link">"devtools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"smfa"</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="st"><a href="https://github.com/SulmanOlieko/smfa" class="external-link">"smfa"</a></span><span class="op">)</span></span>
+<span><span class="co"># Install devtools if not already installed</span></span>
+<span><span class="co">#if (!require("devtools")) #install.packages("devtools")</span></span>
 <span></span>
 <span><span class="co"># Install smfa from GitHub</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"SulmanOlieko/smfa"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#devtools::install_github("SulmanOlieko/smfa")</span></span></code></pre></div>
 <blockquote>
 <p><strong>Note</strong> You do not need to install <code>sfaR</code> manually, <code>smfa</code> takes care of that automatically.</p>
 </blockquote>
@@ -139,7 +142,7 @@
 </h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/SulmanOlieko/smfa" class="external-link">smfa</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ricephil"</span>, package <span class="op">=</span> <span class="st">"sfaR"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ricephil"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Create three technology groups based on farm area terciles</span></span>
 <span><span class="va">ricephil</span><span class="op">$</span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html" class="external-link">cut</a></span><span class="op">(</span><span class="va">ricephil</span><span class="op">$</span><span class="va">AREA</span>,</span>
@@ -3152,6 +3155,7 @@ Warning message:
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
+<li><a href="https://cloud.r-project.org/package=smfa" class="external-link">View on CRAN</a></li>
 <li><a href="https://github.com/SulmanOlieko/smfa/" class="external-link">Browse source code</a></li>
 <li><a href="https://github.com/SulmanOlieko/smfa/issues" class="external-link">Report a bug</a></li>
 <li><a href="https://github.com/SulmanOlieko/smfa/issues" class="external-link">Report a bug</a></li>
