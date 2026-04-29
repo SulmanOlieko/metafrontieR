@@ -8,7 +8,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![](https://img.shields.io/github/last-commit/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/commits/main)
 [![](https://img.shields.io/github/issues/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa/issues)
 [![R-CMD-check](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/SulmanOlieko/smfa/actions/workflows/R-CMD-check.yaml)
-[![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
+
 [![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa)](https://github.com/SulmanOlieko/smfa)
@@ -17,6 +17,8 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 Downloads](https://img.shields.io/cran/dm/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
 [![CRAN Total
 Downloads](https://img.shields.io/cran/dt/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
+
+[![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/smfa)](https://CRAN.R-project.org/package=smfa)
 
