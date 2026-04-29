@@ -9,12 +9,13 @@
 [![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/badge/license-GPL-blue)](https://github.com/SulmanOlieko/smfa)
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
-[![GitHub Downloads](https://img.shields.io/github/downloads/SulmanOlieko/smfa/total.svg)](https://github.com/SulmanOlieko/smfa/releases)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa)](https://github.com/SulmanOlieko/smfa)
 
 > **Stochastic Metafrontier Analysis**
 
 An R package for implementing various deterministic and stochastic metafrontier analyses for efficiency and performance benchmarking, assessing technical efficiencies (TE), metafrontier technical efficiencies (MTE), and computing metatechnology ratios (MTRs) for firms operating under different technologies.
+
+The package is available on CRAN: [10.32614/CRAN.package.smfa](https://doi.org/10.32614/CRAN.package.smfa)
 
 `smfa` provides routines for:
 
@@ -33,11 +34,13 @@ In addition, the package implements:
 ## Installation
 
 ```r
+install.packages("smfa")
+library("smfa")
 # Install devtools if not already installed
-if (!require("devtools")) install.packages("devtools")
+#if (!require("devtools")) #install.packages("devtools")
 
 # Install smfa from GitHub
-devtools::install_github("SulmanOlieko/smfa")
+#devtools::install_github("SulmanOlieko/smfa")
 ```
 >**Note** You do not need to install `sfaR` manually, `smfa` takes care of that automatically.
 
@@ -57,7 +60,7 @@ Let's use the `ricephil` data from `sfaR`. In this data, group boundaries are ob
 
 ```r
 library(smfa)
-data("ricephil", package = "sfaR")
+data("ricephil")
 
 # Create three technology groups based on farm area terciles
 ricephil$group <- cut(ricephil$AREA,
