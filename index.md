@@ -13,12 +13,18 @@ stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa)](https://github.com/SulmanOlieko/smfa)
 
-[![CRAN
-Downloads](https://img.shields.io/cran/dm/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
 [![CRAN Total
-Downloads](https://img.shields.io/cran/dt/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Monthly
+Downloads](https://cranlogs.r-pkg.org/badges/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Weekly
+Downloads](https://cranlogs.r-pkg.org/badges/last-week/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Daily
+Downloads](https://cranlogs.r-pkg.org/badges/last-day/smfa)](https://cran.r-project.org/package=smfa)
 
 [![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
+[![smfa status
+badge](https://sulmanolieko.r-universe.dev/smfa/badges/version)](https://sulmanolieko.r-universe.dev/smfa)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/smfa)](https://CRAN.R-project.org/package=smfa)
 
@@ -71,6 +77,7 @@ In addition, the package implements:
 ## Installation
 
 ``` r
+
 install.packages("smfa")
 library("smfa")
 # Install devtools if not already installed
@@ -109,6 +116,7 @@ using `sfacross` from the `sfaR` package. So, we will specify the option
 ### Data Preparation
 
 ``` r
+
 library(smfa)
 data("ricephil")
 
@@ -140,6 +148,7 @@ using a Cobb-Douglas functional form with rice production `PROD` as the
 response variable, and `AREA`, `LABOR` and `NPK` as the inputs.
 
 ``` r
+
 meta_sfacross_lp <- smfa(
   formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data       = ricephil,
@@ -405,6 +414,7 @@ To harvest individual efficiency, metafrontier efficiency and MTR
 estimates:
 
 ``` r
+
 efficiencies(meta_sfacross_lp)
 head(efficiencies(meta_sfacross_lp))
 
@@ -434,6 +444,7 @@ sum of squared deviations from group frontier predictions subject to the
 envelope constraint. We now switch to `metaMethod = "qp"`.
 
 ``` r
+
 meta_sfacross_qp <- smfa(
   formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data       = ricephil,
@@ -714,6 +725,7 @@ together and serve as the dependent variable in a second-stage pooled
 SFA. The technology gap `U` and noise `V` are estimated stochastically.
 
 ``` r
+
 meta_sfacross_huang <- smfa(
   formula     = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data        = ricephil,
@@ -1057,6 +1069,7 @@ variable in the second stage and the SFA quantifies the stochastic
 variation around this envelope.
 
 ``` r
+
 meta_sfacross_odonnell <- smfa(
   formula     = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data        = ricephil,
@@ -1435,6 +1448,7 @@ the metafrontier.
 ### Data Preparation
 
 ``` r
+
 data("utility", package = "sfaR")
 # No group variable needed for pooled LCM (groupType = "sfalcmcross" with no group argument)
 ```
@@ -1444,6 +1458,7 @@ data("utility", package = "sfaR")
 ### 2a. LCM + LP Metafrontier
 
 ``` r
+
 meta_lcm_lp <- smfa(
   formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data       = utility,
@@ -1559,6 +1574,7 @@ Model was estimated on : Mar Tue 03, 2026 at 00:55
 Retrieve efficiencies including per-class posterior probabilities
 
 ``` r
+
 # Retrieve efficiencies including per-class posterior probabilities
 head(efficiencies(meta_lcm_lp))
 # Columns include: Group_c, u_g, TE_group_JLMS, TE_group_BC, TE_group_BC_reciprocal,
@@ -1592,6 +1608,7 @@ Toggle to see the output
 ### 2b. LCM + QP Metafrontier
 
 ``` r
+
 meta_lcm_qp <- smfa(
   formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data       = utility,
@@ -1715,6 +1732,7 @@ Model was estimated on : Mar Tue 03, 2026 at 01:01
 ### 2c. LCM + Two-stage SFA Metafrontier — Huang et al. (2014)
 
 ``` r
+
 meta_lcm_huang <- smfa(
   formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data        = utility,
@@ -1905,6 +1923,7 @@ Model was estimated on : Mar Tue 03, 2026 at 01:03
 ### 2d. LCM + O’Donnell et al. (2008) Stochastic Metafrontier
 
 ``` r
+
 meta_lcm_odonnell <- smfa(
   formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data        = utility,
@@ -2108,6 +2127,7 @@ from `sfaR`):
 ### Data Preparation (Simulated)
 
 ``` r
+
 N <- 2000; set.seed(12345)
 z1 <- rnorm(N); z2 <- rnorm(N)
 v1 <- rnorm(N); v2 <- rnorm(N)
@@ -2135,6 +2155,7 @@ table(dat$d)
 ### 3a. sfaselectioncross + LP Metafrontier
 
 ``` r
+
 meta_sel_lp <- smfa(
   formula    = log(y) ~ log(x1) + log(x2),
   selectionF = d ~ z1 + z2,
@@ -2336,6 +2357,7 @@ Model was estimated on : Mar Tue 03, 2026 at 01:08
 ```
 
 ``` r
+
 # Efficiencies: non-selected observations have NA
 ef_sel_lp <- efficiencies(meta_sel_lp)
 head(ef_sel_lp)
@@ -2363,6 +2385,7 @@ Toggle to see the output
 ### 3b. sfaselectioncross + QP Metafrontier
 
 ``` r
+
 meta_sel_qp <- smfa(
   formula    = log(y) ~ log(x1) + log(x2),
   selectionF = d ~ z1 + z2,
@@ -2573,6 +2596,7 @@ Model was estimated on : Mar Tue 03, 2026 at 01:15
 ### 3c. sfaselectioncross + Two-stage SFA Metafrontier — Huang et al. (2014)
 
 ``` r
+
 meta_sel_huang <- smfa(
   formula    = log(y) ~ log(x1) + log(x2),
   selectionF  = d ~ z1 + z2,
@@ -2861,6 +2885,7 @@ Model was estimated on : Mar Tue 03, 2026 at 01:17
 ### 3d. sfaselectioncross + O’Donnell et al. (2008) Stochastic Metafrontier
 
 ``` r
+
 meta_sel_odonnell <- smfa(
   formula    = log(y) ~ log(x1) + log(x2),
   selectionF  = d ~ z1 + z2,
@@ -3147,24 +3172,25 @@ function returns a data frame with one row per observation containing
 group-specific and metafrontier efficiency estimates and MTRs. The
 columns present depend on `groupType`:
 
-| Column                                  | Description                                             |
-|-----------------------------------------|---------------------------------------------------------|
-| `id`                                    | Observation identifier                                  |
-| `group` / `Group_c`                     | Technology group identifier                             |
-| `u_g`                                   | Group-specific inefficiency — Jondrow et al. (1982)     |
-| `TE_group_JLMS`                         | Group TE — Jondrow et al. (1982): exp(−*u*)             |
-| `TE_group_BC`                           | Group TE — Battese & Coelli (1988): E\[exp(−*u*)\|*ε*\] |
-| `TE_group_BC_reciprocal`                | Reciprocal of Battese & Coelli (1988) group TE          |
-| `uLB_g`, `uUB_g`                        | Confidence bounds for *u* (*sfacross* only)             |
-| `m_g`, `TE_group_mode`                  | Mode-based inefficiency and TE (*sfacross* only)        |
-| `PosteriorProb_c`, `PosteriorProb_c1` … | Posterior class probabilities (*sfalcmcross* only)      |
-| `u_meta`                                | Metafrontier technology gap *U*                         |
-| `TE_meta_JLMS`                          | Metafrontier TE (JLMS basis): TE_group_JLMS × MTR       |
-| `TE_meta_BC`                            | Metafrontier TE (BC basis): TE_group_BC × MTR           |
-| `MTR_JLMS`                              | Metatechnology ratio (JLMS basis)                       |
-| `MTR_BC`                                | Metatechnology ratio (BC basis)                         |
+| Column | Description |
+|----|----|
+| `id` | Observation identifier |
+| `group` / `Group_c` | Technology group identifier |
+| `u_g` | Group-specific inefficiency — Jondrow et al. (1982) |
+| `TE_group_JLMS` | Group TE — Jondrow et al. (1982): exp(−*u*) |
+| `TE_group_BC` | Group TE — Battese & Coelli (1988): E\[exp(−*u*)\|*ε*\] |
+| `TE_group_BC_reciprocal` | Reciprocal of Battese & Coelli (1988) group TE |
+| `uLB_g`, `uUB_g` | Confidence bounds for *u* (*sfacross* only) |
+| `m_g`, `TE_group_mode` | Mode-based inefficiency and TE (*sfacross* only) |
+| `PosteriorProb_c`, `PosteriorProb_c1` … | Posterior class probabilities (*sfalcmcross* only) |
+| `u_meta` | Metafrontier technology gap *U* |
+| `TE_meta_JLMS` | Metafrontier TE (JLMS basis): TE_group_JLMS × MTR |
+| `TE_meta_BC` | Metafrontier TE (BC basis): TE_group_BC × MTR |
+| `MTR_JLMS` | Metatechnology ratio (JLMS basis) |
+| `MTR_BC` | Metatechnology ratio (BC basis) |
 
 ``` r
+
 # Example: extract and print for group 1 selected farms only
 ef_sel_lp <- efficiencies(meta_sel_lp)
 sel_grp1  <- ef_sel_lp[ef_sel_lp$group == 1 & !is.na(ef_sel_lp$TE_group_BC), ]

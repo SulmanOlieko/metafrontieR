@@ -29,7 +29,9 @@ This allows researchers to disentangle:
 
 ## Conceptual Framework
 
-$$\text{MTR}_{i} = \frac{\text{TE\_meta}_{i}}{\text{TE\_group}_{i}}$$
+``` math
+\text{MTR}_i = \frac{\text{TE\_meta}_i}{\text{TE\_group}_i}
+```
 
 A **MTR close to 1** means the group’s technology is near the
 metafrontier (advanced technology). A **MTR far below 1** means the
@@ -39,24 +41,25 @@ group operates under a less advanced technology.
 
 `smfa` supports four metafrontier estimation methods (`metaMethod`):
 
-| Method                                | Description                                                                 |
-|---------------------------------------|-----------------------------------------------------------------------------|
-| `"lp"`                                | Linear programming deterministic envelope — Battese, Rao & O’Donnell (2004) |
-| `"qp"`                                | Quadratic programming deterministic envelope                                |
-| `"sfa"` (`sfaApproach = "huang"`)     | Two-stage stochastic metafrontier — Huang, Huang & Liu (2014)               |
-| `"sfa"` (`sfaApproach = "ordonnell"`) | Two-stage SFA on LP envelope — O’Donnell, Rao & Battese (2008)              |
+| Method | Description |
+|----|----|
+| `"lp"` | Linear programming deterministic envelope — Battese, Rao & O’Donnell (2004) |
+| `"qp"` | Quadratic programming deterministic envelope |
+| `"sfa"` (`sfaApproach = "huang"`) | Two-stage stochastic metafrontier — Huang, Huang & Liu (2014) |
+| `"sfa"` (`sfaApproach = "ordonnell"`) | Two-stage SFA on LP envelope — O’Donnell, Rao & Battese (2008) |
 
 And three group frontier types (`groupType`):
 
-| Group Type            | When to Use                                                                                 |
-|-----------------------|---------------------------------------------------------------------------------------------|
-| `"sfacross"`          | Technology groups are *observed* (e.g., a group variable exists)                            |
-| `"sfalcmcross"`       | Technology groups are *unobserved* — latent class model identifies them (Dakpo et al. 2021) |
-| `"sfaselectioncross"` | Sample selection bias is present (Dakpo et al. 2022)                                        |
+| Group Type | When to Use |
+|----|----|
+| `"sfacross"` | Technology groups are *observed* (e.g., a group variable exists) |
+| `"sfalcmcross"` | Technology groups are *unobserved* — latent class model identifies them (Dakpo et al. 2021) |
+| `"sfaselectioncross"` | Sample selection bias is present (Dakpo et al. 2022) |
 
 ## Installation
 
 ``` r
+
 # Install smfa from CRAN
 install.packages("smfa")
 
@@ -77,6 +80,7 @@ groups (small, medium, large).
 ### Step 1: Load data and create groups
 
 ``` r
+
 library(smfa)
 #> Loading required package: sfaR
 #>            ****           *******  
@@ -129,6 +133,7 @@ table(ricephil$group)
 ### Step 2: Fit the metafrontier model
 
 ``` r
+
 meta_lp <- smfa(
   formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
   data       = ricephil,
@@ -143,6 +148,7 @@ meta_lp <- smfa(
 ### Step 3: Summarise results
 
 ``` r
+
 summary(meta_lp)
 #> ============================================================ 
 #> Stochastic Metafrontier Analysis
@@ -216,7 +222,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -280,7 +286,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -344,7 +350,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -372,12 +378,13 @@ summary(meta_lp)
 #> Total Log-likelihood: -74.28939 
 #> AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 ### Step 4: Extract firm-level efficiencies
 
 ``` r
+
 eff <- efficiencies(meta_lp)
 head(eff)
 #>   id  group       u_g TE_group_JLMS TE_group_BC TE_group_BC_reciprocal

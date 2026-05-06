@@ -1,4 +1,4 @@
-pandoc: 3.1.11
+pandoc: 3.8.3
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
@@ -7,7 +7,7 @@ articles:
   sfacross-metafrontier: sfacross-metafrontier.html
   sfalcmcross-metafrontier: sfalcmcross-metafrontier.html
   sfaselectioncross-metafrontier: sfaselectioncross-metafrontier.html
-last_built: 2026-04-29T09:12Z
+last_built: 2026-05-06T19:47Z
 urls:
   reference: https://SulmanOlieko.github.io/smfa/reference
   article: https://SulmanOlieko.github.io/smfa/articles

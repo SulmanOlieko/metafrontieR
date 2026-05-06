@@ -9,6 +9,7 @@ of them using a simple `sfacross` + LP example.
 ## Setup: Fit a Model
 
 ``` r
+
 library(smfa)
 #> Loading required package: sfaR
 #>            ****           *******  
@@ -70,6 +71,7 @@ metafrontier coefficients (if available), and efficiency statistics by
 group.
 
 ``` r
+
 summary(meta_lp)
 #> ============================================================ 
 #> Stochastic Metafrontier Analysis
@@ -143,7 +145,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -207,7 +209,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -271,7 +273,7 @@ summary(meta_lp)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> 
@@ -299,7 +301,7 @@ summary(meta_lp)
 #> Total Log-likelihood: -74.28939 
 #> AIC: 184.5788   BIC: 253.7103   HQIC: 212.113 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 ## `efficiencies()` — Firm-Level Efficiency and MTR Scores
@@ -310,6 +312,7 @@ available for all `groupType` values, though the exact columns vary
 slightly by model type.
 
 ``` r
+
 eff <- efficiencies(meta_lp)
 head(eff)
 #>   id  group       u_g TE_group_JLMS TE_group_BC TE_group_BC_reciprocal
@@ -337,26 +340,27 @@ head(eff)
 
 ### Column Reference
 
-| Column                                  | `sfacross` | `sfalcmcross` | `sfaselectioncross` |
-|-----------------------------------------|:----------:|:-------------:|:-------------------:|
-| `id`                                    |     ✓      |       ✓       |          ✓          |
-| `group` / `Group_c`                     |     ✓      |       ✓       |          ✓          |
-| `u_g`                                   |     ✓      |       ✓       |          ✓          |
-| `TE_group_JLMS`                         |     ✓      |       ✓       |          ✓          |
-| `TE_group_BC`                           |     ✓      |       ✓       |          ✓          |
-| `TE_group_BC_reciprocal`                |     ✓      |       ✓       |          ✓          |
-| `uLB_g`, `uUB_g`                        |     ✓      |       —       |          —          |
-| `m_g`, `TE_group_mode`                  |     ✓      |       —       |          —          |
-| `PosteriorProb_c`, `PosteriorProb_c1` … |     —      |       ✓       |          —          |
-| `u_meta`                                |     ✓      |       ✓       |          ✓          |
-| `TE_meta_JLMS`                          |     ✓      |       ✓       |          ✓          |
-| `TE_meta_BC`                            |     ✓      |       ✓       |          ✓          |
-| `MTR_JLMS`                              |     ✓      |       ✓       |          ✓          |
-| `MTR_BC`                                |     ✓      |       ✓       |          ✓          |
+| Column | `sfacross` | `sfalcmcross` | `sfaselectioncross` |
+|----|:--:|:--:|:--:|
+| `id` | ✓ | ✓ | ✓ |
+| `group` / `Group_c` | ✓ | ✓ | ✓ |
+| `u_g` | ✓ | ✓ | ✓ |
+| `TE_group_JLMS` | ✓ | ✓ | ✓ |
+| `TE_group_BC` | ✓ | ✓ | ✓ |
+| `TE_group_BC_reciprocal` | ✓ | ✓ | ✓ |
+| `uLB_g`, `uUB_g` | ✓ | — | — |
+| `m_g`, `TE_group_mode` | ✓ | — | — |
+| `PosteriorProb_c`, `PosteriorProb_c1` … | — | ✓ | — |
+| `u_meta` | ✓ | ✓ | ✓ |
+| `TE_meta_JLMS` | ✓ | ✓ | ✓ |
+| `TE_meta_BC` | ✓ | ✓ | ✓ |
+| `MTR_JLMS` | ✓ | ✓ | ✓ |
+| `MTR_BC` | ✓ | ✓ | ✓ |
 
 ### Subsetting by Group
 
 ``` r
+
 # All small farms
 eff_small <- eff[eff$group == "small", ]
 
@@ -381,6 +385,7 @@ aggregate(cbind(TE_group_BC, TE_meta_BC, MTR_BC) ~ group, data = eff, FUN = mean
 ### Visualising the Distribution
 
 ``` r
+
 # MTR distribution by group (base R)
 boxplot(MTR_BC ~ group, data = eff,
         main = "Metatechnology Ratio by Farm Size",
@@ -391,6 +396,7 @@ boxplot(MTR_BC ~ group, data = eff,
 ![](efficiency-extraction_files/figure-html/plot-1.png)
 
 ``` r
+
 
 # Histogram of TE_meta_BC
 hist(eff$TE_meta_BC, breaks = 30,
@@ -406,6 +412,7 @@ Returns the metafrontier coefficient vector (for QP and SFA methods;
 `NULL` for LP).
 
 ``` r
+
 # First fit a QP model
 meta_qp <- smfa(
   formula    = log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
@@ -423,6 +430,7 @@ Returns the variance-covariance matrix of the metafrontier coefficients
 (for models that estimate metafrontier parameters).
 
 ``` r
+
 vcov(meta_qp)
 #>                (Intercept)   `log(AREA)`  `log(LABOR)`    `log(NPK)`
 #> (Intercept)   8.514304e-04  1.954064e-04 -1.729963e-04 -3.730091e-05
@@ -437,6 +445,7 @@ Returns the total log-likelihood value of the model (sum of group-level
 log-likelihoods plus the metafrontier log-likelihood where applicable).
 
 ``` r
+
 logLik(meta_lp)
 #> 'log Lik.' -74.28939 (df=18)
 ```
@@ -446,6 +455,7 @@ logLik(meta_lp)
 Returns all three information criteria: AIC, BIC, and HQIC.
 
 ``` r
+
 ic(meta_lp)
 #>        AIC      BIC    HQIC
 #> 1 184.5788 253.7103 212.113
@@ -456,6 +466,7 @@ ic(meta_lp)
 ## `nobs()` — Number of Observations
 
 ``` r
+
 nobs(meta_lp)  # Total observations across all groups
 #> [1] 344
 ```
@@ -465,6 +476,7 @@ nobs(meta_lp)  # Total observations across all groups
 Returns the fitted frontier values from the model.
 
 ``` r
+
 fv <- fitted(meta_lp)
 head(fv)
 #> [1] 2.469286 2.743912 2.626060 1.741342 2.413083 0.838672
@@ -476,6 +488,7 @@ Returns the composite error residuals from the group-level stochastic
 frontier models.
 
 ``` r
+
 res <- residuals(meta_lp)
 head(res)
 #> [1] 5.400714 7.606088 7.353940 3.088658 6.326917 1.001328
@@ -487,6 +500,7 @@ You can compare information criteria across methods to select the best
 model:
 
 ``` r
+
 meta_lp    <- smfa(log(PROD) ~ log(AREA) + log(LABOR) + log(NPK),
                                data = ricephil, group = "group", S = 1,
                                udist = "hnormal", groupType = "sfacross",

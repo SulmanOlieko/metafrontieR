@@ -26,6 +26,7 @@ observations from US electricity utilities. We estimate a cost frontier
 with no explicit group variable.
 
 ``` r
+
 library(smfa)
 #> Loading required package: sfaR
 #>            ****           *******  
@@ -69,6 +70,7 @@ Fit a 2-class latent class pooled SFA, then estimate the LP
 deterministic envelope over the inferred class frontiers.
 
 ``` r
+
 meta_lcm_lp <- smfa(
   formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data       = utility,
@@ -164,7 +166,7 @@ summary(meta_lcm_lp)
 #> Total Log-likelihood: 61.35324 
 #> AIC: -96.70649   BIC: -35.95362   HQIC: -73.35552 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 > **Note:** The `group` argument is not needed when
@@ -175,6 +177,7 @@ summary(meta_lcm_lp)
 ## Method 2: LCM + QP Metafrontier
 
 ``` r
+
 meta_lcm_qp <- smfa(
   formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data       = utility,
@@ -276,12 +279,13 @@ summary(meta_lcm_qp)
 #> Total Log-likelihood: 61.35324 
 #> AIC: -88.70649   BIC: -9.26042   HQIC: -58.17061 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 ## Method 3: LCM + SFA (Huang)
 
 ``` r
+
 meta_lcm_huang <- smfa(
   formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data        = utility,
@@ -419,7 +423,7 @@ summary(meta_lcm_huang)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -449,12 +453,13 @@ summary(meta_lcm_huang)
 #> Total Log-likelihood: 820.9828 
 #> AIC: -1603.966   BIC: -1515.173   HQIC: -1569.837 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 ## Method 4: LCM + SFA (O’Donnell)
 
 ``` r
+
 meta_lcm_odonnell <- smfa(
   formula     = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data        = utility,
@@ -597,7 +602,7 @@ summary(meta_lcm_odonnell)
 #> ---
 #> Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 #> -------------------------------------------------------------------------------- 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13 
+#> Model was estimated on : May Wed 06, 2026 at 19:48 
 #> Log likelihood status: successful convergence  
 #> --------------------------------------------------------------------------------  
 #> Log likelihood status: successful convergence  
@@ -627,7 +632,7 @@ summary(meta_lcm_odonnell)
 #> Total Log-likelihood: 2010.522 
 #> AIC: -3983.043   BIC: -3894.251   HQIC: -3948.915 
 #> ------------------------------------------------------------ 
-#> Model was estimated on : Apr Wed 29, 2026 at 09:13
+#> Model was estimated on : May Wed 06, 2026 at 19:48
 ```
 
 ## Choosing the Number of Classes
@@ -637,6 +642,7 @@ theory and information criteria. You can compare models with different
 numbers of classes:
 
 ``` r
+
 meta_lcm_2 <- smfa(
   formula    = log(tc/wf) ~ log(y) + log(wl/wf) + log(wk/wf),
   data       = utility, S = -1,
@@ -672,6 +678,7 @@ returns extra columns for posterior class membership probabilities,
 which can be used for robustness checks or classification:
 
 ``` r
+
 eff_lcm <- efficiencies(meta_lcm_lp)
 head(eff_lcm)
 #>   id Group_c        u_g TE_group_JLMS TE_group_BC TE_group_BC_reciprocal
@@ -720,6 +727,7 @@ head(eff_lcm)
 ### Class membership summary
 
 ``` r
+
 # Proportion assigned to each class and mean posterior probability
 with(eff_lcm, table(Group_c)) / nrow(eff_lcm) * 100   # % in each class
 #> Group_c
@@ -729,9 +737,9 @@ with(eff_lcm, table(Group_c)) / nrow(eff_lcm) * 100   # % in each class
 
 ## Key Difference from `sfacross`
 
-| Feature                  | `sfacross`                | `sfalcmcross`                                     |
-|--------------------------|---------------------------|---------------------------------------------------|
-| Group variable           | Required                  | Not required                                      |
-| Group estimation         | Separate SFA per group    | Pooled LCM simultaneously                         |
-| Output                   | Group-level SFA summaries | Pooled LCM summary with class-specific parameters |
-| Extra efficiency columns | Confidence bounds         | Posterior class probabilities                     |
+| Feature | `sfacross` | `sfalcmcross` |
+|----|----|----|
+| Group variable | Required | Not required |
+| Group estimation | Separate SFA per group | Pooled LCM simultaneously |
+| Output | Group-level SFA summaries | Pooled LCM summary with class-specific parameters |
+| Extra efficiency columns | Confidence bounds | Posterior class probabilities |
