@@ -11,11 +11,13 @@
 [![](https://img.shields.io/github/languages/code-size/SulmanOlieko/smfa.svg)](https://github.com/SulmanOlieko/smfa)
 [![Visitors](https://visitor-badge.laobi.icu/badge?page_id=sulmanolieko.smfa)](https://github.com/SulmanOlieko/smfa)
 
-
-[![CRAN Downloads](https://img.shields.io/cran/dm/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
-[![CRAN Total Downloads](https://img.shields.io/cran/dt/smfa.svg?color=blue)](https://CRAN.R-project.org/package=smfa)
+[![CRAN Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Monthly Downloads](https://cranlogs.r-pkg.org/badges/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Weekly Downloads](https://cranlogs.r-pkg.org/badges/last-week/smfa)](https://cran.r-project.org/package=smfa)
+[![CRAN Daily Downloads](https://cranlogs.r-pkg.org/badges/last-day/smfa)](https://cran.r-project.org/package=smfa)
 
 [![](https://img.shields.io/badge/devel%20version-1.0.0-darkred.svg)](https://github.com/SulmanOlieko/smfa)
+[![smfa status badge](https://sulmanolieko.r-universe.dev/smfa/badges/version)](https://sulmanolieko.r-universe.dev/smfa)
 [![CRAN status](https://www.r-pkg.org/badges/version/smfa)](https://CRAN.R-project.org/package=smfa)
 
 > **Stochastic Metafrontier Analysis**
